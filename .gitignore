@@ -1,6 +1,16 @@
 
-# Created by https://www.toptal.com/developers/gitignore/api/unity,visualstudio,visualstudiocode,rider,sublimetext,notepadpp
-# Edit at https://www.toptal.com/developers/gitignore?templates=unity,visualstudio,visualstudiocode,rider,sublimetext,notepadpp
+# Created by https://www.toptal.com/developers/gitignore/api/unity,visualstudio,visualstudiocode,rider,sublimetext,notepadpp,monodevelop
+# Edit at https://www.toptal.com/developers/gitignore?templates=unity,visualstudio,visualstudiocode,rider,sublimetext,notepadpp,monodevelop
+
+### MonoDevelop ###
+#User Specific
+*.userprefs
+*.usertasks
+
+#Mono Project Files
+*.pidb
+*.resources
+test-results/
 
 ### NotepadPP ###
 # Notepad++ backups #
@@ -537,4 +547,4 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 
-# End of https://www.toptal.com/developers/gitignore/api/unity,visualstudio,visualstudiocode,rider,sublimetext,notepadpp
+# End of https://www.toptal.com/developers/gitignore/api/unity,visualstudio,visualstudiocode,rider,sublimetext,notepadpp,monodevelop
