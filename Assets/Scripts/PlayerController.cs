@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 movement;
 
     public JoystickController joystick;
-    public float moveSpeed, jumpSpeed = 10f, gravity = 10f;
+    public float moveSpeed = 5f, jumpSpeed = 10f, gravity = 10f;
 
     private void Start()
     {
@@ -22,20 +22,26 @@ public class PlayerController : MonoBehaviour
         Movement();
     }
 
+    /// <summary>
+    /// Movement: to move player with joystick
+    /// </summary>
     private void Movement()
     {
+        // Get movement from joystick
         float moveHorizontal = joystick.Direction.x;
         float moveVertical = joystick.Direction.z;
         
+        // Check if player is on ground
         if (characterController.isGrounded)
         {
+            // Player Movement
             movement = new Vector3(moveVertical, 0f, -moveHorizontal);
             movement *= moveSpeed;
         }
         
-        movement.y -= gravity * Time.deltaTime;
+        movement.y -= gravity * Time.deltaTime; // Add gravity
         
-        characterController.Move(movement * Time.deltaTime);
+        characterController.Move(movement * Time.deltaTime); // Move Player
     }
 
     public void Jump()
