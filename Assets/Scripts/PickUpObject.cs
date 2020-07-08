@@ -3,13 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// TODO: CLEAN CODE.
 public class PickUpObject : MonoBehaviour
 {
     [SerializeField] private float rayMaxDistance;
     [SerializeField] private Transform itemHolder;
 
     private bool isPickingUp = false;
-    private float tapTimeLimit = 1f, variancePosition = 1f;
+    private float tapTimeLimit = 1f,
+        newTime = 0f;
     private int tapCount = 0;
     private Transform targetObject;
 
@@ -17,104 +19,112 @@ public class PickUpObject : MonoBehaviour
     {
         if (Input.touchCount > 0)
         {
-            for (int i = 0; i < Input.touchCount; i++)
+            TouchItem();
+            
+            if (TapCount() && isPickingUp)
             {
-                if (Input.GetTouch(i).phase == TouchPhase.Began) // If touch began to tap
-                {
-                    // Get ray from touch position
-                    Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(i).position);
-                    RaycastHit hit;
-
-                    if (Physics.Raycast(ray, out hit, rayMaxDistance))
-                    {
-                        // If touch tap item object, ...
-                        if (hit.collider.CompareTag("Item"))
-                        {
-                            targetObject = hit.transform; // Change targetObject
-                            Debug.Log("Target objek = " + targetObject);
-                            isPickingUp = true; // isPickingUp is true
-                            break; // Break after get an item object
-                        }
-                    }
-                }
+                Debug.Log("berhasil");
+                isPickingUp = false;
             }
         }
 
-        // if(Input.touchCount > 0)
-        // {
-        //     TapCount(0);
-        // }
+        if (Time.time > newTime)
+        {
+            tapCount = 0;
+        }
         
         if (isPickingUp)
         {
-            ChangeTargetParent();
+            PickUpItem();
         }
-        // else
-        // {
-        //     if (Input.touchCount > 0)
-        //     {
-        //         for (int i = 0; i < Input.touchCount; i++)
-        //         {
-        //             if (Input.GetTouch(i).phase == TouchPhase.Began)
-        //             {
-        //                 Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(i).position);
-        //                 RaycastHit hit;
-        //
-        //                 if (Physics.Raycast(ray, out hit, rayMaxDistance))
-        //                 {
-        //                     if (hit.collider.CompareTag("Item"))
-        //                     {
-        //                         // Debug.Log("Release");
-        //                     }
-        //                 }
-        //             }
-        //         }
-        //     }
-        // }
+        else
+        {
+            ReleaseItem();
+        }
     }
 
     /// <summary>
     /// ChangeTargetParent: Make itemHolder a parent of targetObject
     /// </summary>
-    private void ChangeTargetParent()
+    private void PickUpItem()
     {
         if (targetObject)
         {
             Debug.Log("Grab " + targetObject.name);
             targetObject.GetComponent<Rigidbody>().useGravity = false;
-            targetObject.GetComponent<Collider>().enabled = false;
             targetObject.parent = itemHolder;
             targetObject.position = itemHolder.position;
         }
-        else
+    }
+    
+    private void ReleaseItem()
+    {
+        if(targetObject)
         {
-            Debug.Log(targetObject.name + " is null");
             targetObject.GetComponent<Rigidbody>().useGravity = true;
-            targetObject.GetComponent<Collider>().enabled = true;
             targetObject.parent = null;
+            targetObject = null;
         }
     }
 
-    // This method is still wrong
-    private bool TapCount(int index)
+    private void TouchItem()
+    {
+        for (int i = 0; i < Input.touchCount; i++)
+        {
+            if (Input.GetTouch(i).phase == TouchPhase.Began) // If touch began to tap
+            {
+                // Get ray from touch position
+                Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(i).position);
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit, rayMaxDistance))
+                {
+                    // If touch tap item object, ...
+                    if (hit.collider.CompareTag("Item"))
+                    {
+                        targetObject = hit.transform; // Change targetObject
+                        Debug.Log("Target objek = " + targetObject);
+                        isPickingUp = true; // isPickingUp is true
+                        break; // Break after get an item object
+                    }
+                }
+            }
+        }
+    }
+    
+    private bool TapCount()
     {
         bool result = false;
-        
-        if (Input.GetTouch(index).phase == TouchPhase.Began)
+
+        for (int i = 0; i < Input.touchCount; i++)
         {
-            float deltaTime = Input.GetTouch(index).deltaTime;
-            float deltaPositionLength = Input.GetTouch(index).deltaPosition.magnitude;
-            tapCount += 1;
-
-            Debug.Log("Delta time = " + deltaTime +
-                      "\nTap Count = " + tapCount + 
-                      "\nDelta Position = " + deltaPositionLength);
-
-            if (deltaTime > 0 && deltaTime < tapTimeLimit && deltaPositionLength < variancePosition && tapCount == 2)
+            if (Input.GetTouch(i).phase == TouchPhase.Ended)
             {
-                Debug.Log("Double Tap");
-                result = true;
+                tapCount += 1;
+            }
+
+            if (tapCount == 1)
+            {
+                newTime = Time.time + tapTimeLimit;
+                Debug.Log("New Time = " + newTime +
+                          "\nTime.time = " + Time.time);
+            }
+            else if (tapCount == 2 && Time.time <= newTime)
+            {
+                Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(i).position);
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit, rayMaxDistance))
+                {
+                    if (hit.collider.CompareTag("Item"))
+                    {
+                        Debug.Log("Release");
+                    }
+                }
+                
                 tapCount = 0;
+                result = true;
+                break;
             }
         }
 
