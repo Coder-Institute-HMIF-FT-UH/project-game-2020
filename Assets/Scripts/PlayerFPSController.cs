@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
 
 public class PlayerFPSController : MonoBehaviour
@@ -8,10 +9,12 @@ public class PlayerFPSController : MonoBehaviour
     public FixedTouchField touchField;
     
     private RigidbodyFirstPersonController fps;
+    private int starsCount;
 
     // Start is called before the first frame update
     void Start()
     {
+        starsCount = 0;
         fps = GetComponent<RigidbodyFirstPersonController>();
     }
 
@@ -22,5 +25,19 @@ public class PlayerFPSController : MonoBehaviour
         fps.RunAxis = moveJoystick.Direction;
         fps.JumpAxis = jumpButton.pressed;
         fps.mouseLook.LookAxis = touchField.touchDist;
+    }
+
+    /// <summary>
+    /// OnTriggerEnter: When Player collide with other collider
+    /// </summary>
+    /// <param name="other"></param>
+    private void OnTriggerEnter(Collider other)
+    {
+        // If collide with star, ...
+        if (other.gameObject.CompareTag("Star"))
+        {
+            starsCount += 1; // Increase starsCount
+            Debug.Log("Stars collected = " + starsCount);
+        }
     }
 }
