@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
 
 public class PlayerFPSController : MonoBehaviour
@@ -37,6 +36,11 @@ public class PlayerFPSController : MonoBehaviour
         if (other.gameObject.CompareTag("Star"))
         {
             starsCount += 1; // Increase starsCount
+            
+            // Add disappear particle
+            
+            other.gameObject.SetActive(false); // Set star to non-active
+            
             Debug.Log("Stars collected = " + starsCount);
         }
     }

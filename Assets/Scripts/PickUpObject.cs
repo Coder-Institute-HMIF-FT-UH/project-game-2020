@@ -9,7 +9,7 @@ public class PickUpObject : MonoBehaviour
         rayMaxDistance = 5f,
         tapTimeLimit = 1f;
     private int tapCount = 0;
-    [SerializeField] private Transform targetObject;
+    private Transform targetObject;
 
     private void Update()
     {
