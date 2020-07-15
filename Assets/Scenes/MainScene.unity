@@ -14097,7 +14097,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 376166705}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b029892501ef47649866683f2f731daf, type: 3}
+  m_Script: {fileID: 11500000, guid: 3471c1a9f27ab2248acfc25728152782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 931123294}
@@ -14135,7 +14135,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 8400000, guid: c6b0ff9bbd719e940ac01d34da550a4b, type: 2}
+  m_TargetTexture: {fileID: 8400000, guid: ec9a47bc643d39d46be3c0249c02cadb, type: 2}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
@@ -32030,7 +32030,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 8400000, guid: c6b0ff9bbd719e940ac01d34da550a4b, type: 2}
+  m_Texture: {fileID: 8400000, guid: ec9a47bc643d39d46be3c0249c02cadb, type: 2}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -33050,15 +33050,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1977928767}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b67494d021cbce641a25a18b5ef9649b, type: 3}
+  m_Script: {fileID: 11500000, guid: 90ec522850ed1004eb9b7fa5004d00d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   batteryLevel: {fileID: 1439983025}
   batteryFill: {fileID: 1876698587}
-  currentBatteryColor: {r: 0, g: 0, b: 0, a: 1}
-  highBatteryColor: {r: 0.040786266, g: 1, b: 0, a: 1}
-  mediumBatteryColor: {r: 1, g: 0.896251, b: 0, a: 1}
-  lowBatteryColor: {r: 1, g: 0, b: 0, a: 1}
+  currentBatteryColor: {r: 0, g: 0, b: 0, a: 0}
+  highBatteryColor: {r: 0, g: 1, b: 0.08991361, a: 1}
+  mediumBatteryColor: {r: 0.9861269, g: 1, b: 0, a: 1}
+  lowBatteryColor: {r: 0.8962264, g: 0, b: 0, a: 1}
 --- !u!43 &2044480799
 Mesh:
   m_ObjectHideFlags: 0
