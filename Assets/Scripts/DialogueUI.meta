@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Scripts/DialogueUI.meta
 guid: 467b1b77d68344b4fb6a94823a0fb0a4
+=======
+guid: 7d0845b20f1163d45a88f65f126d6fe3
+>>>>>>> 42bea94... Added Scene, Material, And More Particle effect:Assets/Scripts/image.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
