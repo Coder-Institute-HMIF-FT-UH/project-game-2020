@@ -29,17 +29,17 @@
         </Dialogue>
 
         <Dialogue id="6" type="normal">
-            <Line destination="0" portrait="Char" mood="good">I’m doing it.</Line>
+            <Line destination="7" portrait="Char" mood="good">I’m doing it.</Line>
         </Dialogue>
     
     <!--Move Tutorial-->
         <Dialogue id="7" type="normal">
-            <Line destination="1" portrait="Lord" mood="normal">But first, let’s learn how to control yourself. </Line>
+            <Line destination="8" portrait="Lord" mood="normal">But first, let’s learn how to control yourself. </Line>
         </Dialogue>
-        <Dialogue id="1" type="normal">
-            <Line destination="2" portrait="Lord" mood="question">You see the joystick on your bottom left? Y </Line>
+        <Dialogue id="8" type="normal">
+            <Line destination="9" portrait="Lord" mood="question">You see the joystick on your bottom left? Y </Line>
         </Dialogue>
-        <Dialogue id="2" type="normal">
+        <Dialogue id="9" type="normal">
             <Line destination="0" portrait="Lord" mood="normal">You can tap and move it around so you can walk around</Line>
         </Dialogue>
     </Prologue>
