@@ -8,6 +8,7 @@ public class DialogueUI : MonoBehaviour
     [SerializeField] private DialogueData dialogueData;
     
     // UI Elements
+    [SerializeField] private GameObject controller;
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private Text dialogueText,
         characterName;
@@ -47,9 +48,26 @@ public class DialogueUI : MonoBehaviour
             {
                 // Fetching the data of the next dialogue
                 dialogueData.GetNextDialogue();
-                
-                // Setting our new dialogue
-                AdvanceDialogue();
+
+                // If dialogue is finished, ...
+                if (dialogueData.IsFinished)
+                {
+                    gameObject.SetActive(false); // Deactivate Dialogue
+                    controller.SetActive(true); // Activate Controller
+                }
+                else // If dialogue is not finished ...
+                {
+                    // Deactivate Controller if it's active
+                    if (controller.activeInHierarchy)
+                        controller.SetActive(false);
+                    
+                    // Activate Dialogue if it's not active
+                    if(!gameObject.activeInHierarchy)
+                        gameObject.SetActive(true);
+                    
+                    // Setting our new dialogue
+                    AdvanceDialogue();
+                }
             }
             else if (dialogueIsRunning)
             {

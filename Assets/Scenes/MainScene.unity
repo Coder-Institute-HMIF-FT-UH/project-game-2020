@@ -33278,6 +33278,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueData: {fileID: 1500065885}
+  controller: {fileID: 400671888}
   canvasGroup: {fileID: 1896629068}
   dialogueText: {fileID: 1981582140}
   characterName: {fileID: 975343622}
