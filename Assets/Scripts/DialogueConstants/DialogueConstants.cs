@@ -5,8 +5,8 @@
         Line = "Line",
         Options = "Options",
         Option = "Option",
-        Normal = "Normal",
-        Question = "Question",
+        Normal = "normal",
+        Question = "question",
         XmlData = "data", // XML File name
         XmlDialogueId = "@id",
         XmlDialogueType = "@type",

@@ -97,22 +97,20 @@ public class DialogueData : MonoBehaviour
                     .SelectNodes(DialogueConstants.Option)[i]
                     .SelectSingleNode(DialogueConstants.XmlDialogueChoice)
                     .Value);
-
-                isQuestion = true;
-                isLocked = true;
             }
-            
-            // Setting the dialogue line
-            dialogueLine = dialogueData[dialogueId]
-                .SelectSingleNode(DialogueConstants.Line)
-                .InnerText;
-            
-            Debug.Log(dialogueLine);
-
-            dialogueId = destinationId;
-            
-            Debug.Log("===========================");
+            isQuestion = true;
+            isLocked = true;
         }
+        // Setting the dialogue line
+        dialogueLine = dialogueData[dialogueId]
+            .SelectSingleNode(DialogueConstants.Line)
+            .InnerText;
+            
+        Debug.Log(dialogueLine);
+
+        dialogueId = destinationId;
+            
+        Debug.Log("===========================");
     }
 
     public List<Button> SetButtons(List<Button> buttons, Action callback)
