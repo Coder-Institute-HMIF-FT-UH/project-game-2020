@@ -5,7 +5,7 @@
     <Prologue>
         
         <Dialogue id="0" type="normal">
-            <Line destination="1" portrait="Lord" mood="normal">Oh, you’re awake! Good morning. Feeling good today?</Line>
+            <Line destination="0" portrait="Lord" mood="normal">Oh, you’re awake! Good morning. Feeling good today?</Line>
         </Dialogue>
 
         <Dialogue id="1" type="normal">
@@ -13,23 +13,23 @@
         </Dialogue>
 
         <Dialogue id="2" type="normal">
-            <Line destination="1" portrait="Char" mood="question">Hey, do you ever wonder how the outside world looks like?.</Line>
+            <Line destination="2" portrait="Char" mood="question">Hey, do you ever wonder how the outside world looks like?.</Line>
         </Dialogue>
 
         <Dialogue id="3" type="normal">
-            <Line destination="1" portrait="Lord" mood="question">What do you mean?</Line>
+            <Line destination="3" portrait="Lord" mood="question">What do you mean?</Line>
         </Dialogue>
 
         <Dialogue id="4" type="normal">
-            <Line destination="1" portrait="Char" mood="neutral">I have been living here for my entire life. I know that there's something out there that is different than what I know. </Line>
+            <Line destination="4" portrait="Char" mood="neutral">I have been living here for my entire life. I know that there's something out there that is different than what I know. </Line>
         </Dialogue>
 
         <Dialogue id="5" type="normal">
-            <Line destination="1" portrait="Lord" mood="neutral">You’re right. There’s something out there. But let me tell you, it’s not easy to get out of here. You’ll face many challenges. </Line>
+            <Line destination="5" portrait="Lord" mood="neutral">You’re right. There’s something out there. But let me tell you, it’s not easy to get out of here. You’ll face many challenges. </Line>
         </Dialogue>
 
-        <Dialogue id="7" type="normal">
-            <Line destination="1" portrait="Char" mood="good">I’m doing it.</Line>
+        <Dialogue id="6" type="normal">
+            <Line destination="6" portrait="Char" mood="good">I’m doing it.</Line>
         </Dialogue>
 
     </Prologue>
@@ -37,27 +37,27 @@
     <!--Move Tutorial-->
     <MoveTutorial>
         <Dialogue id="0" type="normal">
-            <Line destination="1" portrait="Lord" mood="normal">But first, let’s learn how to control yourself. </Line>
+            <Line destination="0" portrait="Lord" mood="normal">But first, let’s learn how to control yourself. </Line>
         </Dialogue>
         <Dialogue id="1" type="normal">
             <Line destination="1" portrait="Lord" mood="question">You see the joystick on your bottom left? Y </Line>
         </Dialogue>
         <Dialogue id="2" type="normal">
-            <Line destination="1" portrait="Lord" mood="normal">You can tap and move it around so you can walk around</Line>
+            <Line destination="2" portrait="Lord" mood="normal">You can tap and move it around so you can walk around</Line>
         </Dialogue>
     </MoveTutorial>
 
     <!--Jump Tutorial-->
     <JumpTutorial>
         <Dialogue id="0" type="normal">
-            <Line destination="1" portrait="Lord" mood="normal"> You can also jump by tapping ……. </Line>
+            <Line destination="0" portrait="Lord" mood="normal"> You can also jump by tapping ……. </Line>
         </Dialogue>
     </JumpTutorial>
 
     <!--Pickup Tutorial-->
     <PickupTutorial>
         <Dialogue id="0" type="normal">
-            <Line destination="1" portrait="Lord" mood="normal">You should learn how to pick up objects too.</Line>
+            <Line destination="0" portrait="Lord" mood="normal">You should learn how to pick up objects too.</Line>
         </Dialogue>
         <Dialogue id="1" type="normal">
             <Line destination="1" portrait="Lord" mood="normal">Go near that box, and tap it once.</Line>
@@ -67,14 +67,14 @@
     <!--Release Tutorial-->
     <ReleaseTutorial>
         <Dialogue id="0" type="normal">
-            <Line destination="1" portrait="Lord" mood="normal">To release object, tap the object twice</Line>
+            <Line destination="0" portrait="Lord" mood="normal">To release object, tap the object twice</Line>
         </Dialogue>
     </ReleaseTutorial>
 
     <!--Collecting Stars Tutorial-->
     <CollectingStarsTutorial>
         <Dialogue id="0" type="normal">
-            <Line destination="1" portrait="Lord" mood="normal">Along the way, you will find stars.</Line>
+            <Line destination="0" portrait="Lord" mood="normal">Along the way, you will find stars.</Line>
         </Dialogue>
         <Dialogue id="1" type="normal">
             <Line destination="1" portrait="Lord" mood="normal">collect it, and you can use it for your purpose later on your journey.</Line>
@@ -84,12 +84,12 @@
     <!--Ending Tutorial-->
     <EndingTutorial>
         <Dialogue id="0" type="normal">
-            <Line destination="1" portrait="Lord" mood="normal">Now you already know what you need to know to start.</Line>
+            <Line destination="0" portrait="Lord" mood="normal">Now you already know what you need to know to start.</Line>
         </Dialogue>
         <Dialogue id="1" type="normal">
             <Line destination="1" portrait="Lord" mood="normal">I’ll be there when you need me. </Line>
         </Dialogue>
-        <Dialogue id="1" type="normal">
+        <Dialogue id="2" type="normal">
             <Line destination="2" portrait="Lord" mood="normal">Now, you can still observe around you, or walk straight to the door and begin your journey</Line>
         </Dialogue>
     </EndingTutorial>
