@@ -6,6 +6,11 @@ using UnityEngine.UI;
 public class DialogueUI : MonoBehaviour
 {
     [SerializeField] private DialogueData dialogueData;
+    public DialogueData DialogueData
+    {
+        get => dialogueData;
+        set => dialogueData = value;
+    }
     
     // UI Elements
     [SerializeField] private GameObject controller;
@@ -52,6 +57,8 @@ public class DialogueUI : MonoBehaviour
                 // If dialogue is finished, ...
                 if (dialogueData.IsFinished)
                 {
+                    dialogueText.text = "";
+                    characterName.text = "";
                     gameObject.SetActive(false); // Deactivate Dialogue
                     controller.SetActive(true); // Activate Controller
                 }
@@ -87,7 +94,7 @@ public class DialogueUI : MonoBehaviour
 
     private IEnumerator ReadDialogue(float typeSpeed)
     {
-        skipButton.enabled = false;
+        skipButton.gameObject.SetActive(false);
         dialogueText.text = "";
         dialogueIsRunning = true;
 
@@ -97,12 +104,12 @@ public class DialogueUI : MonoBehaviour
             
             yield return new WaitForSeconds(typeSpeed);
         }
-        skipButton.enabled = true;
+        skipButton.gameObject.SetActive(true);
         
         // Check if we need to display options buttons
         if (dialogueData.IsQuestion)
         {
-            skipButton.enabled = false;
+            skipButton.gameObject.SetActive(false);
             buttonUI.DialogueButtons = dialogueData.SetButtons(buttonUI.DialogueButtons, AdvanceDialogue);
             buttonUI.HideOnClick();
         }
@@ -116,7 +123,7 @@ public class DialogueUI : MonoBehaviour
         StopCoroutine(readDialogue);
         dialogueText.text = dialogueData.DialogueLine;
         dialogueIsRunning = false;
-        skipButton.enabled = true;
+        skipButton.gameObject.SetActive(true);
         
         // Check if we need to display options buttons.
         if (dialogueData.IsQuestion)
