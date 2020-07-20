@@ -4,7 +4,9 @@ public class PickUpObject : MonoBehaviour
 {
     [SerializeField] private Transform itemHolder;
 
-    private bool isPickingUp = false;
+    [SerializeField] private bool isPickingUp = false;
+    public bool IsPickingUp => isPickingUp;
+
     private float newTime = 0f,
         rayMaxDistance = 5f,
         tapTimeLimit = 1f;

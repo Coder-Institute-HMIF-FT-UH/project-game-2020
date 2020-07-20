@@ -9,6 +9,7 @@ public class PlayerFPSController : MonoBehaviour
     
     private RigidbodyFirstPersonController fps;
     private int starsCount;
+    public int StarsCount => starsCount;
 
     // Start is called before the first frame update
     void Start()

@@ -52,14 +52,14 @@ public class DialogueData : MonoBehaviour
                 .SelectSingleNode(DialogueConstants.XmlDialogueId)
                 .Value;
             dialogueId = int.Parse(stringDialogueId);
-            Debug.Log("DialogueID: " + dialogueId);
+            // Debug.Log("DialogueID: " + dialogueId);
 
             // Getting dialogueType
             string stringDialogueType = dialogueData[dialogueId]
                 .SelectSingleNode(DialogueConstants.XmlDialogueType)
                 .Value;
             dialogueType = stringDialogueType;
-            Debug.Log("Type: " + stringDialogueType);
+            // Debug.Log("Type: " + stringDialogueType);
 
             // Getting portrait of the character
             string stringDialoguePortrait = dialogueData[dialogueId]
@@ -67,7 +67,7 @@ public class DialogueData : MonoBehaviour
                 .SelectSingleNode(DialogueConstants.XmlDialoguePortrait)
                 .Value;
             dialogueName = stringDialoguePortrait;
-            Debug.Log("Character: " + dialogueName);
+            // Debug.Log("Character: " + dialogueName);
 
             // Getting mood
             string stringDialogueMood = dialogueData[dialogueId]
@@ -75,7 +75,7 @@ public class DialogueData : MonoBehaviour
                 .SelectSingleNode(DialogueConstants.XmlDialogueMood)
                 .Value;
             dialogueMood = stringDialogueMood;
-            Debug.Log("Mood: " + dialogueMood);
+            // Debug.Log("Mood: " + dialogueMood);
 
             // Getting the next dialogueID if it's not a question and parsing it to an int value
             if (dialogueType == DialogueConstants.Normal)
@@ -84,7 +84,7 @@ public class DialogueData : MonoBehaviour
                     .SelectSingleNode(DialogueConstants.XmlDialogueDestination)
                     .Value;
                 destinationId = int.Parse(stringDestinationId);
-                Debug.Log("DestinationID: " + destinationId);
+                // Debug.Log("DestinationID: " + destinationId);
                 isQuestion = false;
             }
             else if (dialogueType == DialogueConstants.Question)
@@ -94,15 +94,15 @@ public class DialogueData : MonoBehaviour
                     .ChildNodes.Count;
                 for (int i = 0; i < choiceAmount; i++)
                 {
-                    Debug.Log("Option: " + dialogueData[dialogueId]
-                        .SelectSingleNode(DialogueConstants.Options)
-                        .SelectNodes(DialogueConstants.Option)[i]
-                        .InnerText);
-                    Debug.Log("Choice: " + dialogueData[dialogueId]
-                        .SelectSingleNode(DialogueConstants.Options)
-                        .SelectNodes(DialogueConstants.Option)[i]
-                        .SelectSingleNode(DialogueConstants.XmlDialogueChoice)
-                        .Value);
+                    // Debug.Log("Option: " + dialogueData[dialogueId]
+                    //     .SelectSingleNode(DialogueConstants.Options)
+                    //     .SelectNodes(DialogueConstants.Option)[i]
+                    //     .InnerText);
+                    // Debug.Log("Choice: " + dialogueData[dialogueId]
+                    //     .SelectSingleNode(DialogueConstants.Options)
+                    //     .SelectNodes(DialogueConstants.Option)[i]
+                    //     .SelectSingleNode(DialogueConstants.XmlDialogueChoice)
+                    //     .Value);
                 }
 
                 isQuestion = true;
@@ -114,11 +114,11 @@ public class DialogueData : MonoBehaviour
                 .SelectSingleNode(DialogueConstants.Line)
                 .InnerText;
 
-            Debug.Log(dialogueLine);
+            // Debug.Log(dialogueLine);
 
             dialogueId = destinationId;
 
-            Debug.Log("===========================");
+            // Debug.Log("===========================");
         }
         catch (NullReferenceException)
         {
