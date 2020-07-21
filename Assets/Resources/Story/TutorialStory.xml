@@ -6,7 +6,7 @@
         
         <!--Background Story-->
         <Dialogue id="0" type="normal">
-            <Line destination="1" portrait="" mood="normal">One day, the unnamed character wakes up from his sleep. He wakes up inside a room (kinda ‘laboratory’ vibe). The Lord greets him.</Line>
+            <Line destination="1" portrait="" mood="normal">One day, the unnamed character wakes up from his sleep. He wakes up inside a room. The Voice greets him.</Line>
         </Dialogue>
 
         <!--Prologue Dialog-->
@@ -143,4 +143,3 @@
     </EndingTutorial>
 
 </DialogueCollection>
-
