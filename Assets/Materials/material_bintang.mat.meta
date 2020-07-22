@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Materials/material_bintang.mat.meta
 guid: 8b905c69d372d9c47b0fc2227826ed89
 NativeFormatImporter:
+=======
+guid: 774cde3c328818f43aa95f647d9b9670
+PrefabImporter:
+>>>>>>> e9238817897aee8667d6ee4737a3069288b0c16d:Assets/Prefabs/Particles/HitLight.prefab.meta
   externalObjects: {}
   mainObjectFileID: 0
   userData: 
