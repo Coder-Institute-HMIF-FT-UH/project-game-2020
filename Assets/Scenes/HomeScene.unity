@@ -745,6 +745,8 @@ GameObject:
   - component: {fileID: 681183761}
   - component: {fileID: 681183760}
   - component: {fileID: 681183762}
+  - component: {fileID: 681183763}
+  - component: {fileID: 681183764}
   m_Layer: 5
   m_Name: SanityText
   m_TagString: Untagged
@@ -856,6 +858,42 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &681183763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681183758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf9b28e11535ad1488b3b753a4c0c14f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minutes: 1
+  seconds: 0
+  savedSeconds: 0
+  milliseconds: 0
+  defaultStartMinutes: 2
+  allowTimerRestart: 1
+  currentSanity: 0
+  maxSanity: 50
+  sanityText: {fileID: 681183760}
+  detailSanityText: {fileID: 1817322814}
+  oneSanityTimeRemainingText: {fileID: 1943644021}
+  fullSanityTimeRemainingText: {fileID: 946184734}
+--- !u!114 &681183764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681183758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f093e42ed97a114e997745c7524ff78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &707672272
 GameObject:
   m_ObjectHideFlags: 0
@@ -1521,7 +1559,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1632678952
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1673,7 +1711,7 @@ GameObject:
   - component: {fileID: 1817322815}
   - component: {fileID: 1817322814}
   m_Layer: 5
-  m_Name: SanityText
+  m_Name: DetailsSanityText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1886,7 +1924,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '99 : 99 : 99'
+  m_Text: '99 : 99'
 --- !u!222 &1943644022
 CanvasRenderer:
   m_ObjectHideFlags: 0
