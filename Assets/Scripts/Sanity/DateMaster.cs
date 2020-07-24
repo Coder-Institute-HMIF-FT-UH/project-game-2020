@@ -9,7 +9,7 @@ public class DateMaster : MonoBehaviour
     private TimeSpan difference;
     public TimeSpan Difference => difference;
 
-    private void Start()
+    private void Awake()
     {
         // Store the current time when it starts
         currentDate = DateTime.Now;

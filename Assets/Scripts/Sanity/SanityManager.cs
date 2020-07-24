@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class SanityManager : MonoBehaviour
 {
     private bool resetTimer = false;
+    private DateMaster dateMaster;
 
     [Header("Timer")] 
     [SerializeField] private int minutes = 1;
@@ -27,12 +28,50 @@ public class SanityManager : MonoBehaviour
 
     private void Awake()
     {
+    }
+
+    private void Start()
+    {
+        dateMaster = GetComponent<DateMaster>(); // Get DateMaster component
+        
         minutes = defaultStartMinutes; // Set minutes
         
+        // Get currentSanity
+        currentSanity = PlayerPrefs.GetInt("currentSanity");
+
         if (PlayerPrefs.HasKey("TimeOnExit"))
         {
             milliseconds = PlayerPrefs.GetFloat("TimeOnExit"); // Get time from TimeOnExit
 
+            // TODO: Fix this 
+            int additionalSanity = 0;
+            float difference = milliseconds - (float) dateMaster.Difference.TotalSeconds;
+
+            Debug.Log("Difference with timer: " + difference);
+            
+            if (difference < 0)
+            {
+                additionalSanity += 1;
+                difference = minutes * 60 + difference;
+                
+                while(difference < 0)
+                {
+                    difference = minutes * 60 + difference;
+                    additionalSanity += 1;
+                }
+                milliseconds = difference;
+            } 
+            else if (difference >= 0)
+            {
+                milliseconds -= difference;
+            }
+            
+            Debug.Log("Last Sanity: " + currentSanity);
+            Debug.Log("Additional Sanity: " + additionalSanity);
+            currentSanity += additionalSanity;
+            PlayerPrefs.SetInt("currentSanity", currentSanity);
+            Debug.Log("CurrentSanity: " + currentSanity);
+            
             minutes = (int) milliseconds / 60; // Get minutes from milliseconds
             milliseconds -= minutes * 60; // Subtract it to get 1-60 seconds
 
@@ -41,12 +80,7 @@ public class SanityManager : MonoBehaviour
             
             PlayerPrefs.DeleteKey("TimeOnExit");
         }
-    }
-
-    private void Start()
-    {
-        // Get currentSanity
-        currentSanity = PlayerPrefs.GetInt("currentSanity");
+        
         // Set Text UI
         sanityText.text = currentSanity + " / " + maxSanity;
         detailSanityText.text = currentSanity + " / " + maxSanity;
@@ -70,38 +104,22 @@ public class SanityManager : MonoBehaviour
                 seconds--; // Decrease seconds
                 if (seconds < 0)
                 {
-                    // Add Sanity
-                    currentSanity += 1;
-                    // Set PlayerPrefs for currentSanity
-                    PlayerPrefs.SetInt("currentSanity", currentSanity);
-                    // Set Text UI
-                    sanityText.text = currentSanity + " / " + maxSanity;
-                    detailSanityText.text = currentSanity + " / " + maxSanity;
-                    
                     seconds = 59; // Repeat seconds
                     minutes--; // Decrease minutes
                 }
             }
             else // If time is up, ...
             {
+                AddSanity(); // Add Sanity
                 // Add extra code here (may also need to add a flag so that this is not called continually)
                 resetTimer = allowTimerRestart;
             }
-            
-            
         }
 
         // If seconds is not equals with savedSeconds, ...
         if (seconds != savedSeconds)
         {
-            // Show current time
-            oneSanityTimeRemainingText.text = string.Format("{0} : {1}", minutes, seconds);
-            
-            if(minutes == 0)
-                fullSanityTimeRemainingText.text = string.Format("{0} : {1}", (maxSanity - currentSanity) * (minutes + 1), seconds);
-            else
-                fullSanityTimeRemainingText.text = string.Format("{0} : {1}", (maxSanity - currentSanity) * minutes, seconds);
-            
+            UpdateUISanity(); // Update Sanity UI
             savedSeconds = seconds;
         }
     }
@@ -126,5 +144,43 @@ public class SanityManager : MonoBehaviour
             milliseconds += numSeconds;
             PlayerPrefs.SetFloat("TimeOnExit", milliseconds);
         }
+    }
+
+    private void AddSanity()
+    {
+        // Add Sanity
+        currentSanity += 1;
+        // Set PlayerPrefs for currentSanity
+        PlayerPrefs.SetInt("currentSanity", currentSanity);
+        
+        // Set Text UI
+        sanityText.text = currentSanity + " / " + maxSanity;
+        detailSanityText.text = currentSanity + " / " + maxSanity;
+    }
+
+    private void UpdateUISanity()
+    {
+        string fullSanityText;
+        
+        // Show current time
+        oneSanityTimeRemainingText.text = string.Format("{0} : {1}", minutes, seconds);
+
+        // int totalSeconds = minutes * 60 + seconds;
+        // int sanityDiff = maxSanity - currentSanity;
+        // int fullSanityTime = sanityDiff * totalSeconds;
+        //
+        // int fullSanityMinutes = fullSanityTime / 60;
+        // fullSanityTime -= fullSanityMinutes * 60;
+        //
+        // int fullSanitySeconds = fullSanityTime;
+        //
+        // fullSanityText = string.Format("{0} : {1}", fullSanityMinutes, fullSanitySeconds);
+        
+        if(minutes == 0) // bug in here
+            fullSanityText = string.Format("{0} : {1}", (maxSanity - currentSanity) * (minutes + defaultStartMinutes), seconds);
+        else
+            fullSanityText = string.Format("{0} : {1}", (maxSanity - currentSanity) * (minutes + 1), seconds);
+
+        fullSanityTimeRemainingText.text = fullSanityText;
     }
 }
