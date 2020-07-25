@@ -157,17 +157,14 @@ public class SanityManager : MonoBehaviour
         // Show current time
         oneSanityTimeRemainingText.text = string.Format("{0} : {1}", minutes, seconds);
 
-        if(minutes == 0)
-        {
-            fullSanityText = string.Format("{0} : {1}",
-                (maxSanity - currentSanity) * defaultStartMinutes - defaultStartMinutes, seconds);
-        }
+        int totalMinutes = (maxSanity - currentSanity) * defaultStartMinutes - (defaultStartMinutes - minutes);
+        int hours = totalMinutes / 60;
+        
+        if(hours > 0)
+            fullSanityText = string.Format("{0} : {1} : {2}", hours, totalMinutes - hours*60, seconds);
         else
-        {
-            fullSanityText = string.Format("{0} : {1}",
-                (maxSanity - currentSanity) * defaultStartMinutes - (defaultStartMinutes - minutes), seconds);
-        }
-
+            fullSanityText = string.Format("{0} : {1}", totalMinutes, seconds);
+        
         fullSanityTimeRemainingText.text = fullSanityText;
     }
 }
