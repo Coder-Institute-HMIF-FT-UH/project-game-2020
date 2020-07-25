@@ -5,7 +5,8 @@ public class MinimapScript : MonoBehaviour
 {
     [SerializeField] private Transform player;
     [SerializeField] private Image gps;
-
+	
+	// Update is called once per frame
     private void LateUpdate()
     {
         // Minimap follow Player's position
