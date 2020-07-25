@@ -526,7 +526,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1548407090}
-  - {fileID: 1202046732}
+  - {fileID: 1999920340}
   - {fileID: 591620345}
   - {fileID: 242720468}
   m_Father: {fileID: 0}
@@ -745,8 +745,6 @@ GameObject:
   - component: {fileID: 681183761}
   - component: {fileID: 681183760}
   - component: {fileID: 681183762}
-  - component: {fileID: 681183763}
-  - component: {fileID: 681183764}
   m_Layer: 5
   m_Name: SanityText
   m_TagString: Untagged
@@ -766,12 +764,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1632678952}
-  m_Father: {fileID: 1202046732}
-  m_RootOrder: 0
+  m_Father: {fileID: 1999920340}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 232.00008, y: -0.000030517578}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 250.00008, y: -103.99997}
   m_SizeDelta: {x: 326.23334, y: 71.16742}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &681183760
@@ -857,43 +855,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 681183760}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
---- !u!114 &681183763
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 681183758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf9b28e11535ad1488b3b753a4c0c14f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minutes: 1
-  seconds: 0
-  savedSeconds: 0
-  milliseconds: 0
-  defaultStartMinutes: 3
-  allowTimerRestart: 1
-  currentSanity: 0
-  maxSanity: 50
-  sanityText: {fileID: 681183760}
-  detailSanityText: {fileID: 1817322814}
-  oneSanityTimeRemainingText: {fileID: 1943644021}
-  fullSanityTimeRemainingText: {fileID: 946184734}
---- !u!114 &681183764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 681183758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f093e42ed97a114e997745c7524ff78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+      m_Calls:
+      - m_Target: {fileID: 1999920343}
+        m_MethodName: ShowSanityDetails
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &707672272
 GameObject:
   m_ObjectHideFlags: 0
@@ -906,7 +879,7 @@ GameObject:
   - component: {fileID: 707672275}
   - component: {fileID: 707672274}
   m_Layer: 5
-  m_Name: SanityText
+  m_Name: AddSanityText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1128,7 +1101,7 @@ GameObject:
   - component: {fileID: 971828133}
   - component: {fileID: 971828132}
   m_Layer: 5
-  m_Name: DetailsText
+  m_Name: DetailsTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1297,14 +1270,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1202046731}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 681183759}
-  - {fileID: 1562439959}
-  m_Father: {fileID: 416101661}
-  m_RootOrder: 1
+  m_Children: []
+  m_Father: {fileID: 1999920340}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -1436,7 +1407,7 @@ GameObject:
   - component: {fileID: 1562439960}
   - component: {fileID: 1562439962}
   m_Layer: 5
-  m_Name: PlusBtn
+  m_Name: AddSanityBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1449,17 +1420,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1562439958}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 190648538}
-  m_Father: {fileID: 1202046732}
-  m_RootOrder: 1
+  m_Father: {fileID: 1999920340}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 390, y: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 408, y: -103.99997}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1562439960
@@ -1541,7 +1512,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1562439960}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1999920343}
+        m_MethodName: ShowAddSanity
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1632678951
 GameObject:
   m_ObjectHideFlags: 0
@@ -1559,7 +1541,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1632678952
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1789,7 +1771,7 @@ GameObject:
   - component: {fileID: 1938026677}
   - component: {fileID: 1938026676}
   m_Layer: 5
-  m_Name: AddSanityText
+  m_Name: AddSanityTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2025,6 +2007,100 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1999920339
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1999920340}
+  - component: {fileID: 1999920342}
+  - component: {fileID: 1999920341}
+  - component: {fileID: 1999920343}
+  m_Layer: 5
+  m_Name: SanityContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1999920340
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999920339}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1202046732}
+  - {fileID: 681183759}
+  - {fileID: 1562439959}
+  m_Father: {fileID: 416101661}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1999920341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999920339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f093e42ed97a114e997745c7524ff78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1999920342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999920339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf9b28e11535ad1488b3b753a4c0c14f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minutes: 1
+  seconds: 0
+  savedSeconds: 0
+  milliseconds: 0
+  defaultStartMinutes: 3
+  allowTimerRestart: 1
+  currentSanity: 0
+  maxSanity: 50
+  sanityText: {fileID: 681183760}
+  detailSanityText: {fileID: 1817322814}
+  addSanityText: {fileID: 707672274}
+  oneSanityTimeRemainingText: {fileID: 1943644021}
+  fullSanityTimeRemainingText: {fileID: 946184734}
+--- !u!114 &1999920343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999920339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13703f0c66cea354caa1134dfe0d7d79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sanityDetails: {fileID: 1632678951}
+  addSanity: {fileID: 190648537}
+  sanityText: {fileID: 681183762}
+  addSanityButton: {fileID: 1562439962}
 --- !u!1 &2021293960
 GameObject:
   m_ObjectHideFlags: 0

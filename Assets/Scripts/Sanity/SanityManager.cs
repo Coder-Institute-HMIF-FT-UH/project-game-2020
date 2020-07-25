@@ -23,6 +23,7 @@ public class SanityManager : MonoBehaviour
     [Header("UI Elements")] 
     [SerializeField] private Text sanityText;
     [SerializeField] private Text detailSanityText;
+    [SerializeField] private Text addSanityText;
     [SerializeField] private Text oneSanityTimeRemainingText;
     [SerializeField] private Text fullSanityTimeRemainingText;
 
@@ -42,7 +43,7 @@ public class SanityManager : MonoBehaviour
             int additionalSanity = 0;
             float difference = milliseconds - (float) dateMaster.Difference.TotalSeconds;
 
-            Debug.Log("Difference with timer: " + difference);
+            // Debug.Log("Difference with timer: " + difference);
             
             while(difference < 0)
             {
@@ -52,11 +53,11 @@ public class SanityManager : MonoBehaviour
 
             milliseconds = difference;
             
-            Debug.Log("Last Sanity: " + currentSanity);
-            Debug.Log("Additional Sanity: " + additionalSanity);
+            // Debug.Log("Last Sanity: " + currentSanity);
+            // Debug.Log("Additional Sanity: " + additionalSanity);
             currentSanity += additionalSanity;
             PlayerPrefs.SetInt("currentSanity", currentSanity);
-            Debug.Log("CurrentSanity: " + currentSanity);
+            // Debug.Log("CurrentSanity: " + currentSanity);
             
             minutes = (int) milliseconds / 60; // Get minutes from milliseconds
             milliseconds -= minutes * 60; // Subtract it to get 1-60 seconds
@@ -68,8 +69,7 @@ public class SanityManager : MonoBehaviour
         }
         
         // Set Text UI
-        sanityText.text = currentSanity + " / " + maxSanity;
-        detailSanityText.text = currentSanity + " / " + maxSanity;
+        UpdateSanityUI();
     }
 
     private void Update()
@@ -105,7 +105,7 @@ public class SanityManager : MonoBehaviour
         // If seconds is not equals with savedSeconds, ...
         if (seconds != savedSeconds)
         {
-            UpdateUISanity(); // Update Sanity UI
+            UpdateSanityTimeRemaining(); // Update Sanity UI
             savedSeconds = seconds;
         }
     }
@@ -140,11 +140,17 @@ public class SanityManager : MonoBehaviour
         PlayerPrefs.SetInt("currentSanity", currentSanity);
         
         // Set Text UI
-        sanityText.text = currentSanity + " / " + maxSanity;
-        detailSanityText.text = currentSanity + " / " + maxSanity;
+        UpdateSanityUI();
     }
 
-    private void UpdateUISanity()
+    private void UpdateSanityUI()
+    {
+        sanityText.text = currentSanity + " / " + maxSanity;
+        detailSanityText.text = currentSanity + " / " + maxSanity;
+        addSanityText.text = currentSanity + " / " + maxSanity;
+    }
+
+    private void UpdateSanityTimeRemaining()
     {
         string fullSanityText;
         
