@@ -26,10 +26,6 @@ public class SanityManager : MonoBehaviour
     [SerializeField] private Text oneSanityTimeRemainingText;
     [SerializeField] private Text fullSanityTimeRemainingText;
 
-    private void Awake()
-    {
-    }
-
     private void Start()
     {
         dateMaster = GetComponent<DateMaster>(); // Get DateMaster component
@@ -165,21 +161,16 @@ public class SanityManager : MonoBehaviour
         // Show current time
         oneSanityTimeRemainingText.text = string.Format("{0} : {1}", minutes, seconds);
 
-        // int totalSeconds = minutes * 60 + seconds;
-        // int sanityDiff = maxSanity - currentSanity;
-        // int fullSanityTime = sanityDiff * totalSeconds;
-        //
-        // int fullSanityMinutes = fullSanityTime / 60;
-        // fullSanityTime -= fullSanityMinutes * 60;
-        //
-        // int fullSanitySeconds = fullSanityTime;
-        //
-        // fullSanityText = string.Format("{0} : {1}", fullSanityMinutes, fullSanitySeconds);
-        
-        if(minutes == 0) // bug in here
-            fullSanityText = string.Format("{0} : {1}", (maxSanity - currentSanity) * (minutes + defaultStartMinutes), seconds);
+        if(minutes == 0)
+        {
+            fullSanityText = string.Format("{0} : {1}",
+                (maxSanity - currentSanity) * defaultStartMinutes - defaultStartMinutes, seconds);
+        }
         else
-            fullSanityText = string.Format("{0} : {1}", (maxSanity - currentSanity) * (minutes + 1), seconds);
+        {
+            fullSanityText = string.Format("{0} : {1}",
+                (maxSanity - currentSanity) * defaultStartMinutes - (defaultStartMinutes - minutes), seconds);
+        }
 
         fullSanityTimeRemainingText.text = fullSanityText;
     }

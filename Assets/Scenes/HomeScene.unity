@@ -874,7 +874,7 @@ MonoBehaviour:
   seconds: 0
   savedSeconds: 0
   milliseconds: 0
-  defaultStartMinutes: 2
+  defaultStartMinutes: 3
   allowTimerRestart: 1
   currentSanity: 0
   maxSanity: 50
