@@ -38,29 +38,19 @@ public class SanityManager : MonoBehaviour
         if (PlayerPrefs.HasKey("TimeOnExit"))
         {
             milliseconds = PlayerPrefs.GetFloat("TimeOnExit"); // Get time from TimeOnExit
-
-            // TODO: Fix this 
+            
             int additionalSanity = 0;
             float difference = milliseconds - (float) dateMaster.Difference.TotalSeconds;
 
             Debug.Log("Difference with timer: " + difference);
             
-            if (difference < 0)
+            while(difference < 0)
             {
                 additionalSanity += 1;
                 difference = minutes * 60 + difference;
-                
-                while(difference < 0)
-                {
-                    difference = minutes * 60 + difference;
-                    additionalSanity += 1;
-                }
-                milliseconds = difference;
-            } 
-            else if (difference >= 0)
-            {
-                milliseconds -= difference;
             }
+
+            milliseconds = difference;
             
             Debug.Log("Last Sanity: " + currentSanity);
             Debug.Log("Additional Sanity: " + additionalSanity);
