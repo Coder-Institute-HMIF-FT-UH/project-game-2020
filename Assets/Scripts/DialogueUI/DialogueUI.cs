@@ -13,8 +13,8 @@ public class DialogueUI : MonoBehaviour
     }
     
     // UI Elements
+    private CanvasGroup canvasGroup;
     [SerializeField] private GameObject controller;
-    [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private Text dialogueText,
         characterName;
     [SerializeField] private ButtonUI buttonUI;
@@ -31,6 +31,8 @@ public class DialogueUI : MonoBehaviour
 
     private void Start()
     {
+        canvasGroup = GetComponent<CanvasGroup>();
+        
         // Hiding all buttons on default
         buttonUI.DisplayButtons(false);
         
@@ -40,6 +42,14 @@ public class DialogueUI : MonoBehaviour
             dialogueData.GetNextDialogue();
             AdvanceDialogue();
         });
+        
+        // Deactivate Controller if it's active
+        if (controller.activeInHierarchy)
+            StartCoroutine(DeactivateController());
+                    
+        // Activate Dialogue if it's not active
+        if(!gameObject.activeInHierarchy)
+            gameObject.SetActive(true);
 
         StartCoroutine(displayDialogueUI);
     }
@@ -90,6 +100,12 @@ public class DialogueUI : MonoBehaviour
         // Set the coroutine
         readDialogue = ReadDialogue(DialogueConstants.DialogueReadSpeed);
         StartCoroutine(readDialogue);
+    }
+
+    private IEnumerator DeactivateController()
+    {
+        yield return new WaitForSeconds(0.5f);
+        controller.SetActive(false);
     }
 
     private IEnumerator ReadDialogue(float typeSpeed)

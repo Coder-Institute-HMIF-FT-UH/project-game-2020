@@ -72,6 +72,7 @@ public class TutorialManager : MonoBehaviour
                 {
                     tutorialIndex++;
                     showDialogue = true;
+                    fakeDoor.enabled = false;
                     // Debug.Log("Tutorial 2 done");
                 }
                 break;
@@ -94,7 +95,6 @@ public class TutorialManager : MonoBehaviour
                 {
                     tutorialIndex++;
                     showDialogue = true;
-                    fakeDoor.enabled = false;
                     // Debug.Log("Tutorial 4 done");
                 }
                 break;
