@@ -11,6 +11,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private PlayerFPSController playerController;
     [SerializeField] private GameObject jumpButton;
     [SerializeField] private GameObject gpsButton;
+    [SerializeField] private GameObject pickUpButton;
     [SerializeField] private GameObject gpsBackButton;
     [SerializeField] private PickUpObject pickUpObject;
     
@@ -28,6 +29,7 @@ public class TutorialManager : MonoBehaviour
         // Don't make player use jumpBtn and gpsBtn for the first time
         jumpButton.SetActive(false);
         gpsButton.SetActive(false);
+        pickUpButton.SetActive(false);
     }
 
     private void Update()
@@ -73,6 +75,7 @@ public class TutorialManager : MonoBehaviour
                     tutorialIndex++;
                     showDialogue = true;
                     fakeDoor.enabled = false;
+                    pickUpButton.SetActive(true);
                     // Debug.Log("Tutorial 2 done");
                 }
                 break;
