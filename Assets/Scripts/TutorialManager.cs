@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -16,16 +18,21 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private PickUpObject pickUpObject;
     
     // Tutorial Dialogue
-    [Header("Tutorial Dialogue")] 
-    [SerializeField] private DialogueUI[] dialogueUI;
-    [SerializeField] private DialogueData[] tutorials;
+    [Header("Tutorial Dialogue")]
     [SerializeField] private int tutorialIndex = 0;
+    private Queue<DialogueUI> dialogueUIs;
+    private Queue<DialogueData> tutorials;
     
     private bool isPlayerMoved = false,
         showDialogue = true;
     
     private void Start()
     {
+        dialogueUIs = new Queue<DialogueUI>();
+        tutorials = new Queue<DialogueData>();
+        
+        EnqueueAll();
+        
         // Don't make player use jumpBtn and gpsBtn for the first time
         jumpButton.SetActive(false);
         gpsButton.SetActive(false);
@@ -34,21 +41,23 @@ public class TutorialManager : MonoBehaviour
 
     private void Update()
     {
-        for (int i = 0; i < tutorials.Length; i++)
+        for (int i = 0; i < tutorials.Count; i++)
         {
             if(i == tutorialIndex)
             {
-                tutorials[i].gameObject.SetActive(true); // Activate DialogueData
+                tutorials.Dequeue();
+                // tutorials[i].gameObject.SetActive(true); // Activate DialogueData
                 if(showDialogue)
                 {
-                    dialogueUI[i].gameObject.SetActive(true); // Activate DialogueUI
+                    dialogueUIs.Dequeue();
+                    // dialogueUIs[i].gameObject.SetActive(true); // Activate DialogueUI
                     showDialogue = false;
                 }
             }
             else
             {
-                tutorials[i].gameObject.SetActive(false); // Deactivate DialogueData
-                dialogueUI[i].gameObject.SetActive(false); // Deactivate DialogueUI
+                // tutorials[i].gameObject.SetActive(false); // Deactivate DialogueData
+                // dialogueUIs[i].gameObject.SetActive(false); // Deactivate DialogueUI
             }
         }
 
@@ -60,6 +69,7 @@ public class TutorialManager : MonoBehaviour
                 // Move the joystick
                 if (isPlayerMoved)
                 {
+                    // Destroy(dialogueUI[tutorialIndex].gameObject);
                     tutorialIndex++;
                     showDialogue = true;
                     jumpButton.SetActive(true);
@@ -72,6 +82,7 @@ public class TutorialManager : MonoBehaviour
                 // Jump
                 if (EventSystem.current.currentSelectedGameObject == jumpButton)
                 {
+                    // Destroy(dialogueUI[tutorialIndex].gameObject);
                     tutorialIndex++;
                     showDialogue = true;
                     fakeDoor.enabled = false;
@@ -85,6 +96,7 @@ public class TutorialManager : MonoBehaviour
                 // Pick up object
                 if (pickUpObject.IsPickingUp)
                 {
+                    // Destroy(dialogueUI[tutorialIndex].gameObject);
                     tutorialIndex++;
                     showDialogue = true;
                     // Debug.Log("Tutorial 3 done");
@@ -96,6 +108,7 @@ public class TutorialManager : MonoBehaviour
                 // Release object
                 if (!pickUpObject.IsPickingUp)
                 {
+                    // Destroy(dialogueUI[tutorialIndex].gameObject);
                     tutorialIndex++;
                     showDialogue = true;
                     // Debug.Log("Tutorial 4 done");
@@ -107,6 +120,7 @@ public class TutorialManager : MonoBehaviour
                 // Collect stars
                 if (playerController.StarsCount > 0)
                 {
+                    // Destroy(dialogueUI[tutorialIndex].gameObject);
                     tutorialIndex++;
                     showDialogue = true;
                     gpsButton.SetActive(true);
@@ -119,6 +133,7 @@ public class TutorialManager : MonoBehaviour
                 // Use GPS
                 if (EventSystem.current.currentSelectedGameObject == gpsBackButton)
                 {
+                    // Destroy(dialogueUI[tutorialIndex].gameObject);
                     tutorialIndex++;
                     showDialogue = true;
                     // Debug.Log("Tutorial 6 done");
@@ -128,9 +143,19 @@ public class TutorialManager : MonoBehaviour
             case 6:
             {
                 // Debug.Log("All Tutorials done");
+                // Destroy(dialogueUI[tutorialIndex].transform.parent);
                 break;
             }
         }
+    }
+
+    private void EnqueueAll()
+    {
+        foreach (DialogueData tutorial in tutorials)
+            tutorials.Enqueue(tutorial);
+
+        foreach (DialogueUI dialogueUi in dialogueUIs)
+            dialogueUIs.Enqueue(dialogueUi);
     }
 
     private void OnTriggerEnter(Collider other)

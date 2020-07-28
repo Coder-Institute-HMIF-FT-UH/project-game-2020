@@ -40,7 +40,7 @@ public class PlayerFPSController : MonoBehaviour
             
             // Add disappear particle
             
-            other.gameObject.SetActive(false); // Set star to non-active
+            Destroy(other.gameObject); // Set star to non-active
             
             Debug.Log("Stars collected = " + starsCount);
         }
