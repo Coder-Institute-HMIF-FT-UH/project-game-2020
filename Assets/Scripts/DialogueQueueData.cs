@@ -2,7 +2,7 @@
 [System.Serializable]
 public class DialogueQueueData
 {
-    public DialogueData[] dialogueDatas;
+    public DialogueData[] tutorials;
 
-    public DialogueUI dialogueUIs;
+    public DialogueUI[] dialogueUis;
 }
