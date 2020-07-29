@@ -61,8 +61,6 @@ public class TutorialManager : MonoBehaviour
                         tutorials.Dequeue();
                         dialogueUIs.Dequeue();
 
-                        playerController.enabled = false;
-
                         dialogueQueueData.tutorials[i].gameObject.SetActive(true); // Activate DialogueData
                         dialogueQueueData.dialogueUis[i].gameObject.SetActive(true); // Activate DialogueUI
                         showDialogue = false;
@@ -156,8 +154,11 @@ public class TutorialManager : MonoBehaviour
                 }
                 case 6:
                 {
-                    Debug.Log("All Tutorials done");
-                    isTutorialDone = true;
+                    if(dialogueQueueData.tutorials[tutorialIndex].IsFinished)
+                    {
+                        Debug.Log("All Tutorials done");
+                        isTutorialDone = true;
+                    }
                     break;
                 }
             }

@@ -11,6 +11,8 @@ public class DialogueUI : MonoBehaviour
         get => dialogueData;
         set => dialogueData = value;
     }
+
+    [SerializeField] private PlayerFPSController playerController;
     
     // UI Elements
     private CanvasGroup canvasGroup;
@@ -70,6 +72,7 @@ public class DialogueUI : MonoBehaviour
                     dialogueText.text = "";
                     characterName.text = "";
                     gameObject.SetActive(false); // Deactivate Dialogue
+                    playerController.enabled = true; 
                     controller.SetActive(true); // Activate Controller
                 }
                 else // If dialogue is not finished ...
@@ -81,6 +84,8 @@ public class DialogueUI : MonoBehaviour
                     // Activate Dialogue if it's not active
                     if(!gameObject.activeInHierarchy)
                         gameObject.SetActive(true);
+                    
+                    playerController.enabled = false;
                     
                     // Setting our new dialogue
                     AdvanceDialogue();

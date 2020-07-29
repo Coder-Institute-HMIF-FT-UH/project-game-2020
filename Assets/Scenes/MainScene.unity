@@ -12279,7 +12279,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh14318
+  m_Name: pb_Mesh14300
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -12836,7 +12836,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh14342
+  m_Name: pb_Mesh14324
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -13187,6 +13187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueData: {fileID: 1626661081}
+  playerController: {fileID: 931123287}
   controller: {fileID: 400671888}
   dialogueText: {fileID: 740995753}
   characterName: {fileID: 704507012}
@@ -13605,7 +13606,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh14830
+  m_Name: pb_Mesh14740
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -19603,7 +19604,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh27150
+  m_Name: pb_Mesh14126
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -20455,6 +20456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueData: {fileID: 1073854538}
+  playerController: {fileID: 931123287}
   controller: {fileID: 400671888}
   dialogueText: {fileID: 589222476}
   characterName: {fileID: 297173156}
@@ -20467,7 +20469,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh28080
+  m_Name: pb_Mesh14838
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -21509,6 +21511,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueData: {fileID: 564518195}
+  playerController: {fileID: 931123287}
   controller: {fileID: 400671888}
   dialogueText: {fileID: 1710408841}
   characterName: {fileID: 9640063}
@@ -21613,6 +21616,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueData: {fileID: 91237766}
+  playerController: {fileID: 931123287}
   controller: {fileID: 400671888}
   dialogueText: {fileID: 173163724}
   characterName: {fileID: 3976181}
@@ -22889,6 +22893,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueData: {fileID: 1706120643}
+  playerController: {fileID: 931123287}
   controller: {fileID: 400671888}
   dialogueText: {fileID: 88002668}
   characterName: {fileID: 1977267874}
@@ -35617,7 +35622,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2320cbd815743c449a57e2027eedbe89, type: 2}
+  - {fileID: 2100000, guid: 1103f41f544ad0e42820c967a5e019fd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -36511,6 +36516,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueData: {fileID: 984218037}
+  playerController: {fileID: 931123287}
   controller: {fileID: 400671888}
   dialogueText: {fileID: 114595526}
   characterName: {fileID: 850326169}
@@ -37096,6 +37102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueData: {fileID: 1500065885}
+  playerController: {fileID: 931123287}
   controller: {fileID: 400671888}
   dialogueText: {fileID: 1981582140}
   characterName: {fileID: 975343622}
@@ -37290,7 +37297,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh14720
+  m_Name: pb_Mesh14644
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
