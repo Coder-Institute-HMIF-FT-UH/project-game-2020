@@ -211,15 +211,12 @@ public class SanityManager : MonoBehaviour
         string fullSanityText;
         
         // Show current time
-        oneSanityTimeRemainingText.text = string.Format("1 Sanity in {0} : {1}", minutes, seconds);
+        oneSanityTimeRemainingText.text = $"1 Sanity in {minutes} : {seconds}";
 
         int totalMinutes = (maxSanity - currentSanity) * defaultStartMinutes - (defaultStartMinutes - minutes);
         int hours = totalMinutes / 60;
         
-        if(hours > 0)
-            fullSanityText = string.Format("Full Sanity in {0} : {1} : {2}", hours, totalMinutes - hours*60, seconds);
-        else
-            fullSanityText = string.Format("Full Sanity in {0} : {1}", totalMinutes, seconds);
+        fullSanityText = hours > 0 ? $"Full Sanity in {hours} : {totalMinutes - hours * 60} : {seconds}" : $"Full Sanity in {totalMinutes} : {seconds}";
         
         fullSanityTimeRemainingText.text = fullSanityText;
     }
