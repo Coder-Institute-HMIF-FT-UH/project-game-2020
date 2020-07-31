@@ -4080,12 +4080,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf9b28e11535ad1488b3b753a4c0c14f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minutes: 1
-  seconds: 0
-  savedSeconds: 0
-  milliseconds: 0
-  defaultStartMinutes: 3
-  allowTimerRestart: 1
+  timerManager:
+    defaultStartMinutes: 3
+    minutes: 1
+    seconds: 0
+    savedSeconds: 0
+    milliseconds: 0
+    allowTimerRestart: 1
   currentSanity: 0
   maxSanity: 50
   sanityText: {fileID: 681183760}

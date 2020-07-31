@@ -3,15 +3,7 @@ using UnityEngine.UI;
 
 public class SanityManager : MonoBehaviour
 {
-    [Header("Timer")] 
-    [SerializeField] private int minutes = 1;
-    [SerializeField] private int seconds = 0;
-    [SerializeField] private int savedSeconds;
-    [SerializeField] private float milliseconds = 0;
-
-    [Range(1, 59)]
-    public int defaultStartMinutes = 1;
-    public bool allowTimerRestart = true;
+    public TimerManager timerManager;
 
     [Header("Sanity")]
     [SerializeField] private int currentSanity;
@@ -23,8 +15,6 @@ public class SanityManager : MonoBehaviour
     [SerializeField] private Text addSanityText;
     [SerializeField] private Text oneSanityTimeRemainingText;
     [SerializeField] private Text fullSanityTimeRemainingText;
-    
-    private bool resetTimer;
 
     private bool IsSanityFull()
     {
@@ -44,50 +34,13 @@ public class SanityManager : MonoBehaviour
     {
         // Get currentSanity
         currentSanity = PlayerPrefs.GetInt("currentSanity");
-        dateMaster = GetComponent<DateMaster>(); // Get DateMaster component
-        minutes = defaultStartMinutes; // Set minutes
+        // Get DateMaster component
+        dateMaster = GetComponent<DateMaster>(); 
         
-        // If currentSanity is not full, ...
-        if(!IsSanityFull())
-        {
-            if (PlayerPrefs.HasKey("TimeOnExit"))
-            {
-                milliseconds = PlayerPrefs.GetFloat("TimeOnExit"); // Get time from TimeOnExit
-
-                int additionalSanity = 0;
-                float difference = milliseconds - (float) dateMaster.Difference.TotalSeconds;
-
-                // Debug.Log("Difference with timer: " + difference);
-
-                while (difference < 0)
-                {
-                    additionalSanity += 1;
-                    difference = minutes * 60 + difference;
-                }
-
-                milliseconds = difference;
-                currentSanity += additionalSanity; // Add currentSanity with additionalSanity
-
-                if (currentSanity > maxSanity)
-                    currentSanity = maxSanity;
-                
-                PlayerPrefs.SetInt("currentSanity", currentSanity); // Set to playerPrefs
-
-                // If currentSanity is not full, ...
-                if(!IsSanityFull())
-                {
-                    minutes = (int) milliseconds / 60; // Get minutes from milliseconds
-                    milliseconds -= minutes * 60; // Subtract it to get 1-60 seconds
-
-                    seconds = (int) milliseconds; // Get the remaining seconds
-                    milliseconds -= seconds; // Subtract it to get 0-1
-                }
-                else // If currentSanity is full, Reset Time
-                    ResetTime();
-
-                PlayerPrefs.DeleteKey("TimeOnExit");
-            }
-        }
+        // Set currentSanity after refilling when app quit
+        currentSanity = timerManager.CountDownInBackground(dateMaster, IsSanityFull, 
+            "TimeOnExit", "currentSanity", 
+            currentSanity, maxSanity);
         
         UpdateSanityUi(); // Set Text UI
     }
@@ -96,40 +49,8 @@ public class SanityManager : MonoBehaviour
     {
         if(!IsSanityFull()) // If currentSanity isn't full, ...
         {
-            // Count down in seconds
-            milliseconds += Time.deltaTime;
-
-            if (resetTimer)
-                ResetTime();
-
-            // If milliseconds are greater or equal to 1, ... 
-            if (milliseconds >= 1.0f)
-            {
-                milliseconds -= 1.0f; // Subtract by 1
-                // If time is not up, ...
-                if (seconds > 0 || minutes > 0)
-                {
-                    seconds--; // Decrease seconds
-                    if (seconds < 0)
-                    {
-                        seconds = 59; // Repeat seconds
-                        minutes--; // Decrease minutes
-                    }
-                }
-                else // If time is up, ...
-                {
-                    AddSanity(); // Add Sanity
-                    // Add extra code here (may also need to add a flag so that this is not called continually)
-                    resetTimer = allowTimerRestart;
-                }
-            }
-
-            // If seconds is not equals with savedSeconds, ...
-            if (seconds != savedSeconds)
-            {
-                UpdateSanityTimeRemaining(); // Update Sanity UI
-                savedSeconds = seconds;
-            }
+            // Count down 
+            timerManager.CountDown(AddSanity, UpdateSanityTimeRemaining);
 
             // If currentSanity is not equal to PlayerPrefs, ...
             if (currentSanity != PlayerPrefs.GetInt("currentSanity"))
@@ -144,29 +65,17 @@ public class SanityManager : MonoBehaviour
             TimeRemainingSanityUi(false);
         }
     }
-
-    /// <summary>
-    /// ResetTime: Restart countdown when timer is out
-    /// </summary>
-    private void ResetTime()
-    {
-        minutes = defaultStartMinutes;
-        seconds = 0;
-        savedSeconds = 0;
-        milliseconds = 1.0f - Time.deltaTime;
-        resetTimer = false;
-    }
-
+    
     /// <summary>
     /// When user quits application
     /// </summary>
     private void OnApplicationQuit()
     {
-        int numSeconds = minutes * 60 + seconds; // Get all minutes and seconds remaining
+        int numSeconds = timerManager.minutes * 60 + timerManager.seconds; // Get all minutes and seconds remaining
         if (numSeconds > 0)
         {
-            milliseconds += numSeconds;
-            PlayerPrefs.SetFloat("TimeOnExit", milliseconds);
+            timerManager.milliseconds += numSeconds;
+            PlayerPrefs.SetFloat("TimeOnExit", timerManager.milliseconds);
         }
     }
 
@@ -208,15 +117,16 @@ public class SanityManager : MonoBehaviour
     /// </summary>
     private void UpdateSanityTimeRemaining()
     {
-        string fullSanityText;
-        
         // Show current time
-        oneSanityTimeRemainingText.text = $"1 Sanity in {minutes} : {seconds}";
+        oneSanityTimeRemainingText.text = $"1 Sanity in {timerManager.minutes} : {timerManager.seconds}";
 
-        int totalMinutes = (maxSanity - currentSanity) * defaultStartMinutes - (defaultStartMinutes - minutes);
+        int totalMinutes = (maxSanity - currentSanity) * timerManager.defaultStartMinutes - 
+                           (timerManager.defaultStartMinutes - timerManager.minutes);
         int hours = totalMinutes / 60;
         
-        fullSanityText = hours > 0 ? $"Full Sanity in {hours} : {totalMinutes - hours * 60} : {seconds}" : $"Full Sanity in {totalMinutes} : {seconds}";
+        string fullSanityText = hours > 0 ? 
+            $"Full Sanity in {hours} : {totalMinutes - hours * 60} : " +
+            $"{timerManager.seconds}" : $"Full Sanity in {totalMinutes} : {timerManager.seconds}";
         
         fullSanityTimeRemainingText.text = fullSanityText;
     }
