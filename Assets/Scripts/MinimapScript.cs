@@ -13,10 +13,15 @@ public class MinimapScript : MonoBehaviour
 
     [SerializeField] private Transform player;
     [SerializeField] private Image gps;
-	
+    private Camera minimapCamera;
 
-	// Update is called once per frame
-    void Update()
+    private void Start()
+    {
+        minimapCamera = GetComponent<Camera>();
+    }
+
+    // Update is called once per frame
+    private void Update()
     {
         try
         {
@@ -39,7 +44,7 @@ public class MinimapScript : MonoBehaviour
                     float difference = currentMagnitude - prevMagnitude;
 
                     // Zoom Camera
-                    zoom(difference * 0.01f);
+                    Zoom(difference * 0.01f);
                 }
             }
         } catch(ArgumentException){}
@@ -74,34 +79,30 @@ public class MinimapScript : MonoBehaviour
     }
 
     // Camera Zoom
-    void zoom(float increment){
-        this.GetComponent<Camera>().orthographicSize = Mathf.Clamp(this.GetComponent<Camera>().orthographicSize - increment, zoomOutMin, zoomOutMax);
+    private void Zoom(float increment){
+        minimapCamera.orthographicSize = Mathf.Clamp(this.GetComponent<Camera>().orthographicSize - increment, zoomOutMin, zoomOutMax);
     }
 
     // Hint reveal Stars
-
     public void HintUsed(){
         hintUsed++;
-        if (hintUsed > 0){
-        ShowStar1();
-        }
-        if (hintUsed > 1){
-        ShowStar2();
-        }
-        if (hintUsed > 2){
-        ShowStar3();
+
+        switch (hintUsed)
+        {
+            case 0:
+                ShowStar("Star 1");
+                break;
+            case 1:
+                ShowStar("Star 2");
+                break;
+            case 2:
+                ShowStar("Star 3");
+                break;
         }
     }
 
-    //activate minimap culling mask layer
-    public void ShowStar1() {
-        
-      this.GetComponent<Camera>().cullingMask |= 1 << LayerMask.NameToLayer("Star 1");
-    }
-    public void ShowStar2() {
-      this.GetComponent<Camera>().cullingMask |= 1 << LayerMask.NameToLayer("Star 2");
-    }
-    public void ShowStar3() {
-      this.GetComponent<Camera>().cullingMask |= 1 << LayerMask.NameToLayer("Star 3");
+    // activate minimap culling mask layer
+    private void ShowStar(string layerName) {
+        minimapCamera.cullingMask |= 1 << LayerMask.NameToLayer(layerName);
     }
 }
