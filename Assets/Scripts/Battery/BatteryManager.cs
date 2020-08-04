@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class BatteryManager : MonoBehaviour
@@ -33,12 +32,9 @@ public class BatteryManager : MonoBehaviour
         if(PlayerPrefs.HasKey(CURRENT_BATTERY))
         {
             // Get current Battery
-            Debug.Log("Current prefs: " + PlayerPrefs.GetFloat(CURRENT_BATTERY));
             currentBattery = PlayerPrefs.GetFloat(CURRENT_BATTERY);
-            Debug.Log("Current bat: " + currentBattery);
             
             currentBattery = timerManager.CountDownInScene(IsBatteryFull, TIME_ON_EXIT, currentBattery);
-            Debug.Log(timerManager.minutes);
             
             PlayerPrefs.SetFloat(CURRENT_BATTERY, currentBattery);
         }
@@ -55,7 +51,6 @@ public class BatteryManager : MonoBehaviour
             // If currentBattery isn't equal to PlayerPrefs, ...
             if (currentBattery != PlayerPrefs.GetFloat(CURRENT_BATTERY))
             {
-                Debug.Log("Set prefs");
                 // Set new currentBattery to PlayerPrefs
                 PlayerPrefs.SetFloat(CURRENT_BATTERY, currentBattery);
             }
@@ -87,7 +82,6 @@ public class BatteryManager : MonoBehaviour
         currentBattery += 0.1f;
         // Set PlayerPrefs for currentSanity
         PlayerPrefs.SetFloat(CURRENT_BATTERY, currentBattery);
-        Debug.Log(PlayerPrefs.GetFloat(CURRENT_BATTERY));
     }
 
     private void UpdateBatteryUi()
