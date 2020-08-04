@@ -5,6 +5,8 @@ public class SanityManager : MonoBehaviour
 {
     public TimerManager timerManager;
 
+    [SerializeField] private DateMaster dateMaster;
+    
     [Header("Sanity")]
     [SerializeField] private int currentSanity;
     [SerializeField] private int maxSanity = 50;
@@ -16,30 +18,25 @@ public class SanityManager : MonoBehaviour
     [SerializeField] private Text oneSanityTimeRemainingText;
     [SerializeField] private Text fullSanityTimeRemainingText;
 
+    private const string CURRENT_SANITY = "currentSanity";
+    private const string TIME_ON_EXIT = "TimeOnExit";
+    
     private bool IsSanityFull()
     {
-        bool isSanityFull;
-
-        if (currentSanity == maxSanity || currentSanity > maxSanity)
-            isSanityFull = true;
-        else
-            isSanityFull = false;
-
-        return isSanityFull;
+        // If currentSanity >= maxSanity, IsSanityFull = true
+        // Else, IsSanityFull = false
+        return currentSanity >= maxSanity;
     }
-    
-    private DateMaster dateMaster;
     
     private void Start()
     {
+        if(PlayerPrefs.HasKey(CURRENT_SANITY))
         // Get currentSanity
-        currentSanity = PlayerPrefs.GetInt("currentSanity");
-        // Get DateMaster component
-        dateMaster = GetComponent<DateMaster>(); 
+        currentSanity = PlayerPrefs.GetInt(CURRENT_SANITY);
         
         // Set currentSanity after refilling when app quit
         currentSanity = timerManager.CountDownInBackground(dateMaster, IsSanityFull, 
-            "TimeOnExit", "currentSanity", 
+            TIME_ON_EXIT, CURRENT_SANITY, 
             currentSanity, maxSanity);
         
         UpdateSanityUi(); // Set Text UI
@@ -53,10 +50,10 @@ public class SanityManager : MonoBehaviour
             timerManager.CountDown(AddSanity, UpdateSanityTimeRemaining);
 
             // If currentSanity is not equal to PlayerPrefs, ...
-            if (currentSanity != PlayerPrefs.GetInt("currentSanity"))
+            if (currentSanity != PlayerPrefs.GetInt(CURRENT_SANITY))
             {
                 // Set new currentSanity to PlayerPrefs
-                PlayerPrefs.SetInt("currentSanity", currentSanity);
+                PlayerPrefs.SetInt(CURRENT_SANITY, currentSanity);
             }
             UpdateSanityUi(); // Update UI
         }
@@ -75,7 +72,7 @@ public class SanityManager : MonoBehaviour
         if (numSeconds > 0)
         {
             timerManager.milliseconds += numSeconds;
-            PlayerPrefs.SetFloat("TimeOnExit", timerManager.milliseconds);
+            PlayerPrefs.SetFloat(TIME_ON_EXIT, timerManager.milliseconds);
         }
     }
 
@@ -87,7 +84,7 @@ public class SanityManager : MonoBehaviour
         // Add Sanity
         currentSanity += 1;
         // Set PlayerPrefs for currentSanity
-        PlayerPrefs.SetInt("currentSanity", currentSanity);
+        PlayerPrefs.SetInt(CURRENT_SANITY, currentSanity);
     }
 
     /// <summary>
