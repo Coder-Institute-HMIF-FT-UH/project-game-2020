@@ -30,10 +30,12 @@ public class BatteryManager : MonoBehaviour
 
     private void Start()
     {
-        if(PlayerPrefs.HasKey("currentBattery"))
+        if(PlayerPrefs.HasKey(CURRENT_BATTERY))
         {
             // Get current Battery
-            currentBattery = PlayerPrefs.GetInt(CURRENT_BATTERY);
+            Debug.Log("Current prefs: " + PlayerPrefs.GetFloat(CURRENT_BATTERY));
+            currentBattery = PlayerPrefs.GetFloat(CURRENT_BATTERY);
+            Debug.Log("Current bat: " + currentBattery);
             
             currentBattery = timerManager.CountDownInScene(IsBatteryFull, TIME_ON_EXIT, currentBattery);
             Debug.Log(timerManager.minutes);
@@ -91,8 +93,8 @@ public class BatteryManager : MonoBehaviour
     private void UpdateBatteryUi()
     {
         TimeRemainingBatteryUi(true);
-
-        string text = $"{(int) currentBattery * 100} / {(int) maxBattery * 100}";
+        
+        string text = $"{currentBattery * 100} / {maxBattery * 100}";
         
         batteryText.text = detailBatteryText.text = text;
     }
@@ -108,7 +110,7 @@ public class BatteryManager : MonoBehaviour
         // Show current time
         oneBatteryTimeRemainingText.text = $"1 Battery in {timerManager.minutes} : {timerManager.seconds}";
 
-        int totalMinutes = (int) ((maxBattery - currentBattery) * timerManager.defaultStartMinutes -
+        int totalMinutes = (int) ((maxBattery - currentBattery) * timerManager.defaultStartMinutes * 10 -
                                   (timerManager.defaultStartMinutes - timerManager.minutes));
         int hours = totalMinutes / 60;
         
