@@ -108,9 +108,9 @@ public class BatteryManager : MonoBehaviour
         // Show current time
         oneBatteryTimeRemainingText.text = $"1 Battery in {timerManager.minutes} : {timerManager.seconds}";
 
-        float totalMinutes = (maxBattery - currentBattery) * timerManager.defaultStartMinutes -
-                           (timerManager.defaultStartMinutes - timerManager.minutes);
-        int hours = (int) (totalMinutes / 60);
+        int totalMinutes = (int) ((maxBattery - currentBattery) * timerManager.defaultStartMinutes -
+                                  (timerManager.defaultStartMinutes - timerManager.minutes));
+        int hours = totalMinutes / 60;
         
         string fullBatteriesText = hours > 0 ?
             $"Full Batteries in {hours} : {totalMinutes - hours * 60} : " + $"{timerManager.seconds}" : 

@@ -140,13 +140,11 @@ public class TimerManager
     public float CountDownInScene(Func<bool> isFull, 
         string timeOnExit, float currentValue)
     {
-        Debug.Log($"Minutes before ={minutes}");
         SetMinutes();
-        Debug.Log($"Minutes after ={minutes}");
         
         if (PlayerPrefs.HasKey(timeOnExit))
         {
-            milliseconds = PlayerPrefs.GetFloat("TimeOnExit");
+            milliseconds = PlayerPrefs.GetFloat(timeOnExit);
 
             if (!isFull())
             {
