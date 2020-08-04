@@ -94,9 +94,7 @@ public class SanityManager : MonoBehaviour
     {
         TimeRemainingSanityUi(true);
         
-        sanityText.text = currentSanity + " / " + maxSanity;
-        detailSanityText.text = currentSanity + " / " + maxSanity;
-        addSanityText.text = currentSanity + " / " + maxSanity;
+        sanityText.text = detailSanityText.text = addSanityText.text = $"{currentSanity} / {maxSanity}";
     }
 
     /// <summary>
@@ -122,8 +120,8 @@ public class SanityManager : MonoBehaviour
         int hours = totalMinutes / 60;
         
         string fullSanityText = hours > 0 ? 
-            $"Full Sanity in {hours} : {totalMinutes - hours * 60} : " +
-            $"{timerManager.seconds}" : $"Full Sanity in {totalMinutes} : {timerManager.seconds}";
+            $"Full Sanity in {hours} : {totalMinutes - hours * 60} : " + $"{timerManager.seconds}" : 
+            $"Full Sanity in {totalMinutes} : {timerManager.seconds}";
         
         fullSanityTimeRemainingText.text = fullSanityText;
     }

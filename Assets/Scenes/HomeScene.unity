@@ -1269,7 +1269,7 @@ GameObject:
   - component: {fileID: 534454876}
   - component: {fileID: 534454875}
   m_Layer: 5
-  m_Name: OneSanityTime
+  m_Name: OneBatteryTime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2146,19 +2146,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerManager:
-    defaultStartMinutes: 0
+    defaultStartMinutes: 5
     minutes: 1
     seconds: 0
     savedSeconds: 0
     milliseconds: 0
     allowTimerRestart: 1
-  dateMaster: {fileID: 0}
+  dateMaster: {fileID: 110208430}
   currentBattery: 0
   maxBattery: 1
-  batteryText: {fileID: 0}
-  detailBatteryText: {fileID: 0}
-  oneBatteryTimeRemainingText: {fileID: 0}
-  fullBatteriesTimeRemainingText: {fileID: 0}
+  batteryText: {fileID: 1932479156}
+  detailBatteryText: {fileID: 2028929516}
+  oneBatteryTimeRemainingText: {fileID: 534454875}
+  fullBatteriesTimeRemainingText: {fileID: 1985778309}
 --- !u!1 &946184732
 GameObject:
   m_ObjectHideFlags: 0
@@ -4019,7 +4019,7 @@ GameObject:
   - component: {fileID: 1985778310}
   - component: {fileID: 1985778309}
   m_Layer: 5
-  m_Name: FullSanityTime
+  m_Name: FullBatteriesTime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

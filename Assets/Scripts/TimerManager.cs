@@ -136,4 +136,34 @@ public class TimerManager
 
         return currentValue;
     }
+
+    public float CountDownInScene(Func<bool> isFull, 
+        string timeOnExit, float currentValue)
+    {
+        Debug.Log($"Minutes before ={minutes}");
+        SetMinutes();
+        Debug.Log($"Minutes after ={minutes}");
+        
+        if (PlayerPrefs.HasKey(timeOnExit))
+        {
+            milliseconds = PlayerPrefs.GetFloat("TimeOnExit");
+
+            if (!isFull())
+            {
+                minutes = (int) milliseconds / 60; // Get minutes from milliseconds
+                milliseconds -= minutes * 60; // Subtract it to get 1-60 seconds
+
+                seconds = (int) milliseconds; // Get the remaining seconds
+                milliseconds -= seconds; // Subtract it to get 0-1
+            }
+            else // If currentValue is full, ResetTime
+            {
+                ResetTime();
+            }
+            
+            PlayerPrefs.DeleteKey(timeOnExit);
+        }
+
+        return currentValue;
+    }
 }
