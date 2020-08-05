@@ -1,145 +1,151 @@
 ﻿<?xml version = "1.0"?>
 <DialogueCollection>
 
-    <!--Prologue-->
-    <Prologue>
+
+    <Tutorial>
+
+        <!--Prologue-->
+        <Prologue>
+
+            <!--Background Story-->
+            <Dialogue id="0" type="normal">
+                <Line destination="1" portrait="" mood="normal">One day, the unnamed character wakes up from his sleep. He wakes up inside a room. The Voice greets him.</Line>
+            </Dialogue>
+
+            <!--Prologue Dialog-->
+            <Dialogue id="1" type="normal">
+                <Line destination="2" portrait="Unknown Voice" mood="normal">Oh, you’re awake! Good morning. Feeling good today?</Line>
+            </Dialogue>
+
+            <Dialogue id="2" type="normal">
+                <Line destination="3" portrait="You" mood="normal">Good morning. I’m good.</Line>
+            </Dialogue>
+
+            <Dialogue id="3" type="normal">
+                <Line destination="4" portrait="You" mood="question">Hey, do you ever wonder how the outside world looks like?</Line>
+            </Dialogue>
+
+            <Dialogue id="4" type="normal">
+                <Line destination="5" portrait="Unknown Voice" mood="question">What do you mean?</Line>
+            </Dialogue>
+
+            <Dialogue id="5" type="normal">
+                <Line destination="6" portrait="You" mood="normal">I have been living here for my entire life. Doing all the research. I want to try something new.</Line>
+            </Dialogue>
+
+            <Dialogue id="6" type="normal">
+                <Line destination="7" portrait="You" mood="normal">I know that there's something out there that is different than what I know. </Line>
+            </Dialogue>
+
+            <Dialogue id="7" type="normal">
+                <Line destination="8" portrait="Unknown Voice" mood="normal">You’re right. There’s something out there. But are you sure?</Line>
+            </Dialogue>
+
+            <Dialogue id="8" type="normal">
+                <Line destination="9" portrait="You" mood="good">I’m sure. I want to explore more than what is already here.</Line>
+            </Dialogue>
+
+            <Dialogue id="9" type="normal">
+                <Line destination="10" portrait="You" mood="good">I know you’ve been so worried. You are so kind, though.</Line>
+            </Dialogue>
+
+            <Dialogue id="10" type="normal">
+                <Line destination="11" portrait="You" mood="good">You accompany me from the beginning. You are worried, but trust me, I will be safe.</Line>
+            </Dialogue>
+
+            <Dialogue id="11" type="normal">
+                <Line destination="12" portrait="Unknown Voice" mood="normal">But let me tell you, it’s not easy to get out of here. You’ll face many challenges.</Line>
+            </Dialogue>
+
+            <Dialogue id="12" type="normal">
+                <Line destination="13" portrait="You" mood="good">I’m doing it.</Line>
+            </Dialogue>
         
-        <!--Background Story-->
-        <Dialogue id="0" type="normal">
-            <Line destination="1" portrait="" mood="normal">One day, the unnamed character wakes up from his sleep. He wakes up inside a room. The Voice greets him.</Line>
-        </Dialogue>
+            <!--Move Tutorial-->
+            <Dialogue id="13" type="normal">
+                <Line destination="14" portrait="Unknown Voice" mood="normal">But first, let’s learn how to control yourself.</Line>
+            </Dialogue>
+            <Dialogue id="14" type="normal">
+                <Line destination="15" portrait="Unknown Voice" mood="question">Did you see the joystick on your bottom left?</Line>
+            </Dialogue>
+            <Dialogue id="15" type="normal">
+                <Line destination="16" portrait="Unknown Voice" mood="normal">You can tap and move it around so you can walk.</Line>
+            </Dialogue>
+            <Dialogue id="16" type="normal">
+                <Line destination="17" portrait="Unknown Voice" mood="normal">Try to go to the ball in front of you.</Line>
+            </Dialogue>
 
-        <!--Prologue Dialog-->
-        <Dialogue id="1" type="normal">
-            <Line destination="2" portrait="Unknown Voice" mood="normal">Oh, you’re awake! Good morning. Feeling good today?</Line>
-        </Dialogue>
+            <!--Move Camera-->
+            <Dialogue id="17" type="normal">
+                <Line destination="18" portrait="Unknown Voice" mood="normal">To look around, just move your finger on the screen to the direction you desire.</Line>
+            </Dialogue>
 
-        <Dialogue id="2" type="normal">
-            <Line destination="3" portrait="You" mood="normal">Good morning. I’m good.</Line>
-        </Dialogue>
+        </Prologue>
 
-        <Dialogue id="3" type="normal">
-            <Line destination="4" portrait="You" mood="question">Hey, do you ever wonder how the outside world looks like?</Line>
-        </Dialogue>
+            <!--Jump Tutorial-->
+            <JumpTutorial>
+                <Dialogue id="0" type="normal">
+                    <Line destination="1" portrait="Unknown Voice" mood="normal">You can also jump by tapping the button at your bottom right.</Line>
+                </Dialogue>
+            </JumpTutorial>
 
-        <Dialogue id="4" type="normal">
-            <Line destination="5" portrait="Unknown Voice" mood="question">What do you mean?</Line>
-        </Dialogue>
+            <!--Pickup Tutorial-->
+            <PickupTutorial>
+                <Dialogue id="0" type="normal">
+                    <Line destination="1" portrait="Unknown Voice" mood="normal">You should learn how to pick up objects too.</Line>
+                </Dialogue>
+                <Dialogue id="1" type="normal">
+                    <Line destination="2" portrait="Unknown Voice" mood="normal">Come closer to that ball, and tap it once.</Line>
+                </Dialogue>
+            </PickupTutorial>
 
-        <Dialogue id="5" type="normal">
-            <Line destination="6" portrait="You" mood="normal">I have been living here for my entire life. Doing all the research. I want to try something new.</Line>
-        </Dialogue>
+            <!--Release Tutorial-->
+            <ReleaseTutorial>
+                <Dialogue id="0" type="normal">
+                    <Line destination="1" portrait="Unknown Voice" mood="normal">To release object, tap the object twice.</Line>
+                </Dialogue>
+            </ReleaseTutorial>
 
-        <Dialogue id="6" type="normal">
-            <Line destination="7" portrait="You" mood="normal">I know that there's something out there that is different than what I know. </Line>
-        </Dialogue>
+            <!--Collecting Stars Tutorial-->
+            <CollectingStarsTutorial>
+                <Dialogue id="0" type="normal">
+                    <Line destination="1" portrait="Unknown Voice" mood="normal">Along the way, you will find stars.</Line>
+                </Dialogue>
+                <Dialogue id="1" type="normal">
+                    <Line destination="2" portrait="Unknown Voice" mood="normal">Collect it, and you can use it for your purpose later on your journey.</Line>
+                </Dialogue>
+                <Dialogue id="2" type="normal">
+                    <Line destination="3" portrait="Unknown Voice" mood="normal">In every stages, there will be 3 stars you have to collect.</Line>
+                </Dialogue>
+            </CollectingStarsTutorial>
 
-        <Dialogue id="7" type="normal">
-            <Line destination="8" portrait="Unknown Voice" mood="normal">You’re right. There’s something out there. But are you sure?</Line>
-        </Dialogue>
+            <!--Use GPS-->
+            <UseGPSTutorial>
+                <Dialogue id="0" type="normal">
+                    <Line destination="1" portrait="Unknown Voice" mood="normal">To guide and help you find stars, you’ll have a GPS with you. You can see your location on it.</Line>
+                </Dialogue>
+                <Dialogue id="1" type="normal">
+                    <Line destination="2" portrait="Unknown Voice" mood="normal">But don’t use it all the time, because the battery will not last long.</Line>
+                </Dialogue>
+                <Dialogue id="2" type="normal">
+                    <Line destination="3" portrait="Unknown Voice" mood="normal">Be wise.</Line>
+                </Dialogue>
+            </UseGPSTutorial>
 
-        <Dialogue id="8" type="normal">
-            <Line destination="9" portrait="You" mood="good">I’m sure. I want to explore more than what is already here.</Line>
-        </Dialogue>
+            <!--Ending Tutorial-->
+            <EndingTutorial>
+                <Dialogue id="0" type="normal">
+                    <Line destination="1" portrait="Unknown Voice" mood="normal">Now you already know what you need to know to start.</Line>
+                </Dialogue>
+                <Dialogue id="1" type="normal">
+                    <Line destination="2" portrait="Unknown Voice" mood="normal">I’ll be there when you need me. </Line>
+                </Dialogue>
+                <Dialogue id="2" type="normal">
+                    <Line destination="3" portrait="Unknown Voice" mood="normal">Now, you can still observe around you, or walk straight to the door and begin your journey.</Line>
+                </Dialogue>
+            </EndingTutorial>
 
-        <Dialogue id="9" type="normal">
-            <Line destination="10" portrait="You" mood="good">I know you’ve been so worried. You are so kind, though.</Line>
-        </Dialogue>
+    </Tutorial>
 
-        <Dialogue id="10" type="normal">
-            <Line destination="11" portrait="You" mood="good">You accompany me from the beginning. You are worried, but trust me, I will be safe.</Line>
-        </Dialogue>
-
-        <Dialogue id="11" type="normal">
-            <Line destination="12" portrait="Unknown Voice" mood="normal">But let me tell you, it’s not easy to get out of here. You’ll face many challenges.</Line>
-        </Dialogue>
-
-        <Dialogue id="12" type="normal">
-            <Line destination="13" portrait="You" mood="good">I’m doing it.</Line>
-        </Dialogue>
     
-        <!--Move Tutorial-->
-        <Dialogue id="13" type="normal">
-            <Line destination="14" portrait="Unknown Voice" mood="normal">But first, let’s learn how to control yourself.</Line>
-        </Dialogue>
-        <Dialogue id="14" type="normal">
-            <Line destination="15" portrait="Unknown Voice" mood="question">Did you see the joystick on your bottom left?</Line>
-        </Dialogue>
-        <Dialogue id="15" type="normal">
-            <Line destination="16" portrait="Unknown Voice" mood="normal">You can tap and move it around so you can walk.</Line>
-        </Dialogue>
-        <Dialogue id="16" type="normal">
-            <Line destination="17" portrait="Unknown Voice" mood="normal">Try to go to the ball in front of you.</Line>
-        </Dialogue>
-
-        <!--Move Camera-->
-        <Dialogue id="17" type="normal">
-            <Line destination="18" portrait="Unknown Voice" mood="normal">To look around, just move your finger on the screen to the direction you desire.</Line>
-        </Dialogue>
-
-    </Prologue>
-
-    <!--Jump Tutorial-->
-    <JumpTutorial>
-        <Dialogue id="0" type="normal">
-            <Line destination="1" portrait="Unknown Voice" mood="normal">You can also jump by tapping the button at your bottom right.</Line>
-        </Dialogue>
-    </JumpTutorial>
-
-    <!--Pickup Tutorial-->
-    <PickupTutorial>
-        <Dialogue id="0" type="normal">
-            <Line destination="1" portrait="Unknown Voice" mood="normal">You should learn how to pick up objects too.</Line>
-        </Dialogue>
-        <Dialogue id="1" type="normal">
-            <Line destination="2" portrait="Unknown Voice" mood="normal">Come closer to that ball, and tap it once.</Line>
-        </Dialogue>
-    </PickupTutorial>
-
-    <!--Release Tutorial-->
-    <ReleaseTutorial>
-        <Dialogue id="0" type="normal">
-            <Line destination="1" portrait="Unknown Voice" mood="normal">To release object, tap the object twice.</Line>
-        </Dialogue>
-    </ReleaseTutorial>
-
-    <!--Collecting Stars Tutorial-->
-    <CollectingStarsTutorial>
-        <Dialogue id="0" type="normal">
-            <Line destination="1" portrait="Unknown Voice" mood="normal">Along the way, you will find stars.</Line>
-        </Dialogue>
-        <Dialogue id="1" type="normal">
-            <Line destination="2" portrait="Unknown Voice" mood="normal">Collect it, and you can use it for your purpose later on your journey.</Line>
-        </Dialogue>
-        <Dialogue id="2" type="normal">
-            <Line destination="3" portrait="Unknown Voice" mood="normal">In every stages, there will be 3 stars you have to collect.</Line>
-        </Dialogue>
-    </CollectingStarsTutorial>
-
-    <!--Use GPS-->
-    <UseGPSTutorial>
-        <Dialogue id="0" type="normal">
-            <Line destination="1" portrait="Unknown Voice" mood="normal">To guide and help you find stars, you’ll have a GPS with you. You can see your location on it.</Line>
-        </Dialogue>
-        <Dialogue id="1" type="normal">
-            <Line destination="2" portrait="Unknown Voice" mood="normal">But don’t use it all the time, because the battery will not last long.</Line>
-        </Dialogue>
-        <Dialogue id="2" type="normal">
-            <Line destination="3" portrait="Unknown Voice" mood="normal">Be wise.</Line>
-        </Dialogue>
-    </UseGPSTutorial>
-
-    <!--Ending Tutorial-->
-    <EndingTutorial>
-        <Dialogue id="0" type="normal">
-            <Line destination="1" portrait="Unknown Voice" mood="normal">Now you already know what you need to know to start.</Line>
-        </Dialogue>
-        <Dialogue id="1" type="normal">
-            <Line destination="2" portrait="Unknown Voice" mood="normal">I’ll be there when you need me. </Line>
-        </Dialogue>
-        <Dialogue id="2" type="normal">
-            <Line destination="3" portrait="Unknown Voice" mood="normal">Now, you can still observe around you, or walk straight to the door and begin your journey.</Line>
-        </Dialogue>
-    </EndingTutorial>
-
 </DialogueCollection>

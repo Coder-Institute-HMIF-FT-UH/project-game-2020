@@ -1,0 +1,67 @@
+<?xml version = "1.0"?>
+<DialogueCollection>    
+        
+    <!-- Use Store Tutorial-->
+    <UseShopTutorial>
+        <Dialogue id="0" type="normal">
+            <Line destination="1" portrait="Unknown Voice" mood="normal">At times you will need extra batteries or hints.</Line>
+        </Dialogue>
+        <Dialogue id="1" type="normal">
+            <Line destination="2" portrait="Unknown Voice" mood="normal">With the coins you have, you are able to buy the items at the store. </Line>
+        </Dialogue>
+        <Dialogue id="2" type="normal">
+            <Line destination="3" portrait="Unknown Voice" mood="normal">Tap the ‘Store’ icon to enter the Store</Line>
+        </Dialogue>
+    </UseShopTutorial>
+
+    <!-- Buy Item Tutorial-->
+    <BuyItemTutorial>
+        <Dialogue id="0" type="normal">
+            <Line destination="1" portrait="Unknown Voice" mood="normal">To buy items, tap on the items (battery or hint) and the amount you want to buy, then tap “Buy”</Line>
+        </Dialogue>
+    </BuyItemTutorial>
+
+    <!-- Coin Tutorial-->
+    <CoinTutorial>
+        <Dialogue id="0" type="normal">
+            <Line destination="1" portrait="Unknown Voice" mood="normal">After completing a stage, you will receive coins as rewards. </Line>
+        </Dialogue>
+        <Dialogue id="1" type="normal">
+            <Line destination="2" portrait="Unknown Voice" mood="normal">You can use those to buy hints and batteries.</Line>
+        </Dialogue>
+    </CoinTutorial>
+
+    <!-- Hint (Guide to find Stars) -->
+    <HintTutorial>
+        <Dialogue id="0" type="normal">
+            <Line destination="1" portrait="Unknown Voice" mood="normal">You already know you should collect stars along the way.</Line>
+        </Dialogue>
+        <Dialogue id="1" type="normal">
+            <Line destination="2" portrait="Unknown Voice" mood="normal">In a certain situation, you will need hints.</Line>
+        </Dialogue>
+        <Dialogue id="2" type="normal">
+            <Line destination="3" portrait="Unknown Voice" mood="normal">The hints will show the stars’ location in your GPS. You can only have 3 hints maximum.</Line>
+        </Dialogue>
+    </HintTutorial>
+
+    <!-- Sanity Tutorial -->
+    <SanityTutorial>
+        <Dialogue id="0" type="normal">
+            <Line destination="1" portrait="Unknown Voice" mood="normal">You need sanity to play. There will be an amount of sanity needed to play each stage.</Line>
+        </Dialogue>
+        <Dialogue id="1" type="normal">
+            <Line destination="2" portrait="Unknown Voice" mood="normal">The maximum value of sanity you have is 50, and it will regenerate every 3 minutes</Line>
+        </Dialogue>
+    </SanityTutorial>
+
+    <!-- GPS battery -->
+    <BatteryTutorial>
+        <Dialogue id="0" type="normal">
+            <Line destination="1" portrait="Unknown Voice" mood="normal">Your GPS battery will drop if you keep using it. It will charge itself when you’re not using it.</Line>
+        </Dialogue>
+        <Dialogue id="1" type="normal">
+            <Line destination="2" portrait="Unknown Voice" mood="normal">But you also can buy the batteries in the shop, in case you really need your GPS.</Line>
+        </Dialogue>
+    </BatteryTutorial>
+
+</DialogueCollection>
