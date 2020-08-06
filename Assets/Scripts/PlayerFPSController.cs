@@ -6,6 +6,7 @@ public class PlayerFPSController : MonoBehaviour
     public FixedJoystick moveJoystick;
     public FixedButton jumpButton;
     public FixedTouchField touchField;
+    [SerializeField] private MinimapScript minimapScript;
     
     private RigidbodyFirstPersonController fps;
     private int starsCount;
@@ -38,7 +39,7 @@ public class PlayerFPSController : MonoBehaviour
         {
             starsCount += 1; // Increase starsCount
             
-            // Add disappear particle
+            minimapScript.StarsRevealed--;
             
             other.gameObject.SetActive(false); // Set star to non-active
             

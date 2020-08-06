@@ -15048,11 +15048,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3471c1a9f27ab2248acfc25728152782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zoomOutMin: 3
-  zoomOutMax: 6
-  hintUsed: 0
   player: {fileID: 931123294}
   gps: {fileID: 1532637523}
+  hintUsed: 0
 --- !u!20 &376166707
 Camera:
   m_ObjectHideFlags: 0
@@ -21214,6 +21212,7 @@ MonoBehaviour:
   moveJoystick: {fileID: 873907431}
   jumpButton: {fileID: 625415343}
   touchField: {fileID: 867111000}
+  minimapScript: {fileID: 376166706}
 --- !u!33 &931123288
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -34385,7 +34384,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 376166706}
-        m_MethodName: HintUsed
+        m_MethodName: ShowHints
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
