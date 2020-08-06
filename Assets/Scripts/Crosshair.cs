@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class Crosshair : MonoBehaviour
 {
-    [SerializeField] private float maxDistance = 100f;
+    [SerializeField] private float maxDistance = 5f;
     [SerializeField] private Transform itemHolder;
     [SerializeField] private FixedButton pickUpBtn;
     
@@ -46,9 +46,10 @@ public class Crosshair : MonoBehaviour
         // Be Careful... This is called 3-4 times if button is pressed.
         if(pickUpBtn.pressed)
         {
-            if (pickUpAllowed) // If pickUpAllowed, ... 
+            pickUpBtn.pressed = false;
+            if (pickUpAllowed) // If pickUpAllowed, ...
                 PickUpItem(); // pick up item
-            else // else, ... 
+            else // else, ...
                 ReleaseItem(); // release item
         }
         

@@ -12371,7 +12371,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh20804
+  m_Name: pb_Mesh14332
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -13006,7 +13006,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh21348
+  m_Name: pb_Mesh14886
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -21925,9 +21925,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48ccf8335f0d4c743828df209da7eec1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDistance: 100
+  maxDistance: 5
   itemHolder: {fileID: 1863915988}
   pickUpBtn: {fileID: 160565308}
+  itemTransform: {fileID: 0}
+  itemRigidbody: {fileID: 0}
 --- !u!114 &830228014
 MonoBehaviour:
   m_ObjectHideFlags: 0
