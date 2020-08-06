@@ -18,7 +18,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private GameObject gpsButton;
     [SerializeField] private GameObject pickUpButton;
     [SerializeField] private GameObject gpsBackButton;
-    [SerializeField] private PickUpObject pickUpObject;
+    [SerializeField] private Crosshair crosshair;
     
     // Tutorial Dialogue
     [Header("Tutorial Dialogue")]
@@ -42,7 +42,7 @@ public class TutorialManager : MonoBehaviour
         
         tutorialsCount = tutorials.Count;
         
-        // Don't make player use jumpBtn and gpsBtn for the first time
+        crosshair.gameObject.SetActive(false);
         jumpButton.SetActive(false);
         gpsButton.SetActive(false);
         pickUpButton.SetActive(false);
@@ -97,6 +97,7 @@ public class TutorialManager : MonoBehaviour
                         tutorialIndex++;
                         showDialogue = true;
                         fakeDoor.enabled = false;
+                        crosshair.gameObject.SetActive(true);
                         pickUpButton.SetActive(true);
                         // Debug.Log("Tutorial 2 done");
                     }
@@ -106,7 +107,7 @@ public class TutorialManager : MonoBehaviour
                 case 2:
                 {
                     // Pick up object
-                    if (pickUpObject.IsPickingUp)
+                    if (crosshair.IsPickingUp)
                     {
                         tutorialIndex++;
                         showDialogue = true;
@@ -118,7 +119,7 @@ public class TutorialManager : MonoBehaviour
                 case 3:
                 {
                     // Release object
-                    if (!pickUpObject.IsPickingUp)
+                    if (!crosshair.IsPickingUp)
                     {
                         tutorialIndex++;
                         showDialogue = true;

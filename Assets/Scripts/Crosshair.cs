@@ -15,6 +15,8 @@ public class Crosshair : MonoBehaviour
     private Ray ray;
     private RaycastHit hit;
 
+    public bool IsPickingUp => isPickingUp;
+
     private void Start()
     {
         crosshairImage = GetComponent<Image>();
