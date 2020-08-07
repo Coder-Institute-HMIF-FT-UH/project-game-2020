@@ -19,20 +19,4 @@ public class ButtonController : MonoBehaviour
         // Deactivate pause screen
         pauseScreen.SetActive(false);
     }
-    
-    /// <summary>
-    /// GpsOn: Activate GPS
-    /// </summary>
-    public void GpsOn()
-    {
-        gps.SetActive(true);
-    }
-
-    /// <summary>
-    /// GpsOff: Deactivate GPS
-    /// </summary>
-    public void GpsOff()
-    {
-        gps.SetActive(false);
-    }
 }
