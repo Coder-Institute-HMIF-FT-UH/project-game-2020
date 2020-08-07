@@ -62,19 +62,18 @@
         <Dialogue id="13" type="normal">
             <Line destination="14" portrait="Unknown Voice" mood="normal">But first, let’s learn how to control yourself.</Line>
         </Dialogue>
+        
         <Dialogue id="14" type="normal">
-            <Line destination="15" portrait="Unknown Voice" mood="question">Did you see the joystick on your bottom left?</Line>
+            <Line destination="15" portrait="Unknown Voice" mood="question">The joystick will be on your bottom left.</Line>
         </Dialogue>
+        
         <Dialogue id="15" type="normal">
             <Line destination="16" portrait="Unknown Voice" mood="normal">You can tap and move it around so you can walk.</Line>
         </Dialogue>
-        <Dialogue id="16" type="normal">
-            <Line destination="17" portrait="Unknown Voice" mood="normal">Try to go to the ball in front of you.</Line>
-        </Dialogue>
 
         <!--Move Camera-->
-        <Dialogue id="17" type="normal">
-            <Line destination="18" portrait="Unknown Voice" mood="normal">To look around, just move your finger on the screen to the direction you desire.</Line>
+        <Dialogue id="16" type="normal">
+            <Line destination="17" portrait="Unknown Voice" mood="normal">To look around, just move your finger on the screen to the direction you desire.</Line>
         </Dialogue>
 
     </Prologue>
@@ -91,15 +90,20 @@
         <Dialogue id="0" type="normal">
             <Line destination="1" portrait="Unknown Voice" mood="normal">You should learn how to pick up objects too.</Line>
         </Dialogue>
+        
         <Dialogue id="1" type="normal">
-            <Line destination="2" portrait="Unknown Voice" mood="normal">Come closer to that ball, and tap it once.</Line>
+            <Line destination="2" portrait="Unknown Voice" mood="normal">Go out from here and find an object.</Line>
+        </Dialogue>
+        
+        <Dialogue id="2" type="normal">
+            <Line destination="3" portrait="Unknown Voice" mood="normal">Point the dot in the middle of your screen to the object and tap the “pick up” button once.</Line>
         </Dialogue>
     </PickupTutorial>
 
     <!--Release Tutorial-->
     <ReleaseTutorial>
         <Dialogue id="0" type="normal">
-            <Line destination="1" portrait="Unknown Voice" mood="normal">To release object, tap the object twice.</Line>
+            <Line destination="1" portrait="Unknown Voice" mood="normal">To release the object, tap the “pick up” button once again.</Line>
         </Dialogue>
     </ReleaseTutorial>
 
@@ -108,25 +112,34 @@
         <Dialogue id="0" type="normal">
             <Line destination="1" portrait="Unknown Voice" mood="normal">Along the way, you will find stars.</Line>
         </Dialogue>
+        
         <Dialogue id="1" type="normal">
-            <Line destination="2" portrait="Unknown Voice" mood="normal">Collect it, and you can use it for your purpose later on your journey.</Line>
+            <Line destination="2" portrait="Unknown Voice" mood="normal">In each level, there will be 3 stars you have to collect.</Line>
         </Dialogue>
+        
         <Dialogue id="2" type="normal">
-            <Line destination="3" portrait="Unknown Voice" mood="normal">In every stages, there will be 3 stars you have to collect.</Line>
+            <Line destination="3" portrait="Unknown Voice" mood="normal">Collect them, you’ll need it to unlock the next stage.</Line>
         </Dialogue>
     </CollectingStarsTutorial>
 
     <!--Use GPS-->
     <UseGPSTutorial>
         <Dialogue id="0" type="normal">
-            <Line destination="1" portrait="Unknown Voice" mood="normal">To guide and help you find stars, you’ll have a GPS with you. You can see your location on it.</Line>
+            <Line destination="1" portrait="Unknown Voice" mood="normal">To guide and help you find stars and exit, you’ll have a GPS with you. You can see your location on it.</Line>
         </Dialogue>
+        
         <Dialogue id="1" type="normal">
             <Line destination="2" portrait="Unknown Voice" mood="normal">But don’t use it all the time, because the battery will not last long.</Line>
         </Dialogue>
+
         <Dialogue id="2" type="normal">
-            <Line destination="3" portrait="Unknown Voice" mood="normal">Be wise.</Line>
+            <Line destination="3" portrait="Unknown Voice" mood="normal">If you can’t find the stars, I guess you will need a hint! To use the hint, tap the ‘Hint’ button.</Line>
         </Dialogue>
+        
+        <Dialogue id="3" type="normal">
+            <Line destination="4" portrait="Unknown Voice" mood="normal">Be wise.</Line>
+        </Dialogue>
+        
     </UseGPSTutorial>
 
     <!--Ending Tutorial-->
@@ -134,9 +147,11 @@
         <Dialogue id="0" type="normal">
             <Line destination="1" portrait="Unknown Voice" mood="normal">Now you already know what you need to know to start.</Line>
         </Dialogue>
+        
         <Dialogue id="1" type="normal">
             <Line destination="2" portrait="Unknown Voice" mood="normal">I’ll be there when you need me. </Line>
         </Dialogue>
+        
         <Dialogue id="2" type="normal">
             <Line destination="3" portrait="Unknown Voice" mood="normal">Now, you can still observe around you, or walk straight to the door and begin your journey.</Line>
         </Dialogue>
