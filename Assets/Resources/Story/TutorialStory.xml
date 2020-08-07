@@ -3,7 +3,7 @@
 
     <!--Prologue-->
     <Prologue>
-        
+
         <!--Background Story-->
         <Dialogue id="0" type="normal">
             <Line destination="1" portrait="" mood="normal">One day, the unnamed character wakes up from his sleep. He wakes up inside a room. The Voice greets him.</Line>
@@ -57,7 +57,7 @@
         <Dialogue id="12" type="normal">
             <Line destination="13" portrait="You" mood="good">I’m doing it.</Line>
         </Dialogue>
-    
+
         <!--Move Tutorial-->
         <Dialogue id="13" type="normal">
             <Line destination="14" portrait="Unknown Voice" mood="normal">But first, let’s learn how to control yourself.</Line>
