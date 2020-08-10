@@ -39,8 +39,6 @@ public class PlayerFPSController : MonoBehaviour
         {
             starsCount += 1; // Increase starsCount
             
-            minimapScript.StarsRevealed--;
-            
             Destroy(other.gameObject); // Set star to non-active
             
             Debug.Log("Stars collected = " + starsCount);

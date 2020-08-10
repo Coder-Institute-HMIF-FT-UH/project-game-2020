@@ -112,26 +112,16 @@ public class MinimapScript : MonoBehaviour
                 hintLeft = 0;
                 break;
         }
-
-        starsRevealed--;
     }
     
     private void SwitchStars()
     {
-        switch (starsRevealed)
+        if (starsRevealed > 0)
         {
-            case 3:
-                ShowStar("Star 1");
-                break;
-            case 2:
-                ShowStar("Star 2");
-                break;
-            case 1:
-                ShowStar("Star 3");
-                break;
-            default:
-                starsRevealed = 0;
-                break;
+            ShowStar("Star " + starsRevealed);
+            starsRevealed--;
         }
+        else
+            starsRevealed = 0;
     }
 }
