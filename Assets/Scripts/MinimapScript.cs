@@ -74,23 +74,7 @@ public class MinimapScript : MonoBehaviour
         // Minimap follow Player's rotation.y
         transform.rotation = Quaternion.Euler(90f, player.eulerAngles.y, 0f);
     }
-
-    /// <summary>
-    /// GpsOn: Activate GPS
-    /// </summary>
-    public void GpsOn()
-    {
-        gps.gameObject.SetActive(true);
-    }
-
-    /// <summary>
-    /// GpsOff: Deactivate GPS
-    /// </summary>
-    public void GpsOff()
-    {
-        gps.gameObject.SetActive(false);
-    }
-
+    
     /// <summary>
     /// Zoom mini map
     /// </summary>
