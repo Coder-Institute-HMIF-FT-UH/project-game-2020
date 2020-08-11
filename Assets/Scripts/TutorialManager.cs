@@ -178,6 +178,7 @@ public class TutorialManager : MonoBehaviour
     {
         controller.SetActive(true);
         jumpButton.SetActive(true);
+        crosshair.gameObject.SetActive(true);
         fakeDoor.enabled = false;
         pickUpButton.SetActive(true);
         gpsButton.SetActive(true);

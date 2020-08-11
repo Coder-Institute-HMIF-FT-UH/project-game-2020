@@ -32,7 +32,7 @@ public class Crosshair : MonoBehaviour
             Debug.DrawRay(ray.origin, ray.direction, Color.red);
             if (hit.transform.CompareTag("Item"))
             {
-                crosshairImage.color = Color.red;
+                crosshairImage.color = Color.blue;
                 itemTransform = hit.transform;
                 itemRigidbody = hit.rigidbody;
             }
