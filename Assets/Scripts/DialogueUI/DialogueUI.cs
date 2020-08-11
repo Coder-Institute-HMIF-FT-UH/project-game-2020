@@ -181,11 +181,7 @@ public class DialogueUI : MonoBehaviour
                         if (canvasGroup.alpha <= targetAlpha)
                         {
                             StopCoroutine(displayDialogueUI);
-
-                            if (callback != null)
-                            {
-                                callback();
-                            }
+                            callback?.Invoke();
                         }
                     }
 
@@ -197,17 +193,13 @@ public class DialogueUI : MonoBehaviour
                     {
                         canvasGroup.alpha += fadeAmount;
                     
-                        // Check if we are don fading 
+                        // Check if we are done fading 
                         if (canvasGroup.alpha >= targetAlpha)
                         {
                             dialogueDisplayed = true;
                             canvasGroup.interactable = true;
                             StopCoroutine(displayDialogueUI);
-
-                            if (callback != null)
-                            {
-                                callback();
-                            }
+                            callback?.Invoke();
                         }
                     }
 
