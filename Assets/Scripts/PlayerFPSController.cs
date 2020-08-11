@@ -13,14 +13,14 @@ public class PlayerFPSController : MonoBehaviour
     public int StarsCount => starsCount;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         starsCount = 0;
         fps = GetComponent<RigidbodyFirstPersonController>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         // Move Player
         fps.RunAxis = moveJoystick.Direction;

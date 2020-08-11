@@ -169,45 +169,52 @@ public class DialogueUI : MonoBehaviour
 
         while (true)
         {
-            if (targetAlpha == 0)
+            switch (targetAlpha)
             {
-                if (canvasGroup.alpha > targetAlpha)
+                case 0:
                 {
-                    canvasGroup.alpha -= fadeAmount;
-                    
-                    // Check if we are done fading
-                    if (canvasGroup.alpha <= targetAlpha)
+                    if (canvasGroup.alpha > targetAlpha)
                     {
-                        StopCoroutine(displayDialogueUI);
-
-                        if (callback != null)
+                        canvasGroup.alpha -= fadeAmount;
+                    
+                        // Check if we are done fading
+                        if (canvasGroup.alpha <= targetAlpha)
                         {
-                            callback();
+                            StopCoroutine(displayDialogueUI);
+
+                            if (callback != null)
+                            {
+                                callback();
+                            }
                         }
                     }
-                }
-            }
-            else if (targetAlpha == 1)
-            {
-                if (canvasGroup.alpha < targetAlpha)
-                {
-                    canvasGroup.alpha += fadeAmount;
-                    
-                    // Check if we are don fading 
-                    if (canvasGroup.alpha >= targetAlpha)
-                    {
-                        dialogueDisplayed = true;
-                        canvasGroup.interactable = true;
-                        StopCoroutine(displayDialogueUI);
 
-                        if (callback != null)
+                    break;
+                }
+                case 1:
+                {
+                    if (canvasGroup.alpha < targetAlpha)
+                    {
+                        canvasGroup.alpha += fadeAmount;
+                    
+                        // Check if we are don fading 
+                        if (canvasGroup.alpha >= targetAlpha)
                         {
-                            callback();
+                            dialogueDisplayed = true;
+                            canvasGroup.interactable = true;
+                            StopCoroutine(displayDialogueUI);
+
+                            if (callback != null)
+                            {
+                                callback();
+                            }
                         }
                     }
+
+                    break;
                 }
             }
-            
+
             yield return new WaitForSeconds(fadeSpeed);
         }
     }

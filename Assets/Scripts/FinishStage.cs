@@ -28,41 +28,49 @@ public class FinishStage : MonoBehaviour
         
         while (true)
         {
-            if (targetAlpha == 0)
+            switch (targetAlpha)
             {
-                if (canvasGroup.alpha > targetAlpha)
+                case 0:
                 {
-                    canvasGroup.alpha -= fadeAmount;
-
-                    // Check if we are done fading
-                    if (canvasGroup.alpha <= targetAlpha)
+                    if (canvasGroup.alpha > targetAlpha)
                     {
-                        StopCoroutine(showFinalPanel);
-                        if (callback != null)
+                        canvasGroup.alpha -= fadeAmount;
+
+                        // Check if we are done fading
+                        if (canvasGroup.alpha <= targetAlpha)
                         {
-                            callback();
+                            StopCoroutine(showFinalPanel);
+                            if (callback != null)
+                            {
+                                callback();
+                            }
                         }
                     }
-                }
-            }
-            else if (targetAlpha == 1)
-            {
-                if (canvasGroup.alpha < targetAlpha)
-                {
-                    canvasGroup.alpha += fadeAmount;
 
-                    // Check if we are don fading 
-                    if (canvasGroup.alpha >= targetAlpha)
+                    break;
+                }
+                case 1:
+                {
+                    if (canvasGroup.alpha < targetAlpha)
                     {
-                        canvasGroup.interactable = true;
-                        StopCoroutine(showFinalPanel);
-                        if (callback != null)
+                        canvasGroup.alpha += fadeAmount;
+
+                        // Check if we are don fading 
+                        if (canvasGroup.alpha >= targetAlpha)
                         {
-                            callback();
+                            canvasGroup.interactable = true;
+                            StopCoroutine(showFinalPanel);
+                            if (callback != null)
+                            {
+                                callback();
+                            }
                         }
                     }
+
+                    break;
                 }
             }
+
             yield return new WaitForSeconds(fadeSpeed);
         }
     }
