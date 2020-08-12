@@ -33,17 +33,24 @@ public class TutorialManager : MonoBehaviour
     
     private void Start()
     {
-        dialogueUIs = new Queue<DialogueUI>();
-        tutorials = new Queue<DialogueData>();
-        
-        EnqueueAll();
-        
-        tutorialsCount = tutorials.Count;
-        
-        crosshair.gameObject.SetActive(false);
-        jumpButton.SetActive(false);
-        gpsButton.SetActive(false);
-        pickUpButton.SetActive(false);
+        if(!PlayerPrefs.HasKey("tutorialDone"))
+        {
+            dialogueUIs = new Queue<DialogueUI>();
+            tutorials = new Queue<DialogueData>();
+
+            EnqueueAll();
+
+            tutorialsCount = tutorials.Count;
+
+            crosshair.gameObject.SetActive(false);
+            jumpButton.SetActive(false);
+            gpsButton.SetActive(false);
+            pickUpButton.SetActive(false);
+        }
+        else
+        {
+            isTutorialDone = true;
+        }
     }
 
     private void Update()
@@ -156,6 +163,7 @@ public class TutorialManager : MonoBehaviour
                     if(dialogueQueueData.tutorials[tutorialIndex].IsFinished)
                     {
                         Debug.Log("All Tutorials done");
+                        PlayerPrefs.SetInt("tutorialDone", 1);
                         isTutorialDone = true;
                     }
                     break;
