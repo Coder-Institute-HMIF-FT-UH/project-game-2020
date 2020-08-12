@@ -29,7 +29,7 @@ public class Crosshair : MonoBehaviour
         
         if (Physics.Raycast(ray, out hit, maxDistance) && pickUpAllowed)
         {
-            Debug.DrawRay(ray.origin, ray.direction, Color.red);
+            // Debug.DrawRay(ray.origin, ray.direction, Color.red);
             if (hit.transform.CompareTag("Item"))
             {
                 crosshairImage.color = Color.blue;
