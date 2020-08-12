@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class FinishStage : MonoBehaviour
@@ -13,14 +14,18 @@ public class FinishStage : MonoBehaviour
 
     private PlayerFPSController playerController;
     private IEnumerator showFinalPanel;
+    private Scene currentScene;
     private bool isDoneFading, isFinished = true;
+
+    private void Start()
+    {
+        currentScene = SceneManager.GetActiveScene();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            playerController = other.GetComponent<PlayerFPSController>();
-            
             // Show Final Panel slowly
             showFinalPanel = ShowFinalPanel(0.05f, 0.025f, () =>
             {
@@ -29,7 +34,7 @@ public class FinishStage : MonoBehaviour
             StartCoroutine(showFinalPanel);
 
             // Set star UI sprites
-            switch (playerController.StarsCount)
+            switch (PlayerPrefs.GetInt("stars" + currentScene.name))
             {
                 case 1:
                     SetStarSprite(1);
