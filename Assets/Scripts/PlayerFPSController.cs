@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityStandardAssets.Characters.FirstPerson;
 
 public class PlayerFPSController : MonoBehaviour
@@ -6,20 +7,25 @@ public class PlayerFPSController : MonoBehaviour
     public FixedJoystick moveJoystick;
     public FixedButton jumpButton;
     public FixedTouchField touchField;
+    [SerializeField] private MinimapScript minimapScript;
     
     private RigidbodyFirstPersonController fps;
+    private Scene currentScene;
     private int starsCount;
     public int StarsCount => starsCount;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        starsCount = 0;
+        // Get CurrentScene
+        currentScene = SceneManager.GetActiveScene();
+        // Get prefs stars in currentScene's name
+        starsCount = PlayerPrefs.GetInt("stars" + currentScene.name);
         fps = GetComponent<RigidbodyFirstPersonController>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         // Move Player
         fps.RunAxis = moveJoystick.Direction;
@@ -37,10 +43,9 @@ public class PlayerFPSController : MonoBehaviour
         if (other.gameObject.CompareTag("Star"))
         {
             starsCount += 1; // Increase starsCount
+            PlayerPrefs.SetInt("stars" + currentScene.name, starsCount);
             
-            // Add disappear particle
-            
-            other.gameObject.SetActive(false); // Set star to non-active
+            Destroy(other.gameObject); // Set star to non-active
             
             Debug.Log("Stars collected = " + starsCount);
         }

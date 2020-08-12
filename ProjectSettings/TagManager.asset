@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Item
   - Star
+  - MinimapCamera
   layers:
   - Default
   - TransparentFX
@@ -15,11 +16,11 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Icon and Terrain
+  - Star 1
+  - Star 2
+  - Star 3
+  - minimap
   - 
   - 
   - 

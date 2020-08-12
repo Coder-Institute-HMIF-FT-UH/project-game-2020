@@ -11,10 +11,12 @@ public class DialogueUI : MonoBehaviour
         get => dialogueData;
         set => dialogueData = value;
     }
+
+    [SerializeField] private PlayerFPSController playerController;
     
     // UI Elements
+    private CanvasGroup canvasGroup;
     [SerializeField] private GameObject controller;
-    [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private Text dialogueText,
         characterName;
     [SerializeField] private ButtonUI buttonUI;
@@ -31,6 +33,8 @@ public class DialogueUI : MonoBehaviour
 
     private void Start()
     {
+        canvasGroup = GetComponent<CanvasGroup>();
+        
         // Hiding all buttons on default
         buttonUI.DisplayButtons(false);
         
@@ -40,6 +44,14 @@ public class DialogueUI : MonoBehaviour
             dialogueData.GetNextDialogue();
             AdvanceDialogue();
         });
+        
+        // Deactivate Controller if it's active
+        if (controller.activeInHierarchy)
+            StartCoroutine(DeactivateController());
+                    
+        // Activate Dialogue if it's not active
+        if(!gameObject.activeInHierarchy)
+            gameObject.SetActive(true);
 
         StartCoroutine(displayDialogueUI);
     }
@@ -60,6 +72,7 @@ public class DialogueUI : MonoBehaviour
                     dialogueText.text = "";
                     characterName.text = "";
                     gameObject.SetActive(false); // Deactivate Dialogue
+                    playerController.enabled = true; 
                     controller.SetActive(true); // Activate Controller
                 }
                 else // If dialogue is not finished ...
@@ -71,6 +84,8 @@ public class DialogueUI : MonoBehaviour
                     // Activate Dialogue if it's not active
                     if(!gameObject.activeInHierarchy)
                         gameObject.SetActive(true);
+                    
+                    playerController.enabled = false;
                     
                     // Setting our new dialogue
                     AdvanceDialogue();
@@ -90,6 +105,12 @@ public class DialogueUI : MonoBehaviour
         // Set the coroutine
         readDialogue = ReadDialogue(DialogueConstants.DialogueReadSpeed);
         StartCoroutine(readDialogue);
+    }
+
+    private IEnumerator DeactivateController()
+    {
+        yield return new WaitForSeconds(0.5f);
+        controller.SetActive(false);
     }
 
     private IEnumerator ReadDialogue(float typeSpeed)
@@ -148,45 +169,44 @@ public class DialogueUI : MonoBehaviour
 
         while (true)
         {
-            if (targetAlpha == 0)
+            switch (targetAlpha)
             {
-                if (canvasGroup.alpha > targetAlpha)
+                case 0:
                 {
-                    canvasGroup.alpha -= fadeAmount;
-                    
-                    // Check if we are done fading
-                    if (canvasGroup.alpha <= targetAlpha)
+                    if (canvasGroup.alpha > targetAlpha)
                     {
-                        StopCoroutine(displayDialogueUI);
-
-                        if (callback != null)
+                        canvasGroup.alpha -= fadeAmount;
+                    
+                        // Check if we are done fading
+                        if (canvasGroup.alpha <= targetAlpha)
                         {
-                            callback();
+                            StopCoroutine(displayDialogueUI);
+                            callback?.Invoke();
                         }
                     }
-                }
-            }
-            else if (targetAlpha == 1)
-            {
-                if (canvasGroup.alpha < targetAlpha)
-                {
-                    canvasGroup.alpha += fadeAmount;
-                    
-                    // Check if we are don fading 
-                    if (canvasGroup.alpha >= targetAlpha)
-                    {
-                        dialogueDisplayed = true;
-                        canvasGroup.interactable = true;
-                        StopCoroutine(displayDialogueUI);
 
-                        if (callback != null)
+                    break;
+                }
+                case 1:
+                {
+                    if (canvasGroup.alpha < targetAlpha)
+                    {
+                        canvasGroup.alpha += fadeAmount;
+                    
+                        // Check if we are done fading 
+                        if (canvasGroup.alpha >= targetAlpha)
                         {
-                            callback();
+                            dialogueDisplayed = true;
+                            canvasGroup.interactable = true;
+                            StopCoroutine(displayDialogueUI);
+                            callback?.Invoke();
                         }
                     }
+
+                    break;
                 }
             }
-            
+
             yield return new WaitForSeconds(fadeSpeed);
         }
     }
