@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class BatteryManager : MonoBehaviour
@@ -35,9 +36,14 @@ public class BatteryManager : MonoBehaviour
             currentBattery = PlayerPrefs.GetFloat(CURRENT_BATTERY);
             
             currentBattery = timerManager.CountDownInScene(IsBatteryFull, TIME_ON_EXIT, currentBattery);
-            
-            PlayerPrefs.SetFloat(CURRENT_BATTERY, currentBattery);
         }
+        else
+        {
+            // If first time, then currentBattery equals to maxBattery
+            currentBattery = maxBattery;
+        }
+        
+        PlayerPrefs.SetFloat(CURRENT_BATTERY, currentBattery);
         UpdateBatteryUi(); // Set Text UI
     }
 
@@ -80,6 +86,10 @@ public class BatteryManager : MonoBehaviour
     {
         // Add Battery
         currentBattery += 0.1f;
+        // If current battery are greater than max battery, ...
+        if (currentBattery > maxBattery)
+            currentBattery = maxBattery; // Set currentBattery to maxBattery
+        
         // Set PlayerPrefs for currentSanity
         PlayerPrefs.SetFloat(CURRENT_BATTERY, currentBattery);
     }
@@ -88,7 +98,7 @@ public class BatteryManager : MonoBehaviour
     {
         TimeRemainingBatteryUi(true);
         
-        string text = $"{currentBattery * 100} / {maxBattery * 100}";
+        string text = $"{Math.Round(currentBattery * 100, 0)} / {maxBattery * 100}";
         
         batteryText.text = detailBatteryText.text = text;
     }
