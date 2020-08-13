@@ -3,6 +3,15 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
+    private Scene currentScene;
+
+    public Scene CurrentScene => currentScene;
+
+    private void Awake()
+    {
+        currentScene = SceneManager.GetActiveScene();
+    }
+
     /// <summary>
     /// Load sceneName
     /// </summary>
@@ -18,6 +27,6 @@ public class SceneLoader : MonoBehaviour
     public void RestartScene()
     {
         Time.timeScale = 1f; // Set time to normal
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(currentScene.name);
     }
 }

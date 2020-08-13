@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class FinishStage : MonoBehaviour
 {
+    public SceneLoader sceneLoader;
     [SerializeField] private GameObject controller;
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private Sprite starSprite;
@@ -14,13 +14,7 @@ public class FinishStage : MonoBehaviour
 
     private PlayerFPSController playerController;
     private IEnumerator showFinalPanel;
-    private Scene currentScene;
     private bool isDoneFading, isFinished = true;
-
-    private void Start()
-    {
-        currentScene = SceneManager.GetActiveScene();
-    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -34,7 +28,7 @@ public class FinishStage : MonoBehaviour
             StartCoroutine(showFinalPanel);
 
             // Set star UI sprites
-            switch (PlayerPrefs.GetInt("stars" + currentScene.name))
+            switch (PlayerPrefs.GetInt("stars" + sceneLoader.CurrentScene.name))
             {
                 case 1:
                     SetStarSprite(1);
