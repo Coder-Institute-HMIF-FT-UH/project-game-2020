@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class ButtonController : MonoBehaviour
+public class PauseManager : MonoBehaviour
 {
-    [SerializeField] private GameObject gps,
-        pauseScreen;
+    [SerializeField] private GameObject pauseScreen;
     
     public void PauseGame()
     {
