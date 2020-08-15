@@ -8,6 +8,7 @@ public class FinishStage : MonoBehaviour
     public SceneLoader sceneLoader;
     [SerializeField] private InGameTimer inGameTimer;
     [SerializeField] private GameObject controller;
+    [SerializeField] private GameObject finishUiContainer;
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private Sprite starSprite;
     [SerializeField] private Image[] starsUis;
@@ -22,7 +23,20 @@ public class FinishStage : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             inGameTimer.IsFinished = true;
+            finishUiContainer.SetActive(true);
             
+            // Get total seconds after finish level
+            int totalSeconds = inGameTimer.timerManager.hours * 3600
+                                + inGameTimer.timerManager.minutes * 6
+                                + inGameTimer.timerManager.seconds;
+            
+            // Update prefs if total seconds are greater than previous one.
+            if(totalSeconds > PlayerPrefs.GetInt(PlayerPrefsConstant.BestTime + sceneLoader.CurrentScene))
+            {
+                Debug.Log("Set new record");
+                PlayerPrefs.SetInt(PlayerPrefsConstant.BestTime + sceneLoader.CurrentScene, totalSeconds);
+            }
+
             // Show Final Panel slowly
             showFinalPanel = ShowFinalPanel(0.05f, 0.025f, () =>
             {

@@ -4,5 +4,6 @@
         TimeOnExitBattery = "TimeOnExitBattery",
         TimeOnExitSanity = "TimeOnExit",
         DateMasterSysString = "sysString",
-        CurrentSanity = "currentSanity";
+        CurrentSanity = "currentSanity",
+        BestTime = "bestTime";
 }
