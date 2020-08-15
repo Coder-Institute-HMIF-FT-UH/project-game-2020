@@ -17,9 +17,6 @@ public class BatteryManager : MonoBehaviour
     [SerializeField] private Text detailBatteryText;
     [SerializeField] private Text oneBatteryTimeRemainingText;
     [SerializeField] private Text fullBatteriesTimeRemainingText;
-
-    private const string CURRENT_BATTERY = "currentBattery";
-    private const string TIME_ON_EXIT = "TimeOnExitBattery";
     
     private bool IsBatteryFull()
     {
@@ -30,12 +27,12 @@ public class BatteryManager : MonoBehaviour
 
     private void Start()
     {
-        if(PlayerPrefs.HasKey(CURRENT_BATTERY))
+        if(PlayerPrefs.HasKey(PlayerPrefsConstant.CurrentBattery))
         {
             // Get current Battery
-            currentBattery = PlayerPrefs.GetFloat(CURRENT_BATTERY);
+            currentBattery = PlayerPrefs.GetFloat(PlayerPrefsConstant.CurrentBattery);
             
-            currentBattery = timerManager.CountDownInScene(IsBatteryFull, TIME_ON_EXIT, currentBattery);
+            currentBattery = timerManager.CountDownInScene(IsBatteryFull, PlayerPrefsConstant.TimeOnExitBattery, currentBattery);
         }
         else
         {
@@ -43,7 +40,7 @@ public class BatteryManager : MonoBehaviour
             currentBattery = maxBattery;
         }
         
-        PlayerPrefs.SetFloat(CURRENT_BATTERY, currentBattery);
+        PlayerPrefs.SetFloat(PlayerPrefsConstant.CurrentBattery, currentBattery);
         UpdateBatteryUi(); // Set Text UI
     }
 
@@ -55,10 +52,10 @@ public class BatteryManager : MonoBehaviour
             timerManager.CountDown(AddBattery, UpdateBatteryTimeRemaining);
             
             // If currentBattery isn't equal to PlayerPrefs, ...
-            if (currentBattery != PlayerPrefs.GetFloat(CURRENT_BATTERY))
+            if (currentBattery != PlayerPrefs.GetFloat(PlayerPrefsConstant.CurrentBattery))
             {
                 // Set new currentBattery to PlayerPrefs
-                PlayerPrefs.SetFloat(CURRENT_BATTERY, currentBattery);
+                PlayerPrefs.SetFloat(PlayerPrefsConstant.CurrentBattery, currentBattery);
             }
             
             UpdateBatteryUi(); // Update UI
@@ -78,7 +75,7 @@ public class BatteryManager : MonoBehaviour
         if (numSeconds > 0)
         {
             timerManager.milliseconds += numSeconds;
-            PlayerPrefs.SetFloat(TIME_ON_EXIT, timerManager.milliseconds);
+            PlayerPrefs.SetFloat(PlayerPrefsConstant.TimeOnExitBattery, timerManager.milliseconds);
         }
     }
 
@@ -91,7 +88,7 @@ public class BatteryManager : MonoBehaviour
             currentBattery = maxBattery; // Set currentBattery to maxBattery
         
         // Set PlayerPrefs for currentSanity
-        PlayerPrefs.SetFloat(CURRENT_BATTERY, currentBattery);
+        PlayerPrefs.SetFloat(PlayerPrefsConstant.CurrentBattery, currentBattery);
     }
 
     private void UpdateBatteryUi()

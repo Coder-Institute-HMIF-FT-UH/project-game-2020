@@ -17,7 +17,7 @@ public class BatteryController : MonoBehaviour
     private void Start()
     {
         // Get battery prefs
-        batteryLevel.value = PlayerPrefs.GetFloat("currentBattery");
+        batteryLevel.value = PlayerPrefs.GetFloat(PlayerPrefsConstant.CurrentBattery);
     }
 
     private void Update()
@@ -26,7 +26,7 @@ public class BatteryController : MonoBehaviour
         var value = batteryLevel.value;
         value -= Time.deltaTime * speed;
         batteryLevel.value = value;
-        PlayerPrefs.SetFloat("currentBattery", value);
+        PlayerPrefs.SetFloat(PlayerPrefsConstant.CurrentBattery, value);
         // Debug.Log("Battery = " + batteryLevel.value);
     }
 

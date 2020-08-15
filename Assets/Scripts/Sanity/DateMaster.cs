@@ -15,7 +15,7 @@ public class DateMaster : MonoBehaviour
         currentDate = DateTime.Now;
         
         // Grab the old time from the player prefs as a long
-        long temp = Convert.ToInt64(PlayerPrefs.GetString("sysString"));
+        long temp = Convert.ToInt64(PlayerPrefs.GetString(PlayerPrefsConstant.DateMasterSysString));
         
         // Convert the old time from binary to a DateTime
         DateTime oldDate = DateTime.FromBinary(temp);
@@ -29,7 +29,7 @@ public class DateMaster : MonoBehaviour
     private void OnApplicationQuit()
     {
         // Save the current system time as a string
-        PlayerPrefs.SetString("sysString", DateTime.Now.ToBinary().ToString());
+        PlayerPrefs.SetString(PlayerPrefsConstant.DateMasterSysString, DateTime.Now.ToBinary().ToString());
         
         Debug.Log("Saving this date to prefs: " + DateTime.Now);
     }
