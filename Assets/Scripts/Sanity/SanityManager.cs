@@ -116,9 +116,9 @@ public class SanityManager : MonoBehaviour
                            (timerManager.defaultStartMinutes - timerManager.minutes);
         int hours = totalMinutes / 60;
         
-        string fullSanityText = hours > 0 ? 
-            $"Full Sanity in {hours} : {totalMinutes - hours * 60} : " + $"{timerManager.seconds}" : 
-            $"Full Sanity in {totalMinutes} : {timerManager.seconds}";
+        string fullSanityText = hours > 0  
+            ? $"Full Sanity in {hours} : {totalMinutes - hours * 60} : " + $"{timerManager.seconds}"  
+            : $"Full Sanity in {totalMinutes} : {timerManager.seconds}";
         
         fullSanityTimeRemainingText.text = fullSanityText;
     }

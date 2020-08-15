@@ -6,6 +6,7 @@ public class TimerManager
 {
     [Range(1,59)]
     public int defaultStartMinutes;
+    public int hours = 0;
     public int minutes = 1;
     public int seconds = 0;
     public int savedSeconds;
@@ -29,6 +30,37 @@ public class TimerManager
         savedSeconds = 0;
         milliseconds = 1.0f - Time.deltaTime;
         resetTimer = false;
+    }
+
+    public void Timer(Action updateTimer)
+    {
+        milliseconds += Time.deltaTime;
+
+        if (milliseconds >= 1.0f)
+        {
+            milliseconds -= 1.0f;
+
+            if (seconds >= 0 || minutes >= 0)
+            {
+                seconds++;
+                if (seconds > 59)
+                {
+                    seconds = 0;
+                    minutes++;
+                    if (minutes > 59)
+                    {
+                        minutes = 0;
+                        hours++;
+                    }
+                }
+            }
+        }
+        
+        if (seconds != savedSeconds)
+        {
+            updateTimer();
+            savedSeconds = seconds;
+        }
     }
     
     /// <summary>

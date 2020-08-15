@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class FinishStage : MonoBehaviour
 {
     public SceneLoader sceneLoader;
+    [SerializeField] private InGameTimer inGameTimer;
     [SerializeField] private GameObject controller;
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private Sprite starSprite;
@@ -20,6 +21,8 @@ public class FinishStage : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            inGameTimer.IsFinished = true;
+            
             // Show Final Panel slowly
             showFinalPanel = ShowFinalPanel(0.05f, 0.025f, () =>
             {
