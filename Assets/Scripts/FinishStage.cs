@@ -13,50 +13,51 @@ public class FinishStage : MonoBehaviour
     [SerializeField] private Sprite starSprite;
     [SerializeField] private Image[] starsUis;
     [SerializeField] private Animator[] starAnimators;
+    [SerializeField] private Text coinValue;
 
     private PlayerFPSController playerController;
     private IEnumerator showFinalPanel;
     private bool isDoneFading, isFinished = true;
+    private int maxCoin = 100;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (!other.CompareTag("Player")) return;
+        inGameTimer.IsFinished = true;
+        finishUiContainer.SetActive(true);
+            
+        // Get total seconds after finish level
+        int totalSeconds = inGameTimer.timerManager.hours * 3600
+                           + inGameTimer.timerManager.minutes * 6
+                           + inGameTimer.timerManager.seconds;
+        Debug.Log("Total seconds: " + totalSeconds);
+            
+        // Update prefs if total seconds are less than previous one.
+        if(totalSeconds < PlayerPrefs.GetInt(PlayerPrefsConstant.BestTime + sceneLoader.CurrentScene))
         {
-            inGameTimer.IsFinished = true;
-            finishUiContainer.SetActive(true);
-            
-            // Get total seconds after finish level
-            int totalSeconds = inGameTimer.timerManager.hours * 3600
-                                + inGameTimer.timerManager.minutes * 6
-                                + inGameTimer.timerManager.seconds;
-            
-            // Update prefs if total seconds are greater than previous one.
-            if(totalSeconds > PlayerPrefs.GetInt(PlayerPrefsConstant.BestTime + sceneLoader.CurrentScene))
-            {
-                Debug.Log("Set new record");
-                PlayerPrefs.SetInt(PlayerPrefsConstant.BestTime + sceneLoader.CurrentScene, totalSeconds);
-            }
+            Debug.Log("Set new record");
+            PlayerPrefs.SetInt(PlayerPrefsConstant.BestTime + sceneLoader.CurrentScene, totalSeconds);
+        }
 
-            // Show Final Panel slowly
-            showFinalPanel = ShowFinalPanel(0.05f, 0.025f, () =>
-            {
-                controller.SetActive(false);
-            });
-            StartCoroutine(showFinalPanel);
+        // Show Final Panel slowly
+        showFinalPanel = ShowFinalPanel(0.05f, 0.025f, () =>
+        {
+            controller.SetActive(false);
+        });
+        StartCoroutine(showFinalPanel);
 
-            // Set star UI sprites
-            switch (PlayerPrefs.GetInt("stars" + sceneLoader.CurrentScene.name))
-            {
-                case 1:
-                    SetStarSprite(1);
-                    break;
-                case 2:
-                    SetStarSprite(2);
-                    break;
-                case 3:
-                    SetStarSprite(3);
-                    break;
-            }
+        // Set star UI sprites
+        switch (PlayerPrefs.GetInt("stars" + sceneLoader.CurrentScene.name))
+        {
+            case 1:
+                SetStarSprite(1);
+                break;
+            case 2:
+                SetStarSprite(2);
+                break;
+            case 3:
+                SetStarSprite(3);
+                break;
         }
     }
 
@@ -65,6 +66,7 @@ public class FinishStage : MonoBehaviour
         // If other is Player and isDoneFading and isFinished, ...
         if (!other.CompareTag("Player") || !isDoneFading || !isFinished) return;
         StartCoroutine(StarAnimation()); // Play animation 
+        StartCoroutine(CoinAnimation(0.005f));
         isFinished = false; // Set isFinished to false
     }
 
@@ -76,6 +78,20 @@ public class FinishStage : MonoBehaviour
     {
         for (int i = 0; i < index; i++)
             starsUis[i].sprite = starSprite;
+    }
+
+    /// <summary>
+    /// Coin Animation
+    /// </summary>
+    /// <param name="waitTime"></param>
+    /// <returns></returns>
+    private IEnumerator CoinAnimation(float waitTime)
+    {
+        for(int i = 0; i <= maxCoin; i++)
+        {
+            coinValue.text = i.ToString();
+            yield return new WaitForSeconds(waitTime);
+        }
     }
     
     /// <summary>
