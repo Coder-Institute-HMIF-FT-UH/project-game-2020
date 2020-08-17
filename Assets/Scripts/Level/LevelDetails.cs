@@ -6,9 +6,7 @@ public class LevelDetails : ScriptableObject
 {
     // Details
     public string levelName;
-    public Text levelText;
     public string status;
-    public Text statusText;
     
     // Requirements
     public int sanityRequirement;
