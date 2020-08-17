@@ -4,17 +4,16 @@ using UnityEngine.UI;
 public class BatteryController : MonoBehaviour
 {
     [SerializeField] private float speed = 0.007f;
+    [SerializeField] private GameObject gpsPanel;
     
     public Slider batteryLevel;
-
     [Space(10)] public Image batteryFill;
-
     public Color currentBatteryColor,
         highBatteryColor,
         mediumBatteryColor,
         lowBatteryColor;
 
-    private void Start()
+    private void Awake()
     {
         // Get battery prefs
         batteryLevel.value = PlayerPrefs.GetFloat(PlayerPrefsConstant.CurrentBattery);
@@ -24,10 +23,17 @@ public class BatteryController : MonoBehaviour
     {
         // Decrease the battery
         var value = batteryLevel.value;
-        value -= Time.deltaTime * speed;
-        batteryLevel.value = value;
-        PlayerPrefs.SetFloat(PlayerPrefsConstant.CurrentBattery, value);
-        // Debug.Log("Battery = " + batteryLevel.value);
+        if(value > 0f)
+        {
+            value -= Time.deltaTime * speed;
+            batteryLevel.value = value;
+            PlayerPrefs.SetFloat(PlayerPrefsConstant.CurrentBattery, value);
+            // Debug.Log("Battery = " + batteryLevel.value);
+        }
+        else
+        {
+            gpsPanel.SetActive(false);
+        }
     }
 
     private void LateUpdate()
