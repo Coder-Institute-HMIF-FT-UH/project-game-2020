@@ -67,9 +67,9 @@ public class BatteryManager : MonoBehaviour
     }
     
     /// <summary>
-    /// When user quits application
+    /// When destroy (move scene, quit)
     /// </summary>
-    private void OnApplicationQuit()
+    private void OnDestroy()
     {
         int numSeconds = timerManager.minutes * 60 + timerManager.seconds; // Get all minutes and seconds remaining
         if (numSeconds > 0)
@@ -81,6 +81,7 @@ public class BatteryManager : MonoBehaviour
 
     private void AddBattery()
     {
+        Debug.Log("Add Battery");
         // Add Battery
         currentBattery += 0.1f;
         // If current battery are greater than max battery, ...

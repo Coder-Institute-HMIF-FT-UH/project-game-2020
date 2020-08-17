@@ -26,7 +26,7 @@ public class DateMaster : MonoBehaviour
         Debug.Log("Difference: " + difference);
     }
 
-    private void OnApplicationQuit()
+    private void OnDestroy()
     {
         // Save the current system time as a string
         PlayerPrefs.SetString(PlayerPrefsConstant.DateMasterSysString, DateTime.Now.ToBinary().ToString());

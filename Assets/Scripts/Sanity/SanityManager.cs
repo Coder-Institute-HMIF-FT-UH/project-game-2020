@@ -61,9 +61,9 @@ public class SanityManager : MonoBehaviour
     }
     
     /// <summary>
-    /// When user quits application
+    /// When destroy (move scene, quit)
     /// </summary>
-    private void OnApplicationQuit()
+    private void OnDestroy()
     {
         int numSeconds = timerManager.minutes * 60 + timerManager.seconds; // Get all minutes and seconds remaining
         if (numSeconds > 0)
@@ -78,6 +78,7 @@ public class SanityManager : MonoBehaviour
     /// </summary>
     private void AddSanity()
     {
+        Debug.Log("Add Sanity");
         // Add Sanity
         currentSanity += 1;
         // Set PlayerPrefs for currentSanity
