@@ -18,6 +18,7 @@ public class SceneLoader : MonoBehaviour
     /// <param name="sceneName"></param>
     public void LoadScene(string sceneName)
     {
+        Time.timeScale = 1f; // Set time to normal
         SceneManager.LoadScene(sceneName);
     }
 
