@@ -6,7 +6,8 @@ public class LevelDetails : ScriptableObject
 {
     // Details
     public string levelName;
-    public string status;
+    public bool isClear;
+    public string sceneName;
     
     // Requirements
     public int sanityRequirement;
