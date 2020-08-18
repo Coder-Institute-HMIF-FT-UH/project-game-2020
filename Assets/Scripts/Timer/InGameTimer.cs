@@ -32,15 +32,10 @@ public class InGameTimer : MonoBehaviour
     /// </summary>
     private void UpdateTimerUi()
     {
-        // Format string
-        string hours = timerManager.hours.ToString("00"),
-            minutes = timerManager.minutes.ToString("00"),
-            seconds = timerManager.seconds.ToString("00");
-        
         // Set timerText
         string timerText = timerManager.hours > 0
-            ? $"{hours} : {minutes} : {seconds}"
-            : $"{minutes} : {seconds}";
+            ? $"{timerManager.hours:00} : {timerManager.minutes:00} : {timerManager.seconds:00}"
+            : $"{timerManager.minutes:00} : {timerManager.seconds:00}";
         
         timer.text = timerText;
     }
