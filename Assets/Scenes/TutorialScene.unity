@@ -9,7 +9,7 @@ OcclusionCullingSettings:
     smallestHole: 0.25
     backfaceThreshold: 100
   m_SceneGUID: 9fc0d4010bbf28b4594072e72b8655ab
-  m_OcclusionCullingData: {fileID: 36300000, guid: 835bb21045759904ea99ac10e70250ee,
+  m_OcclusionCullingData: {fileID: 36300000, guid: 2cd3035c2a711644a910bab2d45f6a30,
     type: 2}
 --- !u!104 &2
 RenderSettings:
@@ -12140,7 +12140,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17684
+  m_Name: pb_Mesh15048
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -12709,7 +12709,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17708
+  m_Name: pb_Mesh15072
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -13306,7 +13306,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh18050
+  m_Name: pb_Mesh15422
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -13487,6 +13487,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 1592406116942332704, guid: 92922a19e141ea646a05a3e2863420b2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 6181062395973462677, guid: 92922a19e141ea646a05a3e2863420b2,
         type: 3}
       propertyPath: sceneLoader
@@ -13496,6 +13501,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Star (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181062396655701455, guid: 92922a19e141ea646a05a3e2863420b2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 6181062396656194031, guid: 92922a19e141ea646a05a3e2863420b2,
         type: 3}
@@ -19369,7 +19379,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17502
+  m_Name: pb_Mesh14872
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -20365,6 +20375,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1592406116942332704, guid: 92922a19e141ea646a05a3e2863420b2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 6181062395973462677, guid: 92922a19e141ea646a05a3e2863420b2,
         type: 3}
       propertyPath: sceneLoader
@@ -20374,6 +20389,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Star (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181062396655701455, guid: 92922a19e141ea646a05a3e2863420b2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 6181062396656194031, guid: 92922a19e141ea646a05a3e2863420b2,
         type: 3}
@@ -20746,7 +20766,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17974
+  m_Name: pb_Mesh15346
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -25971,6 +25991,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1592406116942332704, guid: 92922a19e141ea646a05a3e2863420b2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 6181062395973462677, guid: 92922a19e141ea646a05a3e2863420b2,
         type: 3}
       propertyPath: sceneLoader
@@ -25980,6 +26005,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Star (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181062396655701455, guid: 92922a19e141ea646a05a3e2863420b2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 6181062396656194031, guid: 92922a19e141ea646a05a3e2863420b2,
         type: 3}
