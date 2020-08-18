@@ -2,17 +2,18 @@
 
 public class MovingPlatformScript : MonoBehaviour
 {
-
-    [SerializeField] private Vector3[] platformPosition; // [0] : starting position
-                                                         // [1] : end position 
+    [SerializeField] private Vector3 travelDistance;
     [SerializeField] private float platformSpeed;
-    
+
+    Vector3[] platformPosition = new Vector3[2];    // [0] : starting position
+                                                    // [1] : end position
     private int currentDestination = 1;
     
     void Start()
     {
         //Puts the platform on the startingp osition
-        transform.position = platformPosition[0];
+        platformPosition[0] = transform.position;
+        platformPosition[1] = transform.position + travelDistance;
     }
 
     void FixedUpdate()
