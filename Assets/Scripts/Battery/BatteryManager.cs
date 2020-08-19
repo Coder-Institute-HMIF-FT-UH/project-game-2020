@@ -110,15 +110,15 @@ public class BatteryManager : MonoBehaviour
     private void UpdateBatteryTimeRemaining()
     {
         // Show current time
-        oneBatteryTimeRemainingText.text = $"1 Battery in {timerManager.minutes} : {timerManager.seconds}";
+        oneBatteryTimeRemainingText.text = $"1 Battery in {timerManager.minutes} : {timerManager.seconds:00}";
 
         int totalMinutes = (int) ((maxBattery - currentBattery) * timerManager.defaultStartMinutes * 10 -
                                   (timerManager.defaultStartMinutes - timerManager.minutes));
         int hours = totalMinutes / 60;
         
         string fullBatteriesText = hours > 0 ?
-            $"Full Batteries in {hours} : {totalMinutes - hours * 60} : " + $"{timerManager.seconds}" : 
-            $"Full Batteries in {totalMinutes} : {timerManager.seconds}";
+            $"Full Batteries in {hours} : {totalMinutes - hours * 60:00} : " + $"{timerManager.seconds:00}" : 
+            $"Full Batteries in {totalMinutes} : {timerManager.seconds:00}";
 
         fullBatteriesTimeRemainingText.text = fullBatteriesText;
     }

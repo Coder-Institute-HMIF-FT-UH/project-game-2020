@@ -111,15 +111,15 @@ public class SanityManager : MonoBehaviour
     private void UpdateSanityTimeRemaining()
     {
         // Show current time
-        oneSanityTimeRemainingText.text = $"1 Sanity in {timerManager.minutes} : {timerManager.seconds}";
+        oneSanityTimeRemainingText.text = $"1 Sanity in {timerManager.minutes} : {timerManager.seconds:00}";
 
         int totalMinutes = (maxSanity - currentSanity) * timerManager.defaultStartMinutes - 
                            (timerManager.defaultStartMinutes - timerManager.minutes);
         int hours = totalMinutes / 60;
         
         string fullSanityText = hours > 0  
-            ? $"Full Sanity in {hours} : {totalMinutes - hours * 60} : " + $"{timerManager.seconds}"  
-            : $"Full Sanity in {totalMinutes} : {timerManager.seconds}";
+            ? $"Full Sanity in {hours} : {totalMinutes - hours * 60:00} : " + $"{timerManager.seconds:00}"  
+            : $"Full Sanity in {totalMinutes} : {timerManager.seconds:00}";
         
         fullSanityTimeRemainingText.text = fullSanityText;
     }
