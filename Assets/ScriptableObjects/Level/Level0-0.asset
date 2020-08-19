@@ -18,7 +18,7 @@ MonoBehaviour:
   sanityRequirement: 10
   starRequirement: 0
   maxCoin: 100
-  starsTaken: 2
-  bestSeconds: 6
+  starsTaken: 1
+  bestSeconds: 19
   bestMinutes: 0
   bestHours: 0
