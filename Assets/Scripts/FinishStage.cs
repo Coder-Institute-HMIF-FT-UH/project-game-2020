@@ -76,6 +76,10 @@ public class FinishStage : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Set time in prefs and asset
+    /// </summary>
+    /// <param name="totalSeconds"></param>
     private void SetTime(int totalSeconds)
     {
         // Set prefs

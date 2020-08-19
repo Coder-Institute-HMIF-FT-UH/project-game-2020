@@ -12,6 +12,9 @@ public class PauseManager : MonoBehaviour
         batteryText,
         hintsLeft;
 
+    /// <summary>
+    /// Set status in pause screen
+    /// </summary>
     public void SetStatus()
     {
         stageName.text = $"Stage {loadLevelManager.LevelName}";
@@ -20,6 +23,9 @@ public class PauseManager : MonoBehaviour
         hintsLeft.text = "Hint(s) left: 3";
     }
     
+    /// <summary>
+    /// Pause game
+    /// </summary>
     public void PauseGame()
     {
         Time.timeScale = 0f;
@@ -27,6 +33,9 @@ public class PauseManager : MonoBehaviour
         pauseScreen.SetActive(true);
     }
     
+    /// <summary>
+    /// Resume game
+    /// </summary>
     public void ResumeGame()
     {
         Time.timeScale = 1f;
