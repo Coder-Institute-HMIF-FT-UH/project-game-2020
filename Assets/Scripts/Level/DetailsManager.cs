@@ -12,23 +12,36 @@ public class DetailsManager : MonoBehaviour
     [SerializeField] private Sprite starSprite;
     [SerializeField] private Image[] stars;
 
-    private void Awake()
+    private bool seeDetails;
+
+    public bool SeeDetails
     {
-        levelName.text = levelDetails.levelName;
-        status.text = "Status: " + (levelDetails.isClear ? "Clear" : "Unclear");
-        // Best Time
-        CalculateBestTime();
-        bestTime.text = "Best time: " + (levelDetails.bestHours > 0
-            ? $"{levelDetails.bestHours:00} : {levelDetails.bestMinutes:00} : {levelDetails.bestSeconds:00}"
-            : $"{levelDetails.bestMinutes:00} : {levelDetails.bestSeconds:00}");
-        
-        // Sanity Requirement
-        sanityRequirement.text = $"-{levelDetails.sanityRequirement}";
-        
-        // Star
-        for (int i = 0; i < levelDetails.starsTaken; i++)
+        get => seeDetails;
+        set => seeDetails = value;
+    }
+
+    private void Update()
+    {
+        if(levelDetails && seeDetails)
         {
-            stars[i].sprite = starSprite;
+            seeDetails = false;
+            levelName.text = levelDetails.levelName;
+            status.text = "Status: " + (levelDetails.isClear ? "Clear" : "Unclear");
+
+            // Best Time
+            CalculateBestTime();
+            bestTime.text = "Best time: " + (levelDetails.bestHours > 0
+                ? $"{levelDetails.bestHours:00} : {levelDetails.bestMinutes:00} : {levelDetails.bestSeconds:00}"
+                : $"{levelDetails.bestMinutes:00} : {levelDetails.bestSeconds:00}");
+
+            // Sanity Requirement
+            sanityRequirement.text = $"-{levelDetails.sanityRequirement}";
+
+            // Star
+            for (int i = 0; i < levelDetails.starsTaken; i++)
+            {
+                stars[i].sprite = starSprite;
+            }
         }
     }
 

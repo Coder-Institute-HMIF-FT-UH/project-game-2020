@@ -11,6 +11,7 @@ public class LevelDetails : ScriptableObject
     
     // Requirements
     public int sanityRequirement;
+    public int starRequirement;
     
     // Rewards
     public int maxCoin;
