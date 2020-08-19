@@ -33,7 +33,7 @@ public class TutorialManager : MonoBehaviour
     
     private void Start()
     {
-        if(!PlayerPrefs.HasKey("tutorialDone"))
+        if(!PlayerPrefs.HasKey(PlayerPrefsConstant.TutorialDone))
         {
             dialogueUIs = new Queue<DialogueUI>();
             tutorials = new Queue<DialogueData>();
@@ -163,7 +163,7 @@ public class TutorialManager : MonoBehaviour
                     if(dialogueQueueData.tutorials[tutorialIndex].IsFinished)
                     {
                         Debug.Log("All Tutorials done");
-                        PlayerPrefs.SetInt("tutorialDone", 1);
+                        PlayerPrefs.SetInt(PlayerPrefsConstant.TutorialDone, 1);
                         isTutorialDone = true;
                     }
                     break;

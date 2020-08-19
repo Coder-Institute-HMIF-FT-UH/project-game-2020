@@ -5,5 +5,6 @@
         TimeOnExitSanity = "TimeOnExit",
         DateMasterSysString = "sysString",
         CurrentSanity = "currentSanity",
-        BestTime = "bestTime";
+        BestTime = "bestTime",
+        TutorialDone = "tutorialDone";
 }
