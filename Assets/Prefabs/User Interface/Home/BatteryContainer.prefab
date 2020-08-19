@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerManager:
-    defaultStartMinutes: 5
+    defaultStartMinutes: 3
     hours: 0
     minutes: 1
     seconds: 0
