@@ -13225,7 +13225,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh15422
+  m_Name: pb_Mesh26420
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -13416,6 +13416,11 @@ PrefabInstance:
       propertyPath: sceneLoader
       value: 
       objectReference: {fileID: 2026317932}
+    - target: {fileID: 6181062395973462677, guid: 92922a19e141ea646a05a3e2863420b2,
+        type: 3}
+      propertyPath: loadLevelManager
+      value: 
+      objectReference: {fileID: 1186997710}
     - target: {fileID: 6181062396655701455, guid: 92922a19e141ea646a05a3e2863420b2,
         type: 3}
       propertyPath: m_Name
@@ -20304,6 +20309,11 @@ PrefabInstance:
       propertyPath: sceneLoader
       value: 
       objectReference: {fileID: 2026317932}
+    - target: {fileID: 6181062395973462677, guid: 92922a19e141ea646a05a3e2863420b2,
+        type: 3}
+      propertyPath: loadLevelManager
+      value: 
+      objectReference: {fileID: 1186997710}
     - target: {fileID: 6181062396655701455, guid: 92922a19e141ea646a05a3e2863420b2,
         type: 3}
       propertyPath: m_Name
@@ -21852,6 +21862,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4613097462807494234}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1186997710 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4613097463972195448, guid: 6c58f54971d64d34597b734fde0bd96d,
+    type: 3}
+  m_PrefabInstance: {fileID: 4613097462807494234}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8063c6c923c32354795c2db85fbacc4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1188554924
 GameObject:
   m_ObjectHideFlags: 0
@@ -23390,7 +23412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d02d3139e44fa4147a8d1057bd628839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneLoader: {fileID: 2026317932}
+  loadLevelManager: {fileID: 1186997710}
   inGameTimer: {fileID: 372519903}
   controller: {fileID: 400671888}
   finishUiContainer: {fileID: 915073958}
@@ -25381,6 +25403,11 @@ PrefabInstance:
       propertyPath: sceneLoader
       value: 
       objectReference: {fileID: 2026317932}
+    - target: {fileID: 1313733639217790340, guid: cde2596f94a82fd4e8bec1473219b5b7,
+        type: 3}
+      propertyPath: loadLevelManager
+      value: 
+      objectReference: {fileID: 1186997710}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cde2596f94a82fd4e8bec1473219b5b7, type: 3}
 --- !u!1001 &4043938822313413050
@@ -25593,11 +25620,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ButtonController
       objectReference: {fileID: 0}
-    - target: {fileID: 4202145413153278383, guid: 8cdd9b96710b9284f87273ed0aedaebf,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cdd9b96710b9284f87273ed0aedaebf, type: 3}
 --- !u!1001 &4613097462807494234
@@ -25612,15 +25634,16 @@ PrefabInstance:
       propertyPath: batteryLevel
       value: 
       objectReference: {fileID: 682225431}
+    - target: {fileID: 4613097463972195448, guid: 6c58f54971d64d34597b734fde0bd96d,
+        type: 3}
+      propertyPath: levelDetails
+      value: 
+      objectReference: {fileID: 11400000, guid: fc70f785ae4c9ac42850d6a17f9f0f6c,
+        type: 2}
     - target: {fileID: 4613097463972195450, guid: 6c58f54971d64d34597b734fde0bd96d,
         type: 3}
       propertyPath: m_Name
       value: LoadLevelManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 4613097463972195450, guid: 6c58f54971d64d34597b734fde0bd96d,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 4613097463972195451, guid: 6c58f54971d64d34597b734fde0bd96d,
         type: 3}
@@ -25835,6 +25858,11 @@ PrefabInstance:
       propertyPath: sceneLoader
       value: 
       objectReference: {fileID: 2026317932}
+    - target: {fileID: 1428766221164195277, guid: 06871fdc723b68e4dbb404af3e8aa0bc,
+        type: 3}
+      propertyPath: loadLevelManager
+      value: 
+      objectReference: {fileID: 1186997710}
     - target: {fileID: 6159175343114244848, guid: 06871fdc723b68e4dbb404af3e8aa0bc,
         type: 3}
       propertyPath: m_Name
@@ -26039,6 +26067,11 @@ PrefabInstance:
       propertyPath: sceneLoader
       value: 
       objectReference: {fileID: 2026317932}
+    - target: {fileID: 6181062395973462677, guid: 92922a19e141ea646a05a3e2863420b2,
+        type: 3}
+      propertyPath: loadLevelManager
+      value: 
+      objectReference: {fileID: 1186997710}
     - target: {fileID: 6181062396655701455, guid: 92922a19e141ea646a05a3e2863420b2,
         type: 3}
       propertyPath: m_Name
