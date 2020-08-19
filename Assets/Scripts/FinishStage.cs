@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class FinishStage : MonoBehaviour
 {
-    public SceneLoader sceneLoader;
+    [SerializeField] private LoadLevelManager loadLevelManager;
     [SerializeField] private InGameTimer inGameTimer;
     [SerializeField] private GameObject controller;
     [SerializeField] private GameObject finishUiContainer;
@@ -33,10 +33,10 @@ public class FinishStage : MonoBehaviour
         Debug.Log("Total seconds: " + totalSeconds);
             
         // Update prefs if total seconds are less than previous one.
-        if(totalSeconds < PlayerPrefs.GetInt(PlayerPrefsConstant.BestTime + sceneLoader.CurrentScene))
+        if(totalSeconds < PlayerPrefs.GetInt(PlayerPrefsConstant.BestTime + loadLevelManager.LevelName))
         {
             Debug.Log("Set new record");
-            PlayerPrefs.SetInt(PlayerPrefsConstant.BestTime + sceneLoader.CurrentScene, totalSeconds);
+            PlayerPrefs.SetInt(PlayerPrefsConstant.BestTime + loadLevelManager.LevelName, totalSeconds);
         }
 
         // Show Final Panel slowly
@@ -47,7 +47,7 @@ public class FinishStage : MonoBehaviour
         StartCoroutine(showFinalPanel);
 
         // Set star UI sprites
-        switch (PlayerPrefs.GetInt("stars" + sceneLoader.CurrentScene.name))
+        switch (PlayerPrefs.GetInt("stars" + loadLevelManager.LevelName))
         {
             case 1:
                 SetStarSprite(1);

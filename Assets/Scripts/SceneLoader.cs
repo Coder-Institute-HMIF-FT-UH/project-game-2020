@@ -5,8 +5,6 @@ public class SceneLoader : MonoBehaviour
 {
     private Scene currentScene;
 
-    public Scene CurrentScene => currentScene;
-
     private void Awake()
     {
         currentScene = SceneManager.GetActiveScene();

@@ -3,17 +3,15 @@ using UnityEngine;
 
 public class StarScript : MonoBehaviour
 {
-    public SceneLoader sceneLoader;
+    [SerializeField] private LoadLevelManager loadLevelManager;
     [SerializeField] private bool isTaken;
     
     private float speed = 180f;
-    private string currentSceneName;
 
     private void Start()
     {
-        currentSceneName = sceneLoader.CurrentScene.name;
         // If star is taken, Destroy object
-        if (PlayerPrefs.GetInt("is" + gameObject.name + currentSceneName) == 1)
+        if (PlayerPrefs.GetInt("is" + gameObject.name + loadLevelManager.LevelName) == 1)
             Destroy(gameObject);
     }
 
@@ -28,6 +26,6 @@ public class StarScript : MonoBehaviour
         // If other object is Player, ...
         if (!other.CompareTag("Player")) return;
         isTaken = true; // Set isTaken to true
-        PlayerPrefs.SetInt("is" + gameObject.name + currentSceneName, Convert.ToInt32(isTaken)); // Set prefs
+        PlayerPrefs.SetInt("is" + gameObject.name + loadLevelManager.LevelName, Convert.ToInt32(isTaken)); // Set prefs
     }
 }
