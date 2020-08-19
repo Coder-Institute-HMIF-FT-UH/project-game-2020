@@ -39,14 +39,16 @@ public class PlayerFPSController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // If collide with star, ...
-        if (other.gameObject.CompareTag("Star"))
-        {
-            starsCount += 1; // Increase starsCount
-            PlayerPrefs.SetInt("stars" + loadLevelManager.LevelName, starsCount);
+        if (!other.gameObject.CompareTag("Star")) return;
+        starsCount += 1; // Increase starsCount
+        
+        // Set prefs
+        PlayerPrefs.SetInt("stars" + loadLevelManager.LevelName, starsCount);
+        // Set asset
+        loadLevelManager.levelDetails.starsTaken = starsCount;
+        
+        Destroy(other.gameObject); // Set star to non-active
             
-            Destroy(other.gameObject); // Set star to non-active
-            
-            Debug.Log("Stars collected = " + starsCount);
-        }
+        Debug.Log("Stars collected = " + starsCount);
     }
 }

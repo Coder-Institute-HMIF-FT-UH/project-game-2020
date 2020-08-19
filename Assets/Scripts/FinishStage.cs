@@ -18,12 +18,20 @@ public class FinishStage : MonoBehaviour
     private PlayerFPSController playerController;
     private IEnumerator showFinalPanel;
     private bool isDoneFading, isFinished = true;
-    private int maxCoin = 100;
+    private int maxCoin;
+
+    private void Awake()
+    {
+        maxCoin = loadLevelManager.levelDetails.maxCoin;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
         inGameTimer.IsFinished = true;
+
+        loadLevelManager.levelDetails.isClear = true;
+        
         finishUiContainer.SetActive(true);
             
         // Get total seconds after finish level
@@ -31,12 +39,19 @@ public class FinishStage : MonoBehaviour
                            + inGameTimer.timerManager.minutes * 6
                            + inGameTimer.timerManager.seconds;
         Debug.Log("Total seconds: " + totalSeconds);
-            
-        // Update prefs if total seconds are less than previous one.
-        if(totalSeconds < PlayerPrefs.GetInt(PlayerPrefsConstant.BestTime + loadLevelManager.LevelName))
+        
+        if(PlayerPrefs.HasKey(PlayerPrefsConstant.BestTime + loadLevelManager.LevelName))
         {
-            Debug.Log("Set new record");
-            PlayerPrefs.SetInt(PlayerPrefsConstant.BestTime + loadLevelManager.LevelName, totalSeconds);
+            // Update prefs if total seconds are less than previous one.
+            if (totalSeconds < PlayerPrefs.GetInt(PlayerPrefsConstant.BestTime + loadLevelManager.LevelName))
+            {
+                Debug.Log("Set new record");
+                SetTime(totalSeconds);
+            }
+        }
+        else
+        {
+            SetTime(totalSeconds);
         }
 
         // Show Final Panel slowly
@@ -59,6 +74,16 @@ public class FinishStage : MonoBehaviour
                 SetStarSprite(3);
                 break;
         }
+    }
+
+    private void SetTime(int totalSeconds)
+    {
+        // Set prefs
+        PlayerPrefs.SetInt(PlayerPrefsConstant.BestTime + loadLevelManager.LevelName, totalSeconds);
+        // Set asset
+        loadLevelManager.levelDetails.bestHours = inGameTimer.timerManager.hours;
+        loadLevelManager.levelDetails.bestMinutes = inGameTimer.timerManager.minutes;
+        loadLevelManager.levelDetails.bestSeconds = inGameTimer.timerManager.seconds;
     }
 
     private void OnTriggerStay(Collider other)
@@ -87,6 +112,7 @@ public class FinishStage : MonoBehaviour
     /// <returns></returns>
     private IEnumerator CoinAnimation(float waitTime)
     {
+        Debug.Log("Coin animation");
         for(int i = 0; i <= maxCoin; i++)
         {
             coinValue.text = i.ToString();
@@ -100,6 +126,7 @@ public class FinishStage : MonoBehaviour
     /// <returns></returns>
     private IEnumerator StarAnimation()
     {
+        Debug.Log("Star animation");
         for (int i = 0; i < 3; i++)
         {
             starAnimators[i].gameObject.SetActive(true);

@@ -11,14 +11,14 @@ public class LevelDetails : ScriptableObject
     
     // Requirements
     public int sanityRequirement;
-    public int starRequirement;
+    [Range(0, 3)] public int starRequirement;
     
     // Rewards
     public int maxCoin;
-    public int starsTaken;
+    [Range(0, 3)] public int starsTaken;
     
     // Best time
-    public int bestSeconds;
-    public int bestMinutes;
+    [Range(0, 59)] public int bestSeconds;
+    [Range(0, 59)] public int bestMinutes;
     public int bestHours;
 }
