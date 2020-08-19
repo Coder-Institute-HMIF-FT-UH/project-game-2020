@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 public class PasswordManager : MonoBehaviour
 {
+    [SerializeField] private GameObject linkedDoor; //Put the doors that want to get linked with the UI here 
+    [SerializeField] private GameObject passwordUI;
     [SerializeField] private GameObject passwordScreenText;
     [SerializeField] string solution;
     
@@ -37,7 +39,8 @@ public class PasswordManager : MonoBehaviour
     {
         if (password == solution)
         {
-            screenText.text = "Solved";
+            passwordUI.SetActive(false);
+            linkedDoor.SetActive(false);
         }
     }
 
