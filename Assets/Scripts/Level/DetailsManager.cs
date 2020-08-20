@@ -43,4 +43,10 @@ public class DetailsManager : MonoBehaviour
             }
         }
     }
+
+    public void StartLevel(SceneLoader sceneLoader)
+    {
+        if (levelDetails)
+            sceneLoader.LoadScene(levelDetails.sceneName);
+    }
 }

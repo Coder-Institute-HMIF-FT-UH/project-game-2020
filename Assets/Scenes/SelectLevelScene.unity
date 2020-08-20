@@ -933,7 +933,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 614371101}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 709246541}
+        m_MethodName: StartLevel
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 696230034}
+          m_ObjectArgumentAssemblyTypeName: SceneLoader, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &614371101
 MonoBehaviour:
   m_ObjectHideFlags: 0
