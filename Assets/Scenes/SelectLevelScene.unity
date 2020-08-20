@@ -1482,7 +1482,9 @@ MonoBehaviour:
   status: {fileID: 568509214}
   bestTime: {fileID: 709814579}
   sanityRequirement: {fileID: 693539933}
-  starSprite: {fileID: 21300000, guid: 38710f6fe0939f946bf4c4f265170ef2, type: 3}
+  starSprites:
+  - {fileID: 21300000, guid: 44195f42a298f3a42a18aad2cbb85e70, type: 3}
+  - {fileID: 21300000, guid: 38710f6fe0939f946bf4c4f265170ef2, type: 3}
   stars:
   - {fileID: 673643934}
   - {fileID: 1588978578}

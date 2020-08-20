@@ -18,8 +18,8 @@ public class PauseManager : MonoBehaviour
     public void SetStatus()
     {
         stageName.text = $"Stage {loadLevelManager.LevelName}";
-        starsTaken.text = $"Star(s) taken: {PlayerPrefs.GetInt("stars" + loadLevelManager.LevelName)}";
-        batteryText.text = $"Battery: {Math.Round(PlayerPrefs.GetFloat("currentBattery") * 100, 0)}%";
+        starsTaken.text = $"Star(s) taken: {PlayerPrefs.GetInt(PlayerPrefsConstant.StarsTaken + loadLevelManager.LevelName)}";
+        batteryText.text = $"Battery: {Math.Round(PlayerPrefs.GetFloat(PlayerPrefsConstant.CurrentBattery) * 100, 0)}%";
         hintsLeft.text = "Hint(s) left: 3";
     }
     

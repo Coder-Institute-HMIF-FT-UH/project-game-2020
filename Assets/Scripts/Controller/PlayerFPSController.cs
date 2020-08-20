@@ -19,7 +19,7 @@ public class PlayerFPSController : MonoBehaviour
     private void Start()
     {
         // Get prefs stars in currentScene's name
-        starsCount = PlayerPrefs.GetInt("stars" + loadLevelManager.LevelName);
+        starsCount = PlayerPrefs.GetInt(PlayerPrefsConstant.StarsTaken + loadLevelManager.LevelName);
         fps = GetComponent<RigidbodyFirstPersonController>();
     }
 
@@ -43,9 +43,7 @@ public class PlayerFPSController : MonoBehaviour
         starsCount += 1; // Increase starsCount
         
         // Set prefs
-        PlayerPrefs.SetInt("stars" + loadLevelManager.LevelName, starsCount);
-        // Set asset
-        loadLevelManager.levelDetails.starsTaken = starsCount;
+        PlayerPrefs.SetInt(PlayerPrefsConstant.StarsTaken + loadLevelManager.LevelName, starsCount);
         
         Destroy(other.gameObject); // Set star to non-active
             

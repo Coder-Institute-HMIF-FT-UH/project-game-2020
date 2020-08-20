@@ -5,6 +5,8 @@
         TimeOnExitSanity = "TimeOnExit",
         DateMasterSysString = "sysString",
         CurrentSanity = "currentSanity",
-        BestTime = "bestTime",
+        BestTime = "bestTime", // bestTime + levelName
+        StarsTaken = "stars", // stars + levelName
+        IsStageClear = "isClear", // isClear + levelName
         TutorialDone = "tutorialDone";
 }

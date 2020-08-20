@@ -29,8 +29,8 @@ public class FinishStage : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
         inGameTimer.IsFinished = true;
-
-        loadLevelManager.levelDetails.isClear = true;
+        
+        PlayerPrefs.SetInt(PlayerPrefsConstant.IsStageClear + loadLevelManager.LevelName, 1);
         
         finishUiContainer.SetActive(true);
             
@@ -84,10 +84,6 @@ public class FinishStage : MonoBehaviour
     {
         // Set prefs
         PlayerPrefs.SetInt(PlayerPrefsConstant.BestTime + loadLevelManager.LevelName, totalSeconds);
-        // Set asset
-        loadLevelManager.levelDetails.bestHours = inGameTimer.timerManager.hours;
-        loadLevelManager.levelDetails.bestMinutes = inGameTimer.timerManager.minutes;
-        loadLevelManager.levelDetails.bestSeconds = inGameTimer.timerManager.seconds;
     }
 
     private void OnTriggerStay(Collider other)
