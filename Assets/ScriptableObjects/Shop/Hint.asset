@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Hint
   price: 15000
+  itemAdditional: 1
+  itemLogo: {fileID: 21300000, guid: d2b1f5b7feabe8f469fe76240fd401f9, type: 3}
   itemSprite: {fileID: 21300000, guid: cf9e6cba7c5f8ea4d8e95cf1897e9b16, type: 3}
