@@ -7,12 +7,12 @@ public class StarScript : MonoBehaviour
     
     private float speed = 180f;
 
-    private void Start()
-    {
-        // If star is taken, Destroy object
-        if (PlayerPrefs.GetInt("is" + gameObject.name) == 1)
-            Destroy(gameObject);
-    }
+    // private void Start()
+    // {
+    //     // If star is taken, Destroy object
+    //     if (PlayerPrefs.GetInt("is" + gameObject.name) == 1)
+    //         Destroy(gameObject);
+    // }
 
     // Update is called once per frame
     private void Update()
