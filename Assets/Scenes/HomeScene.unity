@@ -1672,6 +1672,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 656814192}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &949716879 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4548966799740438772, guid: 4cac93ebe9981a34b85fa7cf97ff9f55,
+    type: 3}
+  m_PrefabInstance: {fileID: 4548966799490151523}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ede3eaf21d7bbf44b91a6c3089fb67b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &968485093
 GameObject:
   m_ObjectHideFlags: 0
@@ -1871,7 +1883,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1032887419}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1202209589}
+        m_MethodName: BuyItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1032887419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2118,6 +2141,9 @@ MonoBehaviour:
   itemName: {fileID: 1023759699}
   itemPrice: {fileID: 1815859569}
   itemAdditional: {fileID: 1676573780}
+  coinValue: {fileID: 1164733010}
+  warningContainer: {fileID: 949716879}
+  lowCoin: {fileID: 11400000, guid: 779f2b27fe32b6043a73a3aace5bba43, type: 2}
 --- !u!1 &1212931326
 GameObject:
   m_ObjectHideFlags: 0
@@ -3677,6 +3703,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WarningContainer
+      objectReference: {fileID: 0}
+    - target: {fileID: 4548966799740438768, guid: 4cac93ebe9981a34b85fa7cf97ff9f55,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4548966799740438775, guid: 4cac93ebe9981a34b85fa7cf97ff9f55,
         type: 3}

@@ -127,7 +127,7 @@ public class FinishStage : MonoBehaviour
     /// <returns></returns>
     private IEnumerator CoinAnimation(float waitTime)
     {
-        Debug.Log("Coin animation");
+        // Debug.Log("Coin animation");
         for(int i = 0; i <= maxCoin; i++)
         {
             coinValue.text = i.ToString();
@@ -141,7 +141,7 @@ public class FinishStage : MonoBehaviour
     /// <returns></returns>
     private IEnumerator StarAnimation()
     {
-        Debug.Log("Star animation");
+        // Debug.Log("Star animation");
         for (int i = 0; i < 3; i++)
         {
             starAnimators[i].gameObject.SetActive(true);
