@@ -64,13 +64,16 @@ public class FinishStage : MonoBehaviour
 
         // COINS
         // Check coins prefs
-        int currentCoins = 0;
+        long currentCoins = 0;
         if (PlayerPrefs.HasKey(PlayerPrefsConstant.Coins))
         {
-            currentCoins = PlayerPrefs.GetInt(PlayerPrefsConstant.Coins);
+            // Convert string to long
+            currentCoins = Convert.ToInt64(
+                PlayerPrefs.GetString(PlayerPrefsConstant.Coins));
         }
-        PlayerPrefs.SetInt(PlayerPrefsConstant.Coins, currentCoins + maxCoin);
-        Debug.Log("Current Coin: " + PlayerPrefs.GetInt(PlayerPrefsConstant.Coins));
+        // Save long prefs to string
+        PlayerPrefs.SetString(PlayerPrefsConstant.Coins, (currentCoins + maxCoin).ToString());
+        Debug.Log("Current Coin: " + PlayerPrefs.GetString(PlayerPrefsConstant.Coins));
         
         // STARS
         // Set star UI sprites
