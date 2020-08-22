@@ -3664,11 +3664,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: WarningContainer
       objectReference: {fileID: 0}
-    - target: {fileID: 4548966799740438768, guid: 4cac93ebe9981a34b85fa7cf97ff9f55,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4548966799740438775, guid: 4cac93ebe9981a34b85fa7cf97ff9f55,
         type: 3}
       propertyPath: m_LocalPosition.x

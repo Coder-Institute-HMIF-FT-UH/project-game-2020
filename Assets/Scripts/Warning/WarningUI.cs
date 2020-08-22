@@ -12,7 +12,7 @@ public class WarningUI : MonoBehaviour
         if (warningScriptableObject)
         {
             itemHolder.sprite = warningScriptableObject.itemHolder;
-            lowItemText.text = warningScriptableObject.lowItemText;
+            lowItemText.text = $"LOW {warningScriptableObject.lowItemText}";
         }
     }
 }
