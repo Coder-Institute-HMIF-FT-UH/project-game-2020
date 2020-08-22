@@ -33,7 +33,8 @@ public class FinishStage : MonoBehaviour
         PlayerPrefs.SetInt(PlayerPrefsConstant.IsStageClear + loadLevelManager.LevelName, 1);
         
         finishUiContainer.SetActive(true);
-            
+        
+        // BEST TIME
         // Get total seconds after finish level
         int totalSeconds = inGameTimer.timerManager.hours * 3600
                            + inGameTimer.timerManager.minutes * 6
@@ -61,6 +62,17 @@ public class FinishStage : MonoBehaviour
         });
         StartCoroutine(showFinalPanel);
 
+        // COINS
+        // Check coins prefs
+        int currentCoins = 0;
+        if (PlayerPrefs.HasKey(PlayerPrefsConstant.Coins))
+        {
+            currentCoins = PlayerPrefs.GetInt(PlayerPrefsConstant.Coins);
+        }
+        PlayerPrefs.SetInt(PlayerPrefsConstant.Coins, currentCoins + maxCoin);
+        Debug.Log("Current Coin: " + PlayerPrefs.GetInt(PlayerPrefsConstant.Coins));
+        
+        // STARS
         // Set star UI sprites
         switch (PlayerPrefs.GetInt("stars" + loadLevelManager.LevelName))
         {

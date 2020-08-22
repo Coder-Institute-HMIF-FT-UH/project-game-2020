@@ -8,5 +8,6 @@
         BestTime = "bestTime", // bestTime + levelName
         StarsTaken = "stars", // stars + levelName
         IsStageClear = "isClear", // isClear + levelName
-        TutorialDone = "tutorialDone";
+        TutorialDone = "tutorialDone",
+        Coins = "coins";
 }
