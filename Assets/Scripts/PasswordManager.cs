@@ -4,19 +4,41 @@ using UnityEngine.UI;
 public class PasswordManager : MonoBehaviour
 {
     [SerializeField] private GameObject linkedDoor; //Put the doors that want to get linked with the UI here 
-    [SerializeField] private GameObject passwordUI;
+    [SerializeField] private GameObject passwordPanel;
     [SerializeField] private GameObject passwordScreenText;
     [SerializeField] string solution;
     
-    string password = "";
-    int n = 0;
+    private string password = "";
+    private int n = 0;
     private Text screenText;
+    private bool isSolved;
+    private Transform doorTransform;
+    private Collider doorCollider;
+    private Vector3 doorOpenState, doorCloseState;
+    private float distanceTraveled = 0f;
 
     void Start()
     {
         screenText = passwordScreenText.GetComponent<Text>();
+
+        doorCollider = linkedDoor.GetComponent<Collider>();
+        doorTransform = linkedDoor.GetComponent<Transform>();
+        doorCloseState = doorTransform.transform.position;
+        doorOpenState = doorTransform.transform.position + new Vector3(0, 3);
     }
 
+    public void Update()
+    {
+        if (isSolved)
+        {
+            doorCollider.enabled = true;
+            if (distanceTraveled < 1)
+            {
+                doorTransform.transform.position = Vector3.LerpUnclamped(doorCloseState, doorOpenState, distanceTraveled); //Moves the door up
+                distanceTraveled += 0.02f;
+            }
+        }
+    }
     public void Number(string input)
     {
         if (password.Length < solution.Length)
@@ -39,9 +61,14 @@ public class PasswordManager : MonoBehaviour
     {
         if (password == solution)
         {
-            passwordUI.SetActive(false);
-            linkedDoor.SetActive(false);
+            isSolved = true;
+            passwordPanel.SetActive(false);
         }
+    }
+
+    public void Back()
+    {
+        passwordPanel.SetActive(false);
     }
 
     private void ShowPassword()
