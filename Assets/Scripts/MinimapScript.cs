@@ -1,13 +1,14 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class MinimapScript : MonoBehaviour
 {
-    public GameObject star1, star2, star3;
-    private int distanceStar1 = 10000, distanceStar2 = 10000, distanceStar3 = 10000;
-    private bool active1, active2, active3;
-
+    [SerializeField] private GameObject[] hints;
+    [SerializeField] private int[] distanceHint;
+    [SerializeField] private bool[] isHintActive;
+    
     [SerializeField] private Transform player;
     [SerializeField] private Image gps;
     [SerializeField] private int hintLeft = 0;
@@ -35,9 +36,6 @@ public class MinimapScript : MonoBehaviour
     {
         // Take hint left from player prefs
         hintLeft = 3;
-        active1 = false;
-        active2 = false; 
-        active3 = false;
         minimapCamera = GetComponent<Camera>();
     }
 
@@ -69,9 +67,7 @@ public class MinimapScript : MonoBehaviour
                 }
             }
         }
-        catch (ArgumentException)
-        {
-        }
+        catch (ArgumentException) {}
     }
 
 
@@ -95,15 +91,11 @@ public class MinimapScript : MonoBehaviour
         minimapCamera.orthographicSize = Mathf.Clamp(this.GetComponent<Camera>().orthographicSize - increment,
             zoomOutMin, zoomOutMax);
     }
-
-    /// <summary>
-    /// Activate cullingMask with layerName
-    /// </summary>
-    /// <param name="layerName"></param>
-    private void ShowStar(string layerName)
+    
+    private void ShowHintCullingMask(int layer)
     {
-        //// Turn on layer culling mask bit using an OR operation
-        minimapCamera.cullingMask |= 1 << LayerMask.NameToLayer(layerName);
+        // Turn on layer culling mask bit using an OR operation
+        minimapCamera.cullingMask |= 1 << layer;
     }
 
     /// <summary>
@@ -114,72 +106,28 @@ public class MinimapScript : MonoBehaviour
         Debug.Log("Hint pressed");
         hintLeft--;
         DecideStarReveal();
-        // switch (hintLeft)
-        // {
-        //     case 2:
-        //         SwitchStars();
-        //         break;
-        //     case 1:
-        //         SwitchStars();
-        //         break;
-        //     case 0:
-        //         SwitchStars();
-        //         break;
-        //     default:
-        //         hintLeft = 0;
-        //         break;
-        // }
     }
-
-    // private void SwitchStars()
-    // {
-    //     if (starsRevealed > 0)
-    //     {
-    //         ShowStar("Star " + starsRevealed);
-    //         starsRevealed--;
-    //     }
-    //     else
-    //         starsRevealed = 0;
-    //
 
     private void DecideStarReveal()
     {
-        // get stars distance to player if the stars arent destroyed
-        if (star1 != null && active1 == false)
+        // Get stars distance to player if the stars aren't destroyed
+        for (int i = 0; i < hints.Length; i++)
         {
-            distanceStar1 = Mathf.RoundToInt(Vector3.Distance(star1.transform.position, player.position));
-        }
-
-        if (star2 != null && active2 == false)
-        {
-            distanceStar2 = Mathf.RoundToInt(Vector3.Distance(star2.transform.position, player.position));
-        }
-
-        if (star3 != null && active3 == false)
-        {
-            distanceStar3 = Mathf.RoundToInt(Vector3.Distance(star3.transform.position, player.position));
-        }
-
-        // decide which star layer to activate
-        if (distanceStar1 <= distanceStar2 && distanceStar1 <= distanceStar3 && active1 == false)
+            if (hints[i] && !isHintActive[i])
             {
-                distanceStar1 = 10000; //reset the distance
-                active1 = true; //save that 1st star layer is activated
-                ShowStar("Star 1");
+                distanceHint[i] = Mathf.RoundToInt(Vector3.Distance(hints[i].transform.position, player.position));
             }
-        
-        else if (distanceStar2 <= distanceStar3 && active2 == false)
-        {
-            distanceStar2 = 10000; //reset the distance
-            active2 = true;        //save that 1st star layer is activated
-            ShowStar("Star 2");
         }
         
-        else if (active3 == false)
+        // Get the index of lowest distance
+        int minDistanceIndex = Array.IndexOf(distanceHint, distanceHint.Min());
+        int layer = hints[minDistanceIndex].layer; // Get layer
+
+        if (!isHintActive[minDistanceIndex])
         {
-            distanceStar3 = 10000; //reset the distance
-            active3 = true;        //save that 1st star layer is activated
-            ShowStar("Star 3");
+            isHintActive[minDistanceIndex] = true;
+            distanceHint[minDistanceIndex] = 1000;
+            ShowHintCullingMask(layer);
         }
     }
 }
