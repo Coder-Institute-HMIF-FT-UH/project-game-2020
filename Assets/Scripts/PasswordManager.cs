@@ -3,7 +3,8 @@ using UnityEngine.UI;
 
 public class PasswordManager : MonoBehaviour
 {
-    [SerializeField] private GameObject linkedDoor; //Put the doors that want to get linked with the UI here 
+    // Put the doors that want to get linked with the UI here 
+    [SerializeField] private GameObject linkedDoor; 
     [SerializeField] private GameObject passwordPanel;
     [SerializeField] private GameObject passwordScreenText;
     [SerializeField] string solution;
@@ -17,7 +18,7 @@ public class PasswordManager : MonoBehaviour
     private Vector3 doorOpenState, doorCloseState;
     private float distanceTraveled = 0f;
 
-    void Start()
+    private void Start()
     {
         screenText = passwordScreenText.GetComponent<Text>();
 
@@ -27,7 +28,7 @@ public class PasswordManager : MonoBehaviour
         doorOpenState = doorTransform.transform.position + new Vector3(0, 3);
     }
 
-    public void Update()
+    private void Update()
     {
         if (isSolved)
         {
@@ -39,24 +40,37 @@ public class PasswordManager : MonoBehaviour
             }
         }
     }
+    
+    /// <summary>
+    /// Add input number to password
+    /// </summary>
+    /// <param name="input"></param>
     public void Number(string input)
     {
         if (password.Length < solution.Length)
         {
-            password = password.Insert(password.Length, input);//Adds a character to the password string
+            // Add a character to the password string
+            password = password.Insert(password.Length, input);
             ShowPassword();
         }
     }
 
+    /// <summary>
+    /// Delete password
+    /// </summary>
     public void Delete()
     {
         if(password.Length > 0)
         {
-            password = password.Remove(password.Length - 1);//Removes a character in the password string
+            // Remove a character in the password string
+            password = password.Remove(password.Length - 1);
             ShowPassword();
         }
     }
 
+    /// <summary>
+    /// Enter the password and check it
+    /// </summary>
     public void Enter()
     {
         if (password == solution)
@@ -66,13 +80,12 @@ public class PasswordManager : MonoBehaviour
         }
     }
 
-    public void Back()
-    {
-        passwordPanel.SetActive(false);
-    }
-
+    /// <summary>
+    /// Show password
+    /// </summary>
     private void ShowPassword()
     {
-        screenText.text = password;//Changes the text into the current password string
+        // Change the text into the current password string
+        screenText.text = password;
     }
 }
