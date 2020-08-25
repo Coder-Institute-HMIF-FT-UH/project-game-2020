@@ -56,7 +56,6 @@ public class FloorButtonScript : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player") || other.CompareTag("Item")) return;
-        Debug.Log("tidak ada apa");
         buttonPressed = false;
     }
 }
