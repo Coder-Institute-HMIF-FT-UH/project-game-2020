@@ -5,7 +5,8 @@ public class ShopScriptableObject : ScriptableObject
 {
     public string itemName;
     public int price;
-    public int itemAdditional;
+    public int[] additionalItem;
     public Sprite itemLogo;
-    public Sprite itemSprite;
+    public Sprite[] additionalItemLogo;
+    public Sprite itemBanner;
 }

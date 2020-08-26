@@ -6,13 +6,14 @@ using UnityEngine.UI;
 public class ConfirmUI : MonoBehaviour
 {
     public ShopScriptableObject shopScriptableObject;
+
     [SerializeField] private Image itemLogo,
-        itemShadowLogo,
-        itemAdditionalLogo;
+        itemShadowLogo;
+    [SerializeField] private Image[] itemAdditionalLogo;
     [SerializeField] private Text itemName,
         itemPrice,
-        itemAdditional,
         coinValue;
+    [SerializeField] private Text[] additionalItem;
     [SerializeField] private WarningUI warningContainer;
     [SerializeField] private WarningScriptableObject lowCoin;
 
@@ -25,10 +26,14 @@ public class ConfirmUI : MonoBehaviour
     {
         if(shopScriptableObject)
         {
-            itemLogo.sprite = itemShadowLogo.sprite = itemAdditionalLogo.sprite = shopScriptableObject.itemLogo;
+            itemLogo.sprite = itemShadowLogo.sprite = shopScriptableObject.itemLogo;
+            for(int i = 0; i < shopScriptableObject.additionalItemLogo.Length; i++)
+            {
+                itemAdditionalLogo[i].sprite = shopScriptableObject.additionalItemLogo[i];
+                additionalItem[i].text = $"{shopScriptableObject.additionalItem[i]} x";
+            }
             itemName.text = shopScriptableObject.itemName;
             itemPrice.text = $"{shopScriptableObject.price:N0}";
-            itemAdditional.text = $"{shopScriptableObject.itemAdditional} x";
         }
     }
 
