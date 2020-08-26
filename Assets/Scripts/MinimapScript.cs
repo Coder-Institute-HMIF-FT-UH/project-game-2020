@@ -12,7 +12,6 @@ public class MinimapScript : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private Image gps;
     [SerializeField] private int hintLeft = 0;
-    [SerializeField] private int starsRevealed = 4;
 
     private Camera minimapCamera;
     private Touch touchZero, touchOne;
@@ -20,22 +19,10 @@ public class MinimapScript : MonoBehaviour
     private float zoomOutMin = 3,
         zoomOutMax = 6;
 
-    public int HintLeft
-    {
-        get => hintLeft;
-        set => hintLeft = value;
-    }
-
-    public int StarsRevealed
-    {
-        get => starsRevealed;
-        set => starsRevealed = value;
-    }
-
     private void Start()
     {
         // Take hint left from player prefs
-        hintLeft = 4;
+        hintLeft = 3;
         minimapCamera = GetComponent<Camera>();
     }
 
@@ -103,7 +90,7 @@ public class MinimapScript : MonoBehaviour
     /// </summary>
     public void ShowHints()
     {
-        Debug.Log("Hint pressed");
+        if (hintLeft <= 0) return;
         hintLeft--;
         DecideStarReveal();
     }
