@@ -12,7 +12,7 @@ public class MinimapScript : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private Image gps;
     [SerializeField] private int hintLeft = 0;
-    [SerializeField] private int starsRevealed = 3;
+    [SerializeField] private int starsRevealed = 4;
 
     private Camera minimapCamera;
     private Touch touchZero, touchOne;
@@ -35,7 +35,7 @@ public class MinimapScript : MonoBehaviour
     private void Start()
     {
         // Take hint left from player prefs
-        hintLeft = 3;
+        hintLeft = 4;
         minimapCamera = GetComponent<Camera>();
     }
 
