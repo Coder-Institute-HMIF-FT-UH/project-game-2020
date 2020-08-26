@@ -1,15 +1,14 @@
 ﻿using UnityEngine;
 
-public class MovingPlatformScript : MonoBehaviour
+public class MainPlatformScript : MonoBehaviour
 {
-    [SerializeField] private Vector3 travelDistance;
+    [SerializeField] public Vector3 travelDistance;
     [SerializeField] private float platformSpeed;
 
-    private Vector3[] platformPosition = new Vector3[2];    // [0] : starting position
-                                                            // [1] : end position
+    public Vector3[] platformPosition = new Vector3[2];    // [0] : starting position                                                        // [1] : end position
     private int currentDestination = 1;
     
-    private void Start()
+    private void Awake()
     {
         // Puts the platform on the starting  position
         platformPosition[0] = transform.position;
