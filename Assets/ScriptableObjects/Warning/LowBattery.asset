@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: LowBattery
   m_EditorClassIdentifier: 
   lowItemText: Battery
-  itemHolder: {fileID: 21300000, guid: 970c08883870e1347a82a9104a0bd058, type: 3}
+  itemHolder: {fileID: 21300000, guid: f338a056a8e368848ae2f2cfdad27dcf, type: 3}

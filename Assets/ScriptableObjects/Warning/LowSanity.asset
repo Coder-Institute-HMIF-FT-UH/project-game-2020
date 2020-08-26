@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: LowSanity
   m_EditorClassIdentifier: 
   lowItemText: Sanity
-  itemHolder: {fileID: 21300000, guid: 3d39883ac9777b945bac2fdd9d447cd5, type: 3}
+  itemHolder: {fileID: 21300000, guid: baa4ba10a0ab67e40a8d5107f2ee385c, type: 3}
