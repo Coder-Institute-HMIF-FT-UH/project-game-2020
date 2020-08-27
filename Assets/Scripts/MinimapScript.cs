@@ -16,6 +16,7 @@ public class MinimapScript : MonoBehaviour
     private Camera minimapCamera;
     private Touch touchZero, touchOne;
 
+    private int maxDistance = 1000;
     private float zoomOutMin = 3,
         zoomOutMax = 6;
 
@@ -104,16 +105,20 @@ public class MinimapScript : MonoBehaviour
             {
                 distanceHint[i] = Mathf.RoundToInt(Vector3.Distance(hints[i].transform.position, player.position));
             }
+            else // If hint is null, ...
+            {
+                distanceHint[i] = maxDistance;
+            }
         }
         
         // Get the index of lowest distance
         int minDistanceIndex = Array.IndexOf(distanceHint, distanceHint.Min());
         int layer = hints[minDistanceIndex].layer; // Get layer
-
+        
         if (!isHintActive[minDistanceIndex])
         {
             isHintActive[minDistanceIndex] = true;
-            distanceHint[minDistanceIndex] = 1000;
+            distanceHint[minDistanceIndex] = maxDistance;
             ShowHintCullingMask(layer);
         }
     }

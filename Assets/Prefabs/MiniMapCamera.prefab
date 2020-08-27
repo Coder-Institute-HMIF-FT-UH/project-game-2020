@@ -63,7 +63,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4352
+    m_Bits: 8448
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: ec9a47bc643d39d46be3c0249c02cadb, type: 2}
   m_TargetDisplay: 0
@@ -87,7 +87,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3471c1a9f27ab2248acfc25728152782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  distanceHint: 00000000000000000000000000000000
+  isHintActive: 
   player: {fileID: 0}
   gps: {fileID: 0}
   hintLeft: 0
-  starsRevealed: 3
