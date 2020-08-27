@@ -6,6 +6,7 @@ public class Crosshair : MonoBehaviour
     [SerializeField] private float maxDistance = 5f;
     [SerializeField] private Transform itemHolder;
     [SerializeField] private FixedButton pickUpBtn;
+    [SerializeField] private GameObject passwordPanel;
     
     private bool pickUpAllowed = true, isPickingUp;
     private Camera mainCamera;
@@ -35,6 +36,10 @@ public class Crosshair : MonoBehaviour
                 crosshairImage.color = Color.blue;
                 itemTransform = hit.transform;
                 itemRigidbody = hit.rigidbody;
+            }
+            else if(hit.transform.CompareTag("Door") && pickUpBtn.pressed)
+            {
+                passwordPanel.SetActive(true);
             }
             else
             {
