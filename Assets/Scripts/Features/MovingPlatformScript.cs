@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class MovingPlatformScript : MonoBehaviour
 {
-    // Index 0 will be starting position
-    // Index 1 will be finish position
+    [Tooltip("Set 2 indexes.\n0 is starting position.\n1 is finish one.")]
     [SerializeField] private Vector3[] platformPositions;
     [SerializeField] private float platformSpeed;
     private int currentDestination = 1;
-    private enum SameAxis { XAxis, YAxis, ZAxis };
-    // Set which axis will move
+    
+    private enum SameAxis { XAxis, YAxis, ZAxis }
+    [Tooltip("Set which axis will move")]
     [SerializeField] private SameAxis moveAxis;
     
     private void Awake()
