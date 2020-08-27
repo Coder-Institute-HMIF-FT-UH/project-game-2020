@@ -1,30 +1,23 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class MinimapScript : MonoBehaviour
 {
+    [SerializeField] private GameObject[] hints;
+    [SerializeField] private int[] distanceHint;
+    [SerializeField] private bool[] isHintActive;
+    
     [SerializeField] private Transform player;
     [SerializeField] private Image gps;
     [SerializeField] private int hintLeft = 0;
-    [SerializeField] private int starsRevealed = 3;
-    
+
     private Camera minimapCamera;
     private Touch touchZero, touchOne;
+
     private float zoomOutMin = 3,
         zoomOutMax = 6;
-
-    public int HintLeft
-    {
-        get => hintLeft;
-        set => hintLeft = value;
-    }
-
-    public int StarsRevealed
-    {
-        get => starsRevealed;
-        set => starsRevealed = value;
-    }
 
     private void Start()
     {
@@ -60,7 +53,8 @@ public class MinimapScript : MonoBehaviour
                     Zoom(difference * 0.01f);
                 }
             }
-        } catch(ArgumentException){}
+        }
+        catch (ArgumentException) {}
     }
 
 
@@ -70,58 +64,57 @@ public class MinimapScript : MonoBehaviour
         Vector3 newPosition = player.position;
         newPosition.y = transform.position.y;
         transform.position = newPosition;
-        
+
         // Minimap follow Player's rotation.y
         transform.rotation = Quaternion.Euler(90f, player.eulerAngles.y, 0f);
     }
-    
+
     /// <summary>
     /// Zoom mini map
     /// </summary>
     /// <param name="increment"></param>
-    private void Zoom(float increment){
-        minimapCamera.orthographicSize = Mathf.Clamp(this.GetComponent<Camera>().orthographicSize - increment, zoomOutMin, zoomOutMax);
-    }
-
-    /// <summary>
-    /// Activate cullingMask with layerName
-    /// </summary>
-    /// <param name="layerName"></param>
-    private void ShowStar(string layerName) {
-        minimapCamera.cullingMask |= 1 << LayerMask.NameToLayer(layerName);
+    private void Zoom(float increment)
+    {
+        minimapCamera.orthographicSize = Mathf.Clamp(this.GetComponent<Camera>().orthographicSize - increment,
+            zoomOutMin, zoomOutMax);
     }
     
+    private void ShowHintCullingMask(int layer)
+    {
+        // Turn on layer culling mask bit using an OR operation
+        minimapCamera.cullingMask |= 1 << layer;
+    }
+
     /// <summary>
     /// Show hints
     /// </summary>
-    public void ShowHints(){
-        hintLeft--;
-
-        switch (hintLeft)
-        {
-            case 2:
-                SwitchStars();
-                break;
-            case 1:
-                SwitchStars();
-                break;
-            case 0:
-                SwitchStars();
-                break;
-            default:
-                hintLeft = 0;
-                break;
-        }
-    }
-    
-    private void SwitchStars()
+    public void ShowHints()
     {
-        if (starsRevealed > 0)
+        if (hintLeft <= 0) return;
+        hintLeft--;
+        DecideStarReveal();
+    }
+
+    private void DecideStarReveal()
+    {
+        // Get stars distance to player if the stars aren't destroyed
+        for (int i = 0; i < hints.Length; i++)
         {
-            ShowStar("Star " + starsRevealed);
-            starsRevealed--;
+            if (hints[i] && !isHintActive[i])
+            {
+                distanceHint[i] = Mathf.RoundToInt(Vector3.Distance(hints[i].transform.position, player.position));
+            }
         }
-        else
-            starsRevealed = 0;
+        
+        // Get the index of lowest distance
+        int minDistanceIndex = Array.IndexOf(distanceHint, distanceHint.Min());
+        int layer = hints[minDistanceIndex].layer; // Get layer
+
+        if (!isHintActive[minDistanceIndex])
+        {
+            isHintActive[minDistanceIndex] = true;
+            distanceHint[minDistanceIndex] = 1000;
+            ShowHintCullingMask(layer);
+        }
     }
 }
