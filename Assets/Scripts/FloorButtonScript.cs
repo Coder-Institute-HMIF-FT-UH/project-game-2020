@@ -2,7 +2,7 @@
 
 public class FloorButtonScript : MonoBehaviour
 {
-    // Put the doors that want to get linked with the button here 
+    [Tooltip("Select the door that linked with this button.")] 
     [SerializeField] private GameObject linkedDoor; 
 
     private Transform doorTransform;
@@ -55,7 +55,7 @@ public class FloorButtonScript : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player") || other.CompareTag("Item")) return;
+        // if (other.CompareTag("Player") || other.CompareTag("Item")) return;
         buttonPressed = false;
     }
 }
