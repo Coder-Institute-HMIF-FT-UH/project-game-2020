@@ -13,8 +13,14 @@ MonoBehaviour:
   m_Name: BatteryHint
   m_EditorClassIdentifier: 
   itemName: Battery and Hint
+  itemPrefsName:
+  - currentBattery
+  - currentSanity
+  prefsType: 0000000001000000
   price: 25000
-  additionalItem: 0f00000001000000
+  additionalItem:
+  - 15
+  - 1
   itemLogo: {fileID: 21300000, guid: f966cf3293cb09247ac5c719bb33e703, type: 3}
   additionalItemLogo:
   - {fileID: 21300000, guid: f338a056a8e368848ae2f2cfdad27dcf, type: 3}

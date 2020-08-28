@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: Battery
   m_EditorClassIdentifier: 
   itemName: Battery
+  itemPrefsName:
+  - currentBattery
+  prefsType: 00000000
   price: 10000
-  additionalItem: 0a000000
+  additionalItem:
+  - 10
   itemLogo: {fileID: 21300000, guid: f338a056a8e368848ae2f2cfdad27dcf, type: 3}
   additionalItemLogo:
   - {fileID: 21300000, guid: f338a056a8e368848ae2f2cfdad27dcf, type: 3}

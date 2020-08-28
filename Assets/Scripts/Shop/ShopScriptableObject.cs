@@ -4,8 +4,17 @@
 public class ShopScriptableObject : ScriptableObject
 {
     public string itemName;
+    // Prefs
+    public enum PrefsType
+    {
+        SetFloat,
+        SetInt
+    }
+    public string[] itemPrefsName;
+    public PrefsType[] prefsType;
+
     public int price;
-    public int[] additionalItem;
+    public float[] additionalItem;
     public Sprite itemLogo;
     public Sprite[] additionalItemLogo;
     public Sprite itemBanner;

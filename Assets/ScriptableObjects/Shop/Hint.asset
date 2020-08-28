@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: Hint
   m_EditorClassIdentifier: 
   itemName: Hint
+  itemPrefsName:
+  - currentSanity
+  prefsType: 01000000
   price: 15000
-  additionalItem: 01000000
+  additionalItem:
+  - 1
   itemLogo: {fileID: 21300000, guid: 5d75a84ce67a1d541ac3da249b3ad7d7, type: 3}
   additionalItemLogo:
   - {fileID: 21300000, guid: 5d75a84ce67a1d541ac3da249b3ad7d7, type: 3}

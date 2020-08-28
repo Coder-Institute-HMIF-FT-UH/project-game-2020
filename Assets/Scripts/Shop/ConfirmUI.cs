@@ -16,7 +16,7 @@ public class ConfirmUI : MonoBehaviour
     [SerializeField] private Text[] additionalItem;
     [SerializeField] private WarningUI warningContainer;
     [SerializeField] private WarningScriptableObject lowCoin;
-
+    
     private long currentCoin;
     
     /// <summary>
@@ -49,6 +49,33 @@ public class ConfirmUI : MonoBehaviour
         if(currentCoin >= shopScriptableObject.price)
         {
             StartCoroutine(CoinAnimation(0.005f));
+            // Add item
+            for (int i = 0; i < shopScriptableObject.itemPrefsName.Length; i++)
+            {
+                switch (shopScriptableObject.prefsType[i])
+                {
+                    case ShopScriptableObject.PrefsType.SetFloat:
+                    {
+                        float currentItem = PlayerPrefs.GetFloat(shopScriptableObject.itemPrefsName[i]); 
+                        Debug.Log("Current Item: " + currentItem);
+                        PlayerPrefs.SetFloat(shopScriptableObject.itemPrefsName[i],
+                            currentItem + shopScriptableObject.additionalItem[i] / 100);
+                        Debug.Log("Buy: " + PlayerPrefs.GetFloat(shopScriptableObject.itemPrefsName[i]));
+                        break;
+                    }
+                    case ShopScriptableObject.PrefsType.SetInt:
+                    {
+                        int currentItem = PlayerPrefs.GetInt(shopScriptableObject.itemPrefsName[i]); 
+                        Debug.Log("Current Item: " + currentItem);
+                        PlayerPrefs.SetInt(shopScriptableObject.itemPrefsName[i],
+                            currentItem + (int) shopScriptableObject.additionalItem[i]);
+                        Debug.Log("Buy: " + PlayerPrefs.GetInt(shopScriptableObject.itemPrefsName[i]));
+                        break;
+                    }
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
         }
         else // else
         {

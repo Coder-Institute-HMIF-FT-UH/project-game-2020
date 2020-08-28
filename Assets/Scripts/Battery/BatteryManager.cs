@@ -54,8 +54,10 @@ public class BatteryManager : MonoBehaviour
             // If currentBattery isn't equal to PlayerPrefs, ...
             if (currentBattery != PlayerPrefs.GetFloat(PlayerPrefsConstant.CurrentBattery))
             {
+                Debug.Log("Change");
+                currentBattery = PlayerPrefs.GetFloat(PlayerPrefsConstant.CurrentBattery);
                 // Set new currentBattery to PlayerPrefs
-                PlayerPrefs.SetFloat(PlayerPrefsConstant.CurrentBattery, currentBattery);
+                // PlayerPrefs.SetFloat(PlayerPrefsConstant.CurrentBattery, currentBattery);
             }
             
             UpdateBatteryUi(); // Update UI
