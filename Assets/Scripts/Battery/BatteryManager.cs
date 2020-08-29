@@ -118,10 +118,18 @@ public class BatteryManager : MonoBehaviour
                                   (timerManager.defaultStartMinutes - timerManager.minutes));
         int hours = totalMinutes / 60;
         
-        string fullBatteriesText = hours > 0 ?
-            $"Full Batteries in {hours} : {totalMinutes - hours * 60:00} : " + $"{timerManager.seconds:00}" : 
-            $"Full Batteries in {totalMinutes} : {timerManager.seconds:00}";
+        string fullBatteriesText = hours > 0
+            ? $"Full Batteries in {hours} : {totalMinutes - hours * 60:00} : " + $"{timerManager.seconds:00}"
+            : $"Full Batteries in {totalMinutes} : {timerManager.seconds:00}";
 
         fullBatteriesTimeRemainingText.text = fullBatteriesText;
+    }
+    
+    /// <summary>
+    /// Just for testing
+    /// </summary>
+    public void MinusBattery()
+    {
+        currentBattery -= 0.5f;
     }
 }

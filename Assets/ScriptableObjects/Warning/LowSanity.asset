@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3454d62781901294a8b5ad145e763add, type: 3}
   m_Name: LowSanity
   m_EditorClassIdentifier: 
-  lowItemText: Sanity
+  lowItemText: Low Sanity
   itemHolder: {fileID: 21300000, guid: baa4ba10a0ab67e40a8d5107f2ee385c, type: 3}

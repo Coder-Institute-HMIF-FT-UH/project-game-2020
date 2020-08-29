@@ -16,7 +16,8 @@ public class ConfirmUI : MonoBehaviour
     [SerializeField] private Text[] additionalItem;
     [SerializeField] private WarningUI warningContainer;
     [SerializeField] private WarningScriptableObject lowCoin;
-    
+
+    private bool isItemFull; 
     private long currentCoin;
     
     /// <summary>
@@ -42,13 +43,14 @@ public class ConfirmUI : MonoBehaviour
     /// </summary>
     public void BuyItem()
     {
+        isItemFull = false;
+        
         if (!shopScriptableObject) return;
         currentCoin = Convert.ToInt64(PlayerPrefs.GetString(PlayerPrefsConstant.Coins));
         
-        // if current coin is greater or equals to price, buy it
+        // if current coin is greater or equals to price, ...
         if(currentCoin >= shopScriptableObject.price)
         {
-            StartCoroutine(CoinAnimation(0.005f));
             // Add item
             for (int i = 0; i < shopScriptableObject.itemPrefsName.Length; i++)
             {
@@ -58,33 +60,97 @@ public class ConfirmUI : MonoBehaviour
                     {
                         float currentItem = PlayerPrefs.GetFloat(shopScriptableObject.itemPrefsName[i]); 
                         Debug.Log("Current Item: " + currentItem);
-                        PlayerPrefs.SetFloat(shopScriptableObject.itemPrefsName[i],
-                            currentItem + shopScriptableObject.additionalItem[i] / 100);
-                        Debug.Log("Buy: " + PlayerPrefs.GetFloat(shopScriptableObject.itemPrefsName[i]));
+                        
+                        // If item is not full, buy it 
+                        if (!IsItemFull(currentItem, shopScriptableObject.maxItem[i]) && !isItemFull)
+                        {
+                            PlayerPrefs.SetFloat(shopScriptableObject.itemPrefsName[i],
+                                currentItem + shopScriptableObject.additionalItem[i] / 100);
+                            Debug.Log("Buy: " + PlayerPrefs.GetFloat(shopScriptableObject.itemPrefsName[i]));
+                        }
+                        else
+                        {
+                            isItemFull = true;
+                            SetWarning(shopScriptableObject.warning[i]);
+                        }
+                        
                         break;
                     }
                     case ShopScriptableObject.PrefsType.SetInt:
                     {
                         int currentItem = PlayerPrefs.GetInt(shopScriptableObject.itemPrefsName[i]); 
                         Debug.Log("Current Item: " + currentItem);
-                        PlayerPrefs.SetInt(shopScriptableObject.itemPrefsName[i],
-                            currentItem + (int) shopScriptableObject.additionalItem[i]);
-                        Debug.Log("Buy: " + PlayerPrefs.GetInt(shopScriptableObject.itemPrefsName[i]));
+                        
+                        // If item is not full, buy it
+                        if (!IsItemFull(currentItem, shopScriptableObject.maxItem[i]) && !isItemFull)
+                        {
+                            PlayerPrefs.SetInt(shopScriptableObject.itemPrefsName[i],
+                                currentItem + (int) shopScriptableObject.additionalItem[i]);
+                            Debug.Log("Buy: " + PlayerPrefs.GetInt(shopScriptableObject.itemPrefsName[i]));
+                        }
+                        else
+                        {
+                            isItemFull = true;
+                            SetWarning(shopScriptableObject.warning[i]);
+                        }
+                        
                         break;
                     }
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
             }
+            
+            // If item is not full, minus coin
+            if(!isItemFull)
+            {
+                StartCoroutine(CoinAnimation(0.005f));
+            }
         }
         else // else
         {
-            warningContainer.warningScriptableObject = lowCoin;
-            warningContainer.gameObject.SetActive(true); 
-            warningContainer.SetWarningUI(); // Warning
+            SetWarning(lowCoin);
         }
     }
 
+    /// <summary>
+    /// Set warning
+    /// </summary>
+    /// <param name="warning"></param>
+    private void SetWarning(WarningScriptableObject warning)
+    {
+        warningContainer.warningScriptableObject = warning;
+        warningContainer.gameObject.SetActive(true); 
+        warningContainer.SetWarningUI(); // Warning
+    }
+
+    /// <summary>
+    /// Check if item is full
+    /// </summary>
+    /// <param name="currentItem"></param>
+    /// <param name="maxItem"></param>
+    /// <returns></returns>
+    private bool IsItemFull(float currentItem, float maxItem)
+    {
+        return currentItem >= maxItem;
+    }
+
+    /// <summary>
+    /// Check if item is full
+    /// </summary>
+    /// <param name="currentItem"></param>
+    /// <param name="maxItem"></param>
+    /// <returns></returns>
+    private bool IsItemFull(int currentItem, int maxItem)
+    {
+        return currentItem >= maxItem;
+    }
+    
+    /// <summary>
+    /// Play coin animation and minus coin
+    /// </summary>
+    /// <param name="waitTime"></param>
+    /// <returns></returns>
     private IEnumerator CoinAnimation(float waitTime)
     {
         // Decrease animation by 1000

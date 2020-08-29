@@ -33,6 +33,7 @@ public class HintManager : MonoBehaviour
         if (currentHint != PlayerPrefs.GetInt(PlayerPrefsConstant.CurrentHint))
         {
             currentHint = PlayerPrefs.GetInt(PlayerPrefsConstant.CurrentHint);
+            // PlayerPrefs.SetFloat(PlayerPrefsConstant.CurrentHint, currentHint);
             UpdateHintUI(currentHint);
         }
     }
@@ -44,5 +45,13 @@ public class HintManager : MonoBehaviour
     public void UpdateHintUI(int currentHint)
     {
         hintText.text = $"{currentHint} / {maxHint}"; 
+    }
+    
+    /// <summary>
+    /// Just for testing
+    /// </summary>
+    public void MinusHint()
+    {
+        currentHint -= 2;
     }
 }

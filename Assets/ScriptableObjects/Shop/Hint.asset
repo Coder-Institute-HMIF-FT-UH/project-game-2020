@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: Hint
   m_EditorClassIdentifier: 
   itemName: Hint
+  warning:
+  - {fileID: 11400000, guid: 14dd061041ee7834aa39b2d223e6ee26, type: 2}
   itemPrefsName:
-  - currentSanity
+  - currentHint
   prefsType: 01000000
   price: 15000
+  maxItem: 03000000
   additionalItem:
   - 1
   itemLogo: {fileID: 21300000, guid: 5d75a84ce67a1d541ac3da249b3ad7d7, type: 3}

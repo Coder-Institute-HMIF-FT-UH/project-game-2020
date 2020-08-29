@@ -13,11 +13,15 @@ MonoBehaviour:
   m_Name: BatteryHint
   m_EditorClassIdentifier: 
   itemName: Battery and Hint
+  warning:
+  - {fileID: 11400000, guid: 3249e5d992f47434aa0a7b83609a2482, type: 2}
+  - {fileID: 11400000, guid: 14dd061041ee7834aa39b2d223e6ee26, type: 2}
   itemPrefsName:
   - currentBattery
-  - currentSanity
+  - currentHint
   prefsType: 0000000001000000
   price: 25000
+  maxItem: 0100000003000000
   additionalItem:
   - 15
   - 1
