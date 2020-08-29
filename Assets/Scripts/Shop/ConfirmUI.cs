@@ -47,57 +47,112 @@ public class ConfirmUI : MonoBehaviour
         
         if (!shopScriptableObject) return;
         currentCoin = Convert.ToInt64(PlayerPrefs.GetString(PlayerPrefsConstant.Coins));
-        
+
         // if current coin is greater or equals to price, ...
         if(currentCoin >= shopScriptableObject.price)
         {
-            // Add item
-            for (int i = 0; i < shopScriptableObject.itemPrefsName.Length; i++)
+            float currentItemValue;
+            
+            // If item that wanted to be bought equals to 1, ...
+            if (shopScriptableObject.itemPrefsName.Length == 1)
             {
-                switch (shopScriptableObject.prefsType[i])
+                switch (shopScriptableObject.prefsType[0])
                 {
                     case ShopScriptableObject.PrefsType.SetFloat:
-                    {
-                        float currentItem = PlayerPrefs.GetFloat(shopScriptableObject.itemPrefsName[i]); 
-                        Debug.Log("Current Item: " + currentItem);
-                        
-                        // If item is not full, buy it 
-                        if (!IsItemFull(currentItem, shopScriptableObject.maxItem[i]) && !isItemFull)
-                        {
-                            PlayerPrefs.SetFloat(shopScriptableObject.itemPrefsName[i],
-                                currentItem + shopScriptableObject.additionalItem[i] / 100);
-                            Debug.Log("Buy: " + PlayerPrefs.GetFloat(shopScriptableObject.itemPrefsName[i]));
-                        }
-                        else
-                        {
-                            isItemFull = true;
-                            SetWarning(shopScriptableObject.warning[i]);
-                        }
-                        
-                        break;
-                    }
-                    case ShopScriptableObject.PrefsType.SetInt:
-                    {
-                        int currentItem = PlayerPrefs.GetInt(shopScriptableObject.itemPrefsName[i]); 
-                        Debug.Log("Current Item: " + currentItem);
+                        // Get currentItemValue
+                        currentItemValue = PlayerPrefs.GetFloat(shopScriptableObject.itemPrefsName[0]);
+                        Debug.Log("Current item: " + currentItemValue);
                         
                         // If item is not full, buy it
-                        if (!IsItemFull(currentItem, shopScriptableObject.maxItem[i]) && !isItemFull)
+                        if(!IsItemFull(currentItemValue, shopScriptableObject.maxItem[0]))
                         {
-                            PlayerPrefs.SetInt(shopScriptableObject.itemPrefsName[i],
-                                currentItem + (int) shopScriptableObject.additionalItem[i]);
-                            Debug.Log("Buy: " + PlayerPrefs.GetInt(shopScriptableObject.itemPrefsName[i]));
+                            // Additional item is divided by 100
+                            // because battery is float type.
+                            PlayerPrefs.SetFloat(shopScriptableObject.itemPrefsName[0],
+                                currentItemValue + shopScriptableObject.additionalItem[0] / 100);
                         }
+                        // If item is full, ...
                         else
                         {
                             isItemFull = true;
-                            SetWarning(shopScriptableObject.warning[i]);
+                            SetWarning(shopScriptableObject.warning[0]);
                         }
                         
                         break;
-                    }
+                    
+                    case ShopScriptableObject.PrefsType.SetInt:
+                        // Get currentItemValue
+                        currentItemValue = PlayerPrefs.GetInt(shopScriptableObject.itemPrefsName[0]);
+                        Debug.Log("Current item: " + currentItemValue);
+                        
+                        // If item is not full, buy it
+                        if (!IsItemFull(currentItemValue, shopScriptableObject.maxItem[0]))
+                        {
+                            PlayerPrefs.SetInt(shopScriptableObject.itemPrefsName[0],
+                                (int) (currentItemValue + shopScriptableObject.additionalItem[0]));
+                        }
+                        // If item is full, ...
+                        else
+                        {
+                            isItemFull = true;
+                            SetWarning(shopScriptableObject.warning[0]);
+                        }
+                        
+                        break;
+
                     default:
                         throw new ArgumentOutOfRangeException();
+                }
+            }
+            // If item that wanted to be bought is more than 1, ...
+            else if (shopScriptableObject.itemPrefsName.Length > 1)
+            {
+                // Check if item is full
+                for (int i = 0; i < shopScriptableObject.itemPrefsName.Length; i++)
+                {
+                    switch (shopScriptableObject.prefsType[i])
+                    {
+                        case ShopScriptableObject.PrefsType.SetFloat:
+                            currentItemValue = PlayerPrefs.GetFloat(shopScriptableObject.itemPrefsName[i]);
+                            break;
+                        case ShopScriptableObject.PrefsType.SetInt:
+                            currentItemValue = PlayerPrefs.GetInt(shopScriptableObject.itemPrefsName[i]);
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+
+                    if (IsItemFull(currentItemValue, shopScriptableObject.maxItem[i]))
+                    {
+                        isItemFull = true;
+                        SetWarning(shopScriptableObject.warning[i]);
+                        return;
+                    }
+                }
+                
+                // Buy item
+                for (int i = 0; i < shopScriptableObject.itemPrefsName.Length; i++)
+                {
+                    switch (shopScriptableObject.prefsType[i])
+                    {
+                        case ShopScriptableObject.PrefsType.SetFloat:
+                            currentItemValue = PlayerPrefs.GetFloat(shopScriptableObject.itemPrefsName[i]);
+                            // Additional item is divided by 100
+                            // because battery is float type.
+                            PlayerPrefs.SetFloat(shopScriptableObject.itemPrefsName[i],
+                                currentItemValue + shopScriptableObject.additionalItem[i] / 100);
+                            break;
+
+                        case ShopScriptableObject.PrefsType.SetInt:
+                            currentItemValue = PlayerPrefs.GetInt(shopScriptableObject.itemPrefsName[i]);
+
+                            PlayerPrefs.SetInt(shopScriptableObject.itemPrefsName[i],
+                                (int) (currentItemValue + shopScriptableObject.additionalItem[i]));
+                            break;
+
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
                 }
             }
             

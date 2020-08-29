@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class HintManager : MonoBehaviour
@@ -13,6 +12,7 @@ public class HintManager : MonoBehaviour
 
     private void Start()
     {
+        // PlayerPrefs.DeleteKey(PlayerPrefsConstant.CurrentHint);
         // Check currentHint prefs
         if(PlayerPrefs.HasKey(PlayerPrefsConstant.CurrentHint))
         {
@@ -34,15 +34,14 @@ public class HintManager : MonoBehaviour
         {
             currentHint = PlayerPrefs.GetInt(PlayerPrefsConstant.CurrentHint);
             // PlayerPrefs.SetFloat(PlayerPrefsConstant.CurrentHint, currentHint);
-            UpdateHintUI(currentHint);
+            UpdateHintUi();
         }
     }
 
     /// <summary>
     /// Update Hint UI
     /// </summary>
-    /// <param name="currentHint"></param>
-    public void UpdateHintUI(int currentHint)
+    private void UpdateHintUi()
     {
         hintText.text = $"{currentHint} / {maxHint}"; 
     }
@@ -52,6 +51,6 @@ public class HintManager : MonoBehaviour
     /// </summary>
     public void MinusHint()
     {
-        currentHint -= 2;
+        PlayerPrefs.SetInt(PlayerPrefsConstant.CurrentHint, 1);
     }
 }

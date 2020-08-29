@@ -54,9 +54,9 @@ public class BatteryManager : MonoBehaviour
             // If currentBattery isn't equal to PlayerPrefs, ...
             if (currentBattery != PlayerPrefs.GetFloat(PlayerPrefsConstant.CurrentBattery))
             {
-                Debug.Log("Change");
                 currentBattery = PlayerPrefs.GetFloat(PlayerPrefsConstant.CurrentBattery);
                 // Set new currentBattery to PlayerPrefs
+                // Debug.Log("Change");
                 // PlayerPrefs.SetFloat(PlayerPrefsConstant.CurrentBattery, currentBattery);
             }
             
@@ -131,5 +131,6 @@ public class BatteryManager : MonoBehaviour
     public void MinusBattery()
     {
         currentBattery -= 0.5f;
+        PlayerPrefs.SetFloat(PlayerPrefsConstant.CurrentBattery, currentBattery);
     }
 }
