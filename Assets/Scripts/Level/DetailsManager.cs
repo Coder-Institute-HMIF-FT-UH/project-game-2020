@@ -4,7 +4,8 @@ using UnityEngine.UI;
 public class DetailsManager : MonoBehaviour
 {
     public LevelDetails levelDetails;
-    
+
+    [SerializeField] private GameObject stageHolder;
     [SerializeField] private Text levelName;
     [SerializeField] private Text status;
     [SerializeField] private Text bestTime;
@@ -12,8 +13,16 @@ public class DetailsManager : MonoBehaviour
     [SerializeField] private Sprite[] starSprites;
     [SerializeField] private Image[] stars;
 
-    private bool seeDetails;
+    private Animator detailsAnimator;
+    private bool seeDetails, 
+        isDetailsTouch;
     private int hours, minutes, seconds;
+
+    public bool IsDetailsTouch
+    {
+        get => isDetailsTouch;
+        set => isDetailsTouch = value;
+    }
 
     public bool SeeDetails
     {
@@ -21,11 +30,19 @@ public class DetailsManager : MonoBehaviour
         set => seeDetails = value;
     }
 
+    private void Start()
+    {
+        detailsAnimator = GetComponent<Animator>();
+    }
+
     private void Update()
     {
         if(levelDetails && seeDetails)
         {
             seeDetails = false;
+            stageHolder.SetActive(false); // Deactivate stage Holder 
+            detailsAnimator.SetBool("isAppear", true); // Show details
+            
             levelName.text = levelDetails.levelName;
             
             // Status
@@ -66,8 +83,19 @@ public class DetailsManager : MonoBehaviour
                 }
             }
         }
+
+        // If player touch objects other than detailsContainer, ...
+        if (!isDetailsTouch)
+        {
+            stageHolder.SetActive(true); // Deactivate stage Holder
+            // Hide details
+            detailsAnimator.SetBool("isAppear", false); 
+        }
     }
 
+    /// <summary>
+    /// Set best time on details UI
+    /// </summary>
     private void SetBestTime()
     {
         // Hours
@@ -80,6 +108,10 @@ public class DetailsManager : MonoBehaviour
         seconds -= minutes * 60;
     }
 
+    /// <summary>
+    /// Start level
+    /// </summary>
+    /// <param name="sceneLoader"></param>
     public void StartLevel(SceneLoader sceneLoader)
     {
         if (levelDetails)

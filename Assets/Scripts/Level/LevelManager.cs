@@ -16,5 +16,6 @@ public class LevelManager : MonoBehaviour
     {
         detailsManager.levelDetails = levelDetails;
         detailsManager.SeeDetails = true;
+        detailsManager.IsDetailsTouch = true;
     }
 }
