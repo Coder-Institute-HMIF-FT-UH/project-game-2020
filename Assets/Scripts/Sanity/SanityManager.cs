@@ -49,8 +49,7 @@ public class SanityManager : MonoBehaviour
             // If currentSanity is not equal to PlayerPrefs, ...
             if (currentSanity != PlayerPrefs.GetInt(PlayerPrefsConstant.CurrentSanity))
             {
-                // Set new currentSanity to PlayerPrefs
-                PlayerPrefs.SetInt(PlayerPrefsConstant.CurrentSanity, currentSanity);
+                currentSanity = PlayerPrefs.GetInt(PlayerPrefsConstant.CurrentSanity);
             }
             UpdateSanityUi(); // Update UI
         }

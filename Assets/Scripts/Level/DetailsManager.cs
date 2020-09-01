@@ -115,6 +115,14 @@ public class DetailsManager : MonoBehaviour
     public void StartLevel(SceneLoader sceneLoader)
     {
         if (levelDetails)
+        {
+            // Minus sanity
+            int currentSanity = PlayerPrefs.GetInt(PlayerPrefsConstant.CurrentSanity);
+            currentSanity -= levelDetails.sanityRequirement;
+            PlayerPrefs.SetInt(PlayerPrefsConstant.CurrentSanity, currentSanity);
+            Debug.Log("Minus sanity: " + PlayerPrefs.GetInt(PlayerPrefsConstant.CurrentSanity));
+            
             sceneLoader.LoadScene(levelDetails.sceneName);
+        }
     }
 }
