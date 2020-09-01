@@ -13,12 +13,7 @@ MonoBehaviour:
   m_Name: Level0-0
   m_EditorClassIdentifier: 
   levelName: 0-0
-  isClear: 1
   sceneName: TutorialScene
-  sanityRequirement: 10
+  sanityRequirement: 5
   starRequirement: 0
   maxCoin: 100
-  starsTaken: 1
-  bestSeconds: 5
-  bestMinutes: 0
-  bestHours: 0
