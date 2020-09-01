@@ -12,6 +12,8 @@ public class DetailsManager : MonoBehaviour
     [SerializeField] private Text sanityRequirement;
     [SerializeField] private Sprite[] starSprites;
     [SerializeField] private Image[] stars;
+    [SerializeField] private WarningUI warningContainer;
+    [SerializeField] private WarningScriptableObject lowSanity;
 
     private Animator detailsAnimator;
     private bool seeDetails, 
@@ -114,15 +116,34 @@ public class DetailsManager : MonoBehaviour
     /// <param name="sceneLoader"></param>
     public void StartLevel(SceneLoader sceneLoader)
     {
-        if (levelDetails)
+        // Check null
+        if (!levelDetails) return;
+        // Minus sanity
+        int currentSanity = PlayerPrefs.GetInt(PlayerPrefsConstant.CurrentSanity);
+            
+        // If current sanity is greater than requirement, player can play
+        if(currentSanity >= levelDetails.sanityRequirement)
         {
-            // Minus sanity
-            int currentSanity = PlayerPrefs.GetInt(PlayerPrefsConstant.CurrentSanity);
             currentSanity -= levelDetails.sanityRequirement;
             PlayerPrefs.SetInt(PlayerPrefsConstant.CurrentSanity, currentSanity);
             Debug.Log("Minus sanity: " + PlayerPrefs.GetInt(PlayerPrefsConstant.CurrentSanity));
-            
+
             sceneLoader.LoadScene(levelDetails.sceneName);
         }
+        else // If player doesn't have enough sanity, give warning
+        {
+            SetWarning(lowSanity);
+        }
+    }
+    
+    /// <summary>
+    /// Set warning
+    /// </summary>
+    /// <param name="warning"></param>
+    private void SetWarning(WarningScriptableObject warning)
+    {
+        warningContainer.warningScriptableObject = warning;
+        warningContainer.gameObject.SetActive(true); 
+        warningContainer.SetWarningUI(); // Warning
     }
 }
