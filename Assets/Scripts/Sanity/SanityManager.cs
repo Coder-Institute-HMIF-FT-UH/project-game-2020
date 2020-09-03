@@ -49,6 +49,7 @@ public class SanityManager : MonoBehaviour
             // If currentSanity is not equal to PlayerPrefs, ...
             if (currentSanity != PlayerPrefs.GetInt(PlayerPrefsConstant.CurrentSanity))
             {
+                Debug.Log("change");
                 currentSanity = PlayerPrefs.GetInt(PlayerPrefsConstant.CurrentSanity);
             }
             UpdateSanityUi(); // Update UI
@@ -128,6 +129,16 @@ public class SanityManager : MonoBehaviour
     /// </summary>
     public void MinusSanity()
     {
-        currentSanity -= 49;
+        int currentSanity = PlayerPrefs.GetInt(PlayerPrefsConstant.CurrentSanity);
+        PlayerPrefs.SetInt(PlayerPrefsConstant.CurrentSanity, currentSanity-10);
+    }
+    
+    /// <summary>
+    /// Just for testing
+    /// </summary>
+    public void AddSanityDebug()
+    {
+        int currentSanity = PlayerPrefs.GetInt(PlayerPrefsConstant.CurrentSanity);
+        PlayerPrefs.SetInt(PlayerPrefsConstant.CurrentSanity, currentSanity+10);
     }
 }
