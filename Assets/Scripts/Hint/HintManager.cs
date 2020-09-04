@@ -20,7 +20,7 @@ public class HintManager : MonoBehaviour
         }
         else
         {
-            currentHint = 3;
+            currentHint = maxHint;
             PlayerPrefs.SetInt(PlayerPrefsConstant.CurrentHint, currentHint);
         }
         

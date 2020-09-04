@@ -28,13 +28,20 @@ public class SanityManager : MonoBehaviour
     private void Start()
     {
         if(PlayerPrefs.HasKey(PlayerPrefsConstant.CurrentSanity))
-        // Get currentSanity
-        currentSanity = PlayerPrefs.GetInt(PlayerPrefsConstant.CurrentSanity);
-        
-        // Set currentSanity after refilling when app quit
-        currentSanity = timerManager.CountDownInBackground(dateMaster, IsSanityFull, 
-            PlayerPrefsConstant.TimeOnExitSanity, PlayerPrefsConstant.CurrentSanity, 
-            currentSanity, maxSanity);
+        {
+            // Get currentSanity
+            currentSanity = PlayerPrefs.GetInt(PlayerPrefsConstant.CurrentSanity);
+
+            // Set currentSanity after refilling when app quit
+            currentSanity = timerManager.CountDownInBackground(dateMaster, IsSanityFull,
+                PlayerPrefsConstant.TimeOnExitSanity, PlayerPrefsConstant.CurrentSanity,
+                currentSanity, maxSanity);
+        }
+        else
+        {
+            currentSanity = maxSanity;
+            PlayerPrefs.SetInt(PlayerPrefsConstant.CurrentSanity, currentSanity);
+        }
         
         UpdateSanityUi(); // Set Text UI
     }

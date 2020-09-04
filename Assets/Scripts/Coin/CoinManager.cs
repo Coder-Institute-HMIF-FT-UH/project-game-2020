@@ -15,7 +15,16 @@ public class CoinManager : MonoBehaviour
     
     private void Awake()
     {
-        currentCoin = CurrentCoin();
+        if(PlayerPrefs.HasKey(PlayerPrefsConstant.Coins))
+        {
+            currentCoin = CurrentCoin();
+        }
+        else
+        {
+            currentCoin = 0;
+            PlayerPrefs.SetString(PlayerPrefsConstant.Coins, currentCoin.ToString());
+        }
+        
         UpdateCoinUi();
     }
 
@@ -24,7 +33,6 @@ public class CoinManager : MonoBehaviour
         if (currentCoin != CurrentCoin())
         {
             currentCoin = CurrentCoin();
-            // PlayerPrefs.SetFloat(PlayerPrefsConstant.CurrentHint, currentHint);
             UpdateCoinUi();
         }
     }
