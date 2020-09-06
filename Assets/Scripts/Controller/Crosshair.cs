@@ -9,6 +9,7 @@ public class Crosshair : MonoBehaviour
     [SerializeField] private GameObject passwordPanel;
     
     private bool pickUpAllowed = true, isPickingUp;
+    private int itemLayer = 14, terrainLayer = 13;
     private Camera mainCamera;
     private Image crosshairImage;
     [SerializeField] private Transform itemTransform;
@@ -74,6 +75,8 @@ public class Crosshair : MonoBehaviour
         isPickingUp = true;
         
         // Set item
+        // Change to item layer (14)
+        itemRigidbody.gameObject.layer = itemLayer; 
         itemRigidbody.useGravity = false;
         itemTransform.parent = itemHolder;
         itemTransform.position = itemHolder.position;
@@ -87,6 +90,8 @@ public class Crosshair : MonoBehaviour
         isPickingUp = false;
         
         // Set item to normal
+        // Change to terrain layer (13)
+        itemRigidbody.gameObject.layer = terrainLayer; 
         itemRigidbody.useGravity = true;
         itemRigidbody = null; 
         itemTransform.parent = null;
