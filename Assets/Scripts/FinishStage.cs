@@ -128,7 +128,7 @@ public class FinishStage : MonoBehaviour
     private IEnumerator CoinAnimation(float waitTime)
     {
         // Debug.Log("Coin animation");
-        for(int i = 0; i <= maxCoin; i++)
+        for(int i = 0; i <= maxCoin; i+=5)
         {
             coinValue.text = i.ToString();
             yield return new WaitForSeconds(waitTime);
