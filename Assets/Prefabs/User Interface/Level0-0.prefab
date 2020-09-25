@@ -374,3 +374,9 @@ MonoBehaviour:
   levelDetails: {fileID: 11400000, guid: fc70f785ae4c9ac42850d6a17f9f0f6c, type: 2}
   levelName: {fileID: 9193166400681420628}
   detailsManager: {fileID: 0}
+  stars:
+  - {fileID: 21300000, guid: 6f5e717301cc39841ba020aaf3fe4db2, type: 3}
+  - {fileID: 21300000, guid: 6a0f8b70c8434ff4b9da6a033571e927, type: 3}
+  - {fileID: 21300000, guid: b6442644152521c4e9e129bcb795cc7b, type: 3}
+  - {fileID: 21300000, guid: b83e96b1f07917748a7578fe115b5869, type: 3}
+  starSides: {fileID: 4911554462303254013}
