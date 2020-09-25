@@ -67,7 +67,7 @@ public class SanityManager : MonoBehaviour
             TimeRemainingSanityUi(false);
         }
     }
-    
+
     /// <summary>
     /// When destroy (move scene, quit)
     /// </summary>
@@ -80,6 +80,24 @@ public class SanityManager : MonoBehaviour
     //         PlayerPrefs.SetFloat(PlayerPrefsConstant.TimeOnExitSanity, timerManager.milliseconds);
     //     }
     // }
+    
+    private void OnApplicationPause(bool pauseStatus)
+    {
+        if (pauseStatus)
+        {
+            Debug.Log(gameObject.name + " paused");
+            int numSeconds = timerManager.minutes * 60 + timerManager.seconds; // Get all minutes and seconds remaining
+            if (numSeconds > 0)
+            {
+                timerManager.milliseconds += numSeconds;
+                PlayerPrefs.SetFloat(PlayerPrefsConstant.TimeOnExitSanity, timerManager.milliseconds);
+            }
+        }
+        else
+        {
+            Debug.Log(gameObject.name + " resumed");
+        }
+    }
 
     private void OnDisable()
     {

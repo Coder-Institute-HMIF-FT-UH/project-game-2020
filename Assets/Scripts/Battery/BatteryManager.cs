@@ -67,7 +67,7 @@ public class BatteryManager : MonoBehaviour
             TimeRemainingBatteryUi(false);
         }
     }
-    
+
     /// <summary>
     /// When destroy (move scene, quit)
     /// </summary>
@@ -80,7 +80,24 @@ public class BatteryManager : MonoBehaviour
     //         PlayerPrefs.SetFloat(PlayerPrefsConstant.TimeOnExitBattery, timerManager.milliseconds);
     //     }
     // }
-
+    
+    private void OnApplicationPause(bool pauseStatus)
+    {
+        if (pauseStatus)
+        {
+            int numSeconds = timerManager.minutes * 60 + timerManager.seconds; // Get all minutes and seconds remaining
+            if (numSeconds > 0)
+            {
+                timerManager.milliseconds += numSeconds;
+                PlayerPrefs.SetFloat(PlayerPrefsConstant.TimeOnExitBattery, timerManager.milliseconds);
+            }
+        }
+        else
+        {
+            Debug.Log(gameObject.name + " resumed");
+        }
+    }
+    
     private void OnDisable()
     {
         Debug.Log(gameObject.name + " disable");
