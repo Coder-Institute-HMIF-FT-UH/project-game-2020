@@ -1201,7 +1201,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh31182
+  m_Name: pb_Mesh41178
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1855,7 +1855,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh31204
+  m_Name: pb_Mesh41200
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2261,7 +2261,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh31560
+  m_Name: pb_Mesh41556
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -10177,7 +10177,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh31220
+  m_Name: pb_Mesh41216
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -12250,7 +12250,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh31074
+  m_Name: pb_Mesh41070
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -15527,11 +15527,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8676956224359051849, guid: 7ec1d119f7ccf3e458375e1ade66ab11,
-        type: 3}
-      propertyPath: isHintActive.Array.size
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 8676956224359051849, guid: 7ec1d119f7ccf3e458375e1ade66ab11,
         type: 3}
       propertyPath: player

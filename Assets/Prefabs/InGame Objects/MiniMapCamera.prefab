@@ -93,7 +93,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   distanceHint: 00000000000000000000000000000000
-  isHintActive: 
+  isHintActive: 00000000
   player: {fileID: 0}
   gps: {fileID: 0}
   hintLeft: 0
