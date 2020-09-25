@@ -19,7 +19,8 @@ public class BatteryManager : MonoBehaviour
     [SerializeField] private Text oneBatteryTimeRemainingText;
     [SerializeField] private Text fullBatteriesTimeRemainingText;
 
-    private bool isStart = true;
+    private bool isStart = true,
+        updateFullness = true;
     
     private bool IsBatteryFull()
     {
@@ -45,6 +46,7 @@ public class BatteryManager : MonoBehaviour
     {
         if (!IsBatteryFull()) // If currentBattery isn't full, ...
         {
+            updateFullness = true;
             // Count Down
             timerManager.CountDown(AddBattery, UpdateBatteryTimeRemaining);
             
@@ -59,9 +61,11 @@ public class BatteryManager : MonoBehaviour
             
             UpdateBatteryUi(); // Update UI
         }
-        else // If currentBattery is full, deactivate UI
+        else if(IsBatteryFull() && updateFullness) // If currentBattery is full, deactivate UI
         {
+            updateFullness = false;
             TimeRemainingBatteryUi(false);
+            timerManager.ResetTime();
         }
     }
     
@@ -149,7 +153,9 @@ public class BatteryManager : MonoBehaviour
         int totalMinutes = (int) ((maxBattery - currentBattery) * timerManager.defaultStartMinutes * 10 -
                                   (timerManager.defaultStartMinutes - timerManager.minutes));
         int hours = totalMinutes / 60;
-        
+        // Debug.Log((int) ((maxBattery - currentBattery) * timerManager.defaultStartMinutes * 10));
+        // Debug.Log((timerManager.defaultStartMinutes - timerManager.minutes));
+        // Debug.Log(totalMinutes);
         string fullBatteriesText = hours > 0
             ? $"Full Batteries in {hours} : {totalMinutes - hours * 60:00} : " + $"{timerManager.seconds:00}"
             : $"Full Batteries in {totalMinutes} : {timerManager.seconds:00}";

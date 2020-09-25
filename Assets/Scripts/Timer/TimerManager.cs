@@ -23,7 +23,7 @@ public class TimerManager
     /// <summary>
     /// Reset to default time
     /// </summary>
-    private void ResetTime()
+    public void ResetTime()
     {
         SetMinutes();
         seconds = 0;

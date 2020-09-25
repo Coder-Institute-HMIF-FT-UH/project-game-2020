@@ -20,7 +20,8 @@ public class SanityManager : MonoBehaviour
     [SerializeField] private Text oneSanityTimeRemainingText;
     [SerializeField] private Text fullSanityTimeRemainingText;
     
-    private bool isStart = true;
+    private bool isStart = true,
+        updateFullness = true;
     
     private bool IsSanityFull()
     {
@@ -45,6 +46,7 @@ public class SanityManager : MonoBehaviour
     {
         if(!IsSanityFull()) // If currentSanity isn't full, ...
         {
+            updateFullness = true;
             // Count down 
             timerManager.CountDown(AddSanity, UpdateSanityTimeRemaining);
 
@@ -56,9 +58,11 @@ public class SanityManager : MonoBehaviour
             }
             UpdateSanityUi(); // Update UI
         }
-        else // If currentSanity is full, deactivate UI
+        else if(IsSanityFull() && updateFullness) // If currentSanity is full, deactivate UI
         {
+            updateFullness = false;
             TimeRemainingSanityUi(false);
+            timerManager.ResetTime();
         }
     }
     
