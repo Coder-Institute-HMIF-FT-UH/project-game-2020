@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,6 +20,8 @@ public class SanityManager : MonoBehaviour
     [SerializeField] private Text oneSanityTimeRemainingText;
     [SerializeField] private Text fullSanityTimeRemainingText;
     
+    private bool isStart = true;
+    
     private bool IsSanityFull()
     {
         // If currentSanity >= maxSanity, IsSanityFull = true
@@ -26,25 +29,16 @@ public class SanityManager : MonoBehaviour
         return currentSanity >= maxSanity;
     }
     
+    private IEnumerator SetIsStartFalse()
+    {
+        yield return new WaitForSeconds(.5f);
+        isStart = false;
+    }
+    
     private void Start()
     {
-        if(PlayerPrefs.HasKey(PlayerPrefsConstant.CurrentSanity))
-        {
-            // Get currentSanity
-            currentSanity = PlayerPrefs.GetInt(PlayerPrefsConstant.CurrentSanity);
-
-            // Set currentSanity after refilling when app quit
-            currentSanity = timerManager.CountDownInBackground(dateMaster, IsSanityFull,
-                PlayerPrefsConstant.TimeOnExitSanity, PlayerPrefsConstant.CurrentSanity,
-                currentSanity, maxSanity);
-        }
-        else
-        {
-            currentSanity = maxSanity;
-            PlayerPrefs.SetInt(PlayerPrefsConstant.CurrentSanity, currentSanity);
-        }
-        
-        UpdateSanityUi(); // Set Text UI
+        GetSanity();
+        StartCoroutine(SetIsStartFalse());
     }
 
     private void Update()
@@ -67,19 +61,6 @@ public class SanityManager : MonoBehaviour
             TimeRemainingSanityUi(false);
         }
     }
-
-    /// <summary>
-    /// When destroy (move scene, quit)
-    /// </summary>
-    // private void OnDestroy()
-    // {
-    //     int numSeconds = timerManager.minutes * 60 + timerManager.seconds; // Get all minutes and seconds remaining
-    //     if (numSeconds > 0)
-    //     {
-    //         timerManager.milliseconds += numSeconds;
-    //         PlayerPrefs.SetFloat(PlayerPrefsConstant.TimeOnExitSanity, timerManager.milliseconds);
-    //     }
-    // }
     
     private void OnApplicationPause(bool pauseStatus)
     {
@@ -93,9 +74,10 @@ public class SanityManager : MonoBehaviour
                 PlayerPrefs.SetFloat(PlayerPrefsConstant.TimeOnExitSanity, timerManager.milliseconds);
             }
         }
-        else
+        else if(!pauseStatus && !isStart)
         {
             Debug.Log(gameObject.name + " resumed");
+            GetSanity();
         }
     }
 
@@ -108,6 +90,27 @@ public class SanityManager : MonoBehaviour
             timerManager.milliseconds += numSeconds;
             PlayerPrefs.SetFloat(PlayerPrefsConstant.TimeOnExitSanity, timerManager.milliseconds);
         }
+    }
+
+    private void GetSanity()
+    {
+        if(PlayerPrefs.HasKey(PlayerPrefsConstant.CurrentSanity))
+        {
+            // Get currentSanity
+            currentSanity = PlayerPrefs.GetInt(PlayerPrefsConstant.CurrentSanity);
+
+            // Set currentSanity after refilling when app quit
+            currentSanity = timerManager.CountDownInBackground(dateMaster, IsSanityFull,
+                PlayerPrefsConstant.TimeOnExitSanity, PlayerPrefsConstant.CurrentSanity,
+                currentSanity, maxSanity);
+        }
+        else
+        {
+            currentSanity = maxSanity;
+            PlayerPrefs.SetInt(PlayerPrefsConstant.CurrentSanity, currentSanity);
+        }
+        
+        UpdateSanityUi(); // Set Text UI
     }
 
     /// <summary>

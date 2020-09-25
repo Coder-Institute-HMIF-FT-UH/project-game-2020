@@ -2261,7 +2261,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh22916
+  m_Name: pb_Mesh49760
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -12069,6 +12069,7 @@ GameObject:
   - component: {fileID: 1565318153}
   - component: {fileID: 1565318152}
   - component: {fileID: 1565318156}
+  - component: {fileID: 1565318151}
   - component: {fileID: 1565318157}
   m_Layer: 13
   m_Name: Finish
@@ -12077,6 +12078,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!65 &1565318151
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565318150}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 0}
+  m_Center: {x: 0.5, y: 0.5, z: 0}
 --- !u!114 &1565318152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14417,11 +14431,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CurrentTimeValue
       objectReference: {fileID: 0}
-    - target: {fileID: 783011509367662775, guid: 92cbe697d18af8f48b07b2488b4ab14b,
-        type: 3}
-      propertyPath: m_FontData.m_FontSize
-      value: 90
-      objectReference: {fileID: 0}
     - target: {fileID: 1134048424476677986, guid: 92cbe697d18af8f48b07b2488b4ab14b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14606,11 +14615,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6786486251692738362, guid: 92cbe697d18af8f48b07b2488b4ab14b,
-        type: 3}
-      propertyPath: m_FontData.m_FontSize
-      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 7355230197886073854, guid: 92cbe697d18af8f48b07b2488b4ab14b,
         type: 3}

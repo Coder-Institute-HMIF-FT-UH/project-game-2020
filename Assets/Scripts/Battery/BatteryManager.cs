@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +18,8 @@ public class BatteryManager : MonoBehaviour
     [SerializeField] private Text detailBatteryText;
     [SerializeField] private Text oneBatteryTimeRemainingText;
     [SerializeField] private Text fullBatteriesTimeRemainingText;
+
+    private bool isStart = true;
     
     private bool IsBatteryFull()
     {
@@ -25,23 +28,17 @@ public class BatteryManager : MonoBehaviour
         return currentBattery >= maxBattery;
     }
 
+    private IEnumerator SetIsStartFalse()
+    {
+        yield return new WaitForSeconds(.5f);
+        isStart = false;
+    }
+    
+
     private void Start()
     {
-        if(PlayerPrefs.HasKey(PlayerPrefsConstant.CurrentBattery))
-        {
-            // Get current Battery
-            currentBattery = PlayerPrefs.GetFloat(PlayerPrefsConstant.CurrentBattery);
-            
-            currentBattery = timerManager.CountDownInScene(IsBatteryFull, PlayerPrefsConstant.TimeOnExitBattery, currentBattery);
-        }
-        else
-        {
-            // If first time, then currentBattery equals to maxBattery
-            currentBattery = maxBattery;
-        }
-        
-        PlayerPrefs.SetFloat(PlayerPrefsConstant.CurrentBattery, currentBattery);
-        UpdateBatteryUi(); // Set Text UI
+        GetBattery();
+        StartCoroutine(SetIsStartFalse());
     }
 
     private void Update()
@@ -67,19 +64,6 @@ public class BatteryManager : MonoBehaviour
             TimeRemainingBatteryUi(false);
         }
     }
-
-    /// <summary>
-    /// When destroy (move scene, quit)
-    /// </summary>
-    // private void OnDestroy()
-    // {
-    //     int numSeconds = timerManager.minutes * 60 + timerManager.seconds; // Get all minutes and seconds remaining
-    //     if (numSeconds > 0)
-    //     {
-    //         timerManager.milliseconds += numSeconds;
-    //         PlayerPrefs.SetFloat(PlayerPrefsConstant.TimeOnExitBattery, timerManager.milliseconds);
-    //     }
-    // }
     
     private void OnApplicationPause(bool pauseStatus)
     {
@@ -92,9 +76,10 @@ public class BatteryManager : MonoBehaviour
                 PlayerPrefs.SetFloat(PlayerPrefsConstant.TimeOnExitBattery, timerManager.milliseconds);
             }
         }
-        else
+        else if(!pauseStatus && !isStart)
         {
             Debug.Log(gameObject.name + " resumed");
+            GetBattery();
         }
     }
     
@@ -107,6 +92,25 @@ public class BatteryManager : MonoBehaviour
             timerManager.milliseconds += numSeconds;
             PlayerPrefs.SetFloat(PlayerPrefsConstant.TimeOnExitBattery, timerManager.milliseconds);
         }
+    }
+
+    private void GetBattery()
+    {
+        if(PlayerPrefs.HasKey(PlayerPrefsConstant.CurrentBattery))
+        {
+            // Get current Battery
+            currentBattery = PlayerPrefs.GetFloat(PlayerPrefsConstant.CurrentBattery);
+            
+            currentBattery = timerManager.CountDownInScene(IsBatteryFull, PlayerPrefsConstant.TimeOnExitBattery, currentBattery);
+        }
+        else
+        {
+            // If first time, then currentBattery equals to maxBattery
+            currentBattery = maxBattery;
+        }
+        
+        PlayerPrefs.SetFloat(PlayerPrefsConstant.CurrentBattery, currentBattery);
+        UpdateBatteryUi(); // Set Text UI
     }
 
     private void AddBattery()
