@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class SanityManager : MonoBehaviour
@@ -70,8 +71,19 @@ public class SanityManager : MonoBehaviour
     /// <summary>
     /// When destroy (move scene, quit)
     /// </summary>
-    private void OnDestroy()
+    // private void OnDestroy()
+    // {
+    //     int numSeconds = timerManager.minutes * 60 + timerManager.seconds; // Get all minutes and seconds remaining
+    //     if (numSeconds > 0)
+    //     {
+    //         timerManager.milliseconds += numSeconds;
+    //         PlayerPrefs.SetFloat(PlayerPrefsConstant.TimeOnExitSanity, timerManager.milliseconds);
+    //     }
+    // }
+
+    private void OnDisable()
     {
+        Debug.Log(gameObject.name + " disable");
         int numSeconds = timerManager.minutes * 60 + timerManager.seconds; // Get all minutes and seconds remaining
         if (numSeconds > 0)
         {

@@ -71,8 +71,19 @@ public class BatteryManager : MonoBehaviour
     /// <summary>
     /// When destroy (move scene, quit)
     /// </summary>
-    private void OnDestroy()
+    // private void OnDestroy()
+    // {
+    //     int numSeconds = timerManager.minutes * 60 + timerManager.seconds; // Get all minutes and seconds remaining
+    //     if (numSeconds > 0)
+    //     {
+    //         timerManager.milliseconds += numSeconds;
+    //         PlayerPrefs.SetFloat(PlayerPrefsConstant.TimeOnExitBattery, timerManager.milliseconds);
+    //     }
+    // }
+
+    private void OnDisable()
     {
+        Debug.Log(gameObject.name + " disable");
         int numSeconds = timerManager.minutes * 60 + timerManager.seconds; // Get all minutes and seconds remaining
         if (numSeconds > 0)
         {
