@@ -13,7 +13,9 @@ public class FinishStage : MonoBehaviour
     [SerializeField] private Sprite starSprite;
     [SerializeField] private Image[] starsUis;
     [SerializeField] private Animator[] starAnimators;
-    [SerializeField] private Text coinValue;
+    [SerializeField] private Text coinValue,
+        bestTimeText,
+        currentTimeText;
 
     private PlayerFPSController playerController;
     private IEnumerator showFinalPanel;
@@ -34,20 +36,41 @@ public class FinishStage : MonoBehaviour
         
         finishUiContainer.SetActive(true);
         
-        // BEST TIME
+        // TIME
         // Get total seconds after finish level
+        // CURRENT TIME
         int totalSeconds = inGameTimer.timerManager.hours * 3600
                            + inGameTimer.timerManager.minutes * 6
                            + inGameTimer.timerManager.seconds;
+        SetTimeText(currentTimeText,
+            inGameTimer.timerManager.hours,
+            inGameTimer.timerManager.minutes,
+            inGameTimer.timerManager.seconds);
         Debug.Log("Total seconds: " + totalSeconds);
         
+        // BEST TIME
+        int bestTime = PlayerPrefs.GetInt(PlayerPrefsConstant.BestTime + loadLevelManager.LevelName);
         if(PlayerPrefs.HasKey(PlayerPrefsConstant.BestTime + loadLevelManager.LevelName))
         {
             // Update prefs if total seconds are less than previous one.
-            if (totalSeconds < PlayerPrefs.GetInt(PlayerPrefsConstant.BestTime + loadLevelManager.LevelName))
+            if (totalSeconds < bestTime)
             {
                 Debug.Log("Set new record");
+                SetTimeText(bestTimeText,
+                    inGameTimer.timerManager.hours,
+                    inGameTimer.timerManager.minutes,
+                    inGameTimer.timerManager.seconds);
                 SetTime(totalSeconds);
+            }
+            else
+            {
+                int hours = bestTime / 3600;
+                bestTime -= hours * 3600;
+                int minutes = bestTime / 60;
+                bestTime -= minutes * 60;
+                int seconds = bestTime;
+                
+                SetTimeText(bestTimeText, hours, minutes, seconds);
             }
         }
         else
@@ -99,6 +122,11 @@ public class FinishStage : MonoBehaviour
     {
         // Set prefs
         PlayerPrefs.SetInt(PlayerPrefsConstant.BestTime + loadLevelManager.LevelName, totalSeconds);
+    }
+
+    private void SetTimeText(Text timeText, int hours, int minutes, int seconds)
+    {
+        timeText.text = $"{hours:00}.{minutes:00}.{seconds:00}";
     }
 
     private void OnTriggerStay(Collider other)
