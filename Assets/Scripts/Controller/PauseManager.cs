@@ -1,27 +1,8 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 public class PauseManager : MonoBehaviour
 {
-    // public SceneLoader sceneLoader;
-    [SerializeField] private LoadLevelManager loadLevelManager;
     [SerializeField] private GameObject pauseScreen;
-    [SerializeField] private Text stageName,
-        starsTaken,
-        batteryText,
-        hintsLeft;
-
-    /// <summary>
-    /// Set status in pause screen
-    /// </summary>
-    public void SetStatus()
-    {
-        stageName.text = $"Stage {loadLevelManager.LevelName}";
-        starsTaken.text = $"Star(s) taken: {PlayerPrefs.GetInt(PlayerPrefsConstant.StarsTaken + loadLevelManager.LevelName)}";
-        batteryText.text = $"Battery: {Math.Round(PlayerPrefs.GetFloat(PlayerPrefsConstant.CurrentBattery) * 100, 0)}%";
-        hintsLeft.text = "Hint(s) left: 3";
-    }
     
     /// <summary>
     /// Pause game

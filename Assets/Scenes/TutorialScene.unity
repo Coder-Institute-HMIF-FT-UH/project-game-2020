@@ -1201,7 +1201,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh15260
+  m_Name: pb_Mesh31182
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1855,7 +1855,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh15282
+  m_Name: pb_Mesh31204
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2261,7 +2261,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh15638
+  m_Name: pb_Mesh31560
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -8278,7 +8278,8 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0.0000000023316302, y: 1.3555997e-19, z: 1.3563156e-19,
+    w: 1.7086692e+19}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -10176,7 +10177,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh15298
+  m_Name: pb_Mesh31220
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -12249,7 +12250,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh15152
+  m_Name: pb_Mesh31074
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -15388,6 +15389,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6159175343553420889, guid: 06871fdc723b68e4dbb404af3e8aa0bc,
+        type: 3}
+      propertyPath: m_Name
+      value: ActionBtn
+      objectReference: {fileID: 0}
     - target: {fileID: 6159175343677034573, guid: 06871fdc723b68e4dbb404af3e8aa0bc,
         type: 3}
       propertyPath: itemHolder
@@ -15396,42 +15402,17 @@ PrefabInstance:
     - target: {fileID: 6159175344372117055, guid: 06871fdc723b68e4dbb404af3e8aa0bc,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6159175344372117055, guid: 06871fdc723b68e4dbb404af3e8aa0bc,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 833061089}
-    - target: {fileID: 6159175344372117055, guid: 06871fdc723b68e4dbb404af3e8aa0bc,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PauseGame
-      objectReference: {fileID: 0}
-    - target: {fileID: 6159175344372117055, guid: 06871fdc723b68e4dbb404af3e8aa0bc,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6159175344372117055, guid: 06871fdc723b68e4dbb404af3e8aa0bc,
+    - target: {fileID: 6159175345047672700, guid: 06871fdc723b68e4dbb404af3e8aa0bc,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
+      propertyPath: m_AnchoredPosition.x
+      value: 591.18
       objectReference: {fileID: 0}
-    - target: {fileID: 6159175344372117055, guid: 06871fdc723b68e4dbb404af3e8aa0bc,
+    - target: {fileID: 6159175345047672700, guid: 06871fdc723b68e4dbb404af3e8aa0bc,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 833061089}
-    - target: {fileID: 6159175344372117055, guid: 06871fdc723b68e4dbb404af3e8aa0bc,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SetStatus
-      objectReference: {fileID: 0}
-    - target: {fileID: 6159175344372117055, guid: 06871fdc723b68e4dbb404af3e8aa0bc,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      propertyPath: m_SizeDelta.x
+      value: 134.62756
       objectReference: {fileID: 0}
     - target: {fileID: 6159175345047672701, guid: 06871fdc723b68e4dbb404af3e8aa0bc,
         type: 3}
