@@ -23,7 +23,7 @@ public class MinimapScript : MonoBehaviour
     private void Start()
     {
         // Take hint left from player prefs
-        hintLeft = 3;
+        hintLeft = PlayerPrefs.GetInt(PlayerPrefsConstant.CurrentHint);
         minimapCamera = GetComponent<Camera>();
     }
 
@@ -93,6 +93,7 @@ public class MinimapScript : MonoBehaviour
     {
         if (hintLeft <= 0) return;
         hintLeft--;
+        PlayerPrefs.SetInt(PlayerPrefsConstant.CurrentHint, hintLeft);
         DecideStarReveal();
     }
 
