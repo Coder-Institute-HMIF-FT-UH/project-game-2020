@@ -19,7 +19,7 @@ MonoBehaviour:
   - currentBattery
   prefsType: 00000000
   price: 10000
-  maxItem: 01000000
+  maxItem: 64000000
   additionalItem:
   - 10
   itemLogo: {fileID: 21300000, guid: f338a056a8e368848ae2f2cfdad27dcf, type: 3}

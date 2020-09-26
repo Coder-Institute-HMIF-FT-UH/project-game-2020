@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerManager:
-    defaultStartMinutes: 3
+    defaultStartMinutes: 1
     hours: 0
     minutes: 1
     seconds: 0
@@ -60,7 +60,7 @@ MonoBehaviour:
     allowTimerRestart: 1
   dateMaster: {fileID: 0}
   currentBattery: 0
-  maxBattery: 1
+  maxBattery: 100
   batteryText: {fileID: 2541043599378768845}
   detailBatteryText: {fileID: 2541043599181621397}
   oneBatteryTimeRemainingText: {fileID: 2541043598765591330}

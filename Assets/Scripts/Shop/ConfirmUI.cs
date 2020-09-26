@@ -69,7 +69,7 @@ public class ConfirmUI : MonoBehaviour
                             // Additional item is divided by 100
                             // because battery is float type.
                             PlayerPrefs.SetFloat(shopScriptableObject.itemPrefsName[0],
-                                currentItemValue + shopScriptableObject.additionalItem[0] / 100);
+                                currentItemValue + shopScriptableObject.additionalItem[0]);
                         }
                         // If item is full, ...
                         else

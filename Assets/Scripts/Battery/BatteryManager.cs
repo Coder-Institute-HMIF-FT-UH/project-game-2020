@@ -11,7 +11,7 @@ public class BatteryManager : MonoBehaviour
     
     [Header("Battery")] 
     [SerializeField] private float currentBattery;
-    [SerializeField] private float maxBattery = 1;
+    [SerializeField] private float maxBattery = 100;
 
     [Header("UI Elements")]
     [SerializeField] private Text batteryText;
@@ -19,8 +19,7 @@ public class BatteryManager : MonoBehaviour
     [SerializeField] private Text oneBatteryTimeRemainingText;
     [SerializeField] private Text fullBatteriesTimeRemainingText;
 
-    private bool isStart = true,
-        updateFullness = true;
+    private bool isStart = true;
     
     private bool IsBatteryFull()
     {
@@ -35,7 +34,6 @@ public class BatteryManager : MonoBehaviour
         isStart = false;
     }
     
-
     private void Start()
     {
         GetBattery();
@@ -46,7 +44,6 @@ public class BatteryManager : MonoBehaviour
     {
         if (!IsBatteryFull()) // If currentBattery isn't full, ...
         {
-            updateFullness = true;
             // Count Down
             timerManager.CountDown(AddBattery, UpdateBatteryTimeRemaining);
             
@@ -54,16 +51,12 @@ public class BatteryManager : MonoBehaviour
             if (currentBattery != PlayerPrefs.GetFloat(PlayerPrefsConstant.CurrentBattery))
             {
                 currentBattery = PlayerPrefs.GetFloat(PlayerPrefsConstant.CurrentBattery);
-                // Set new currentBattery to PlayerPrefs
-                // Debug.Log("Change");
-                // PlayerPrefs.SetFloat(PlayerPrefsConstant.CurrentBattery, currentBattery);
             }
             
             UpdateBatteryUi(); // Update UI
         }
-        else if(IsBatteryFull() && updateFullness) // If currentBattery is full, deactivate UI
+        else // If currentBattery is full, deactivate UI
         {
-            updateFullness = false;
             TimeRemainingBatteryUi(false);
             timerManager.ResetTime();
         }
@@ -121,7 +114,7 @@ public class BatteryManager : MonoBehaviour
     {
         Debug.Log("Add Battery");
         // Add Battery
-        currentBattery += 0.1f;
+        currentBattery += 1f;
         // If current battery are greater than max battery, ...
         if (currentBattery > maxBattery)
             currentBattery = maxBattery; // Set currentBattery to maxBattery
@@ -134,7 +127,7 @@ public class BatteryManager : MonoBehaviour
     {
         TimeRemainingBatteryUi(true);
         
-        string text = $"{Math.Round(currentBattery * 100, 0)} / {maxBattery * 100}";
+        string text = $"{Math.Round(currentBattery, 0)} / {maxBattery}";
         
         batteryText.text = detailBatteryText.text = text;
     }
@@ -150,14 +143,13 @@ public class BatteryManager : MonoBehaviour
         // Show current time
         oneBatteryTimeRemainingText.text = $"1 Battery in {timerManager.minutes} : {timerManager.seconds:00}";
         
-        int totalMinutes = (int) Math.Round((maxBattery - currentBattery) * timerManager.defaultStartMinutes * 10 -
-                                            (timerManager.defaultStartMinutes - timerManager.minutes));
+        int totalMinutes = (int) Math.Round((maxBattery - currentBattery) * timerManager.defaultStartMinutes - (timerManager.defaultStartMinutes - timerManager.minutes));
         int hours = totalMinutes / 60;
-        
+        Debug.Log("total menit " + ((maxBattery - currentBattery) * timerManager.defaultStartMinutes - (timerManager.defaultStartMinutes - timerManager.minutes)));
         string fullBatteriesText = hours > 0
-            ? $"Full Batteries in {hours} : {totalMinutes - hours * 60:00} : " + $"{timerManager.seconds:00}"
+            ? $"Full Batteries in {hours} : {totalMinutes - hours * 60:00} : {timerManager.seconds:00}"
             : $"Full Batteries in {totalMinutes} : {timerManager.seconds:00}";
-
+        
         fullBatteriesTimeRemainingText.text = fullBatteriesText;
     }
     
@@ -166,7 +158,7 @@ public class BatteryManager : MonoBehaviour
     /// </summary>
     public void MinusBattery()
     {
-        currentBattery -= 0.5f;
+        currentBattery -= 50f;
         PlayerPrefs.SetFloat(PlayerPrefsConstant.CurrentBattery, currentBattery);
     }
 }

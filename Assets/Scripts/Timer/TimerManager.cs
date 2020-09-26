@@ -71,10 +71,10 @@ public class TimerManager
     public void CountDown(Action addSomething, Action updateTimeRemaining)
     {
         milliseconds += Time.deltaTime;
-
+        
         if (resetTimer)
             ResetTime();
-        
+
         // If milliseconds are greater or equal to 1, ...
         if (milliseconds >= 1.0f)
         {
