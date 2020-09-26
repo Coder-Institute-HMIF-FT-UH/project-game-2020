@@ -76,6 +76,10 @@ public class FinishStage : MonoBehaviour
         else
         {
             SetTime(totalSeconds);
+            SetTimeText(bestTimeText,
+                inGameTimer.timerManager.hours,
+                inGameTimer.timerManager.minutes,
+                inGameTimer.timerManager.seconds);
         }
 
         // Show Final Panel slowly
