@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class StarScript : MonoBehaviour
 {
@@ -8,6 +7,12 @@ public class StarScript : MonoBehaviour
     
     private float speed = 180f;
 
+    public bool IsTaken
+    {
+        get => isTaken;
+        set => isTaken = value;
+    }
+    
     private void Start()
     {
         // If star is taken, Destroy object
@@ -24,8 +29,8 @@ public class StarScript : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // If other object is Player, ...
-        if (!other.CompareTag("Player")) return;
-        isTaken = true; // Set isTaken to true
-        PlayerPrefs.SetInt("is" + gameObject.name + loadLevelManager.LevelName, Convert.ToInt32(isTaken)); // Set prefs
+        if (other.CompareTag("Player")){
+            isTaken = true; // Set isTaken to true
+        }
     }
 }

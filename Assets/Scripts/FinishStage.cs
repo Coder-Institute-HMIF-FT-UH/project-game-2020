@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,8 +17,9 @@ public class FinishStage : MonoBehaviour
     [SerializeField] private Text coinValue,
         bestTimeText,
         currentTimeText;
-
-    private PlayerFPSController playerController;
+    [SerializeField] private PlayerFPSController playerController;
+    [SerializeField] private List<StarScript> starScripts;
+    
     private IEnumerator showFinalPanel;
     private bool isDoneFading, isFinished = true;
     private int maxCoin;
@@ -33,6 +35,20 @@ public class FinishStage : MonoBehaviour
         inGameTimer.IsFinished = true;
         
         PlayerPrefs.SetInt(PlayerPrefsConstant.IsStageClear + loadLevelManager.LevelName, 1);
+        
+        // Set star prefs
+        PlayerPrefs.SetInt(PlayerPrefsConstant.StarsTaken + loadLevelManager.LevelName,
+            playerController.StarsCount);
+        // Set star is taken prefs
+        foreach (StarScript starScript in starScripts)
+        {
+            // Catch error if star is already taken
+            try
+            {
+                PlayerPrefs.SetInt("is" + starScript.name + loadLevelManager.LevelName, Convert.ToInt32(starScript.IsTaken));
+            }
+            catch (MissingReferenceException) { }
+        }
         
         finishUiContainer.SetActive(true);
         
@@ -127,7 +143,14 @@ public class FinishStage : MonoBehaviour
         // Set prefs
         PlayerPrefs.SetInt(PlayerPrefsConstant.BestTime + loadLevelManager.LevelName, totalSeconds);
     }
-
+    
+    /// <summary>
+    /// Set time text in finish UI
+    /// </summary>
+    /// <param name="timeText"></param>
+    /// <param name="hours"></param>
+    /// <param name="minutes"></param>
+    /// <param name="seconds"></param>
     private void SetTimeText(Text timeText, int hours, int minutes, int seconds)
     {
         timeText.text = $"{hours:00}.{minutes:00}.{seconds:00}";

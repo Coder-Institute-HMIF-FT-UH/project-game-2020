@@ -7,7 +7,6 @@ public class PlayerFPSController : MonoBehaviour
     public FixedButton jumpButton;
     public FixedTouchField touchField;
     [SerializeField] private LoadLevelManager loadLevelManager;
-    [SerializeField] private MinimapScript minimapScript;
     
     private RigidbodyFirstPersonController fps;
     private int starsCount;
@@ -39,14 +38,16 @@ public class PlayerFPSController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // If collide with star, ...
-        if (!other.gameObject.CompareTag("Star")) return;
-        starsCount += 1; // Increase starsCount
-        
-        // Set prefs
-        PlayerPrefs.SetInt(PlayerPrefsConstant.StarsTaken + loadLevelManager.LevelName, starsCount);
-        
-        Destroy(other.gameObject); // Set star to non-active
+        if (other.gameObject.CompareTag("Star"))
+        {
+            starsCount += 1; // Increase starsCount
+            Debug.Log("Stars collected = " + starsCount);
             
-        Debug.Log("Stars collected = " + starsCount);
+            // Set star's renderer and collider to false
+            other.GetComponent<MeshRenderer>().enabled = false;
+            other.GetComponent<SphereCollider>().enabled = false;
+            // Destroy star's particle system
+            Destroy(other.GetComponentInChildren<ParticleSystem>());
+        }
     }
 }
