@@ -2261,7 +2261,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh27748
+  m_Name: pb_Mesh104122
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11897,7 +11897,7 @@ PrefabInstance:
     - target: {fileID: 4548966799481341564, guid: 4cac93ebe9981a34b85fa7cf97ff9f55,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4548966799481341564, guid: 4cac93ebe9981a34b85fa7cf97ff9f55,
         type: 3}
@@ -11911,11 +11911,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4548966799481341564, guid: 4cac93ebe9981a34b85fa7cf97ff9f55,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 1925599247}
-    - target: {fileID: 4548966799481341564, guid: 4cac93ebe9981a34b85fa7cf97ff9f55,
-        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: SetActive
       objectReference: {fileID: 0}
@@ -11927,7 +11922,7 @@ PrefabInstance:
     - target: {fileID: 4548966799481341564, guid: 4cac93ebe9981a34b85fa7cf97ff9f55,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4548966799481341564, guid: 4cac93ebe9981a34b85fa7cf97ff9f55,
         type: 3}
@@ -11946,11 +11941,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4548966799481341564, guid: 4cac93ebe9981a34b85fa7cf97ff9f55,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
-      value: 
-      objectReference: {fileID: 1925599248}
-    - target: {fileID: 4548966799481341564, guid: 4cac93ebe9981a34b85fa7cf97ff9f55,
-        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
       value: LoadScene
       objectReference: {fileID: 0}
@@ -11964,6 +11954,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_StringArgument
       value: SelectLevelScene
       objectReference: {fileID: 0}
+    - target: {fileID: 4548966799481341564, guid: 4cac93ebe9981a34b85fa7cf97ff9f55,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1925599247}
     - target: {fileID: 4548966799740438768, guid: 4cac93ebe9981a34b85fa7cf97ff9f55,
         type: 3}
       propertyPath: m_Name
