@@ -145,7 +145,7 @@ public class BatteryManager : MonoBehaviour
         
         int totalMinutes = (int) Math.Round((maxBattery - currentBattery) * timerManager.defaultStartMinutes - (timerManager.defaultStartMinutes - timerManager.minutes));
         int hours = totalMinutes / 60;
-        Debug.Log("total menit " + ((maxBattery - currentBattery) * timerManager.defaultStartMinutes - (timerManager.defaultStartMinutes - timerManager.minutes)));
+        
         string fullBatteriesText = hours > 0
             ? $"Full Batteries in {hours} : {totalMinutes - hours * 60:00} : {timerManager.seconds:00}"
             : $"Full Batteries in {totalMinutes} : {timerManager.seconds:00}";

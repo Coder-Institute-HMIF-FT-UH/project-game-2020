@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class BatteryController : MonoBehaviour
 {
-    [SerializeField] private float speed = 0.007f;
+    [SerializeField] private float speed = 0.7f;
     [SerializeField] private GameObject gpsPanel;
     
     public Slider batteryLevel;

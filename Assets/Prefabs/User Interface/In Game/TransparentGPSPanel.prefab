@@ -526,7 +526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90ec522850ed1004eb9b7fa5004d00d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.007
+  speed: 0.7
   gpsPanel: {fileID: 998743279359750395}
   batteryLevel: {fileID: 998743279468389403}
   batteryFill: {fileID: 998743279569593457}
