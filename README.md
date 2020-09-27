@@ -1,8 +1,8 @@
-# Project Akhir Divisi Game Coder Institute HMIF FT-UH 2020
+# Somnium
 
 This repository is for final project in game division 2020.
 
-# How to Install (Android)
+## How to Install (Android)
 1. Go to [Release tab](https://github.com/Coder-Institute-HMIF-FT-UH/project-game-2020/releases) in your phone.
 2. Choose Somnium_v0.0.1.apk. Make sure it is the latest version.
 3. It will automatically download the file to your phone.
