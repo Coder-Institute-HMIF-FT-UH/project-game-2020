@@ -27,6 +27,13 @@ public class FinishStage : MonoBehaviour
     private void Awake()
     {
         maxCoin = loadLevelManager.levelDetails.maxCoin;
+        // PlayerPrefs.DeleteKey(PlayerPrefsConstant.StarsTaken + loadLevelManager.LevelName);
+        // // Set star is taken prefs
+        // foreach (StarScript starScript in starScripts)
+        // {
+        //     // Catch error if star is already taken
+        //     PlayerPrefs.DeleteKey("is" + starScript.name + loadLevelManager.LevelName);
+        // }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -45,9 +52,11 @@ public class FinishStage : MonoBehaviour
             // Catch error if star is already taken
             try
             {
-                PlayerPrefs.SetInt("is" + starScript.name + loadLevelManager.LevelName, Convert.ToInt32(starScript.IsTaken));
+                PlayerPrefs.SetInt("is" + starScript.name + loadLevelManager.LevelName,
+                    Convert.ToInt32(starScript.IsTaken));
             }
             catch (MissingReferenceException) { }
+            catch (NullReferenceException) { }
         }
         
         finishUiContainer.SetActive(true);

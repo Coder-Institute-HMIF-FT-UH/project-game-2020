@@ -4,13 +4,11 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    private Scene currentScene;
     private CanvasGroup canvasGroup;
     
     private void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>();
-        currentScene = SceneManager.GetActiveScene();
     }
 
     /// <summary>
@@ -40,15 +38,6 @@ public class SceneLoader : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    /// <summary>
-    /// Restart Scene
-    /// </summary>
-    public void RestartScene()
-    {
-        Time.timeScale = 1f; // Set time to normal
-        LoadScene(currentScene.name);
-    }
-    
     /// <summary>
     /// Showing and hiding the whole loading UI.
     /// </summary>

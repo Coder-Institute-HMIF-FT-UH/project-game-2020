@@ -120,7 +120,7 @@ public class DetailsManager : MonoBehaviour
         if (!levelDetails) return;
         // Minus sanity
         int currentSanity = PlayerPrefs.GetInt(PlayerPrefsConstant.CurrentSanity);
-            
+        
         // If current sanity is greater than requirement, player can play
         if(currentSanity >= levelDetails.sanityRequirement)
         {
@@ -132,6 +132,7 @@ public class DetailsManager : MonoBehaviour
         }
         else // If player doesn't have enough sanity, give warning
         {
+            sceneLoader.gameObject.SetActive(false);
             SetWarning(lowSanity);
         }
     }

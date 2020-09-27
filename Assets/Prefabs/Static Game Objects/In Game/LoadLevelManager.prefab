@@ -43,4 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8063c6c923c32354795c2db85fbacc4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelDetails: {fileID: 0}
   batteryLevel: {fileID: 0}
+  warningContainer: {fileID: 0}
+  lowSanity: {fileID: 11400000, guid: 1db1cef960aa63e45909f684ad54d17d, type: 2}
